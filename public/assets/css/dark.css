@@ -1,0 +1,432 @@
+/* Dark */
+body {
+  background-color: #1d1e24;
+}
+
+.body-bg-1 {
+  background-image: linear-gradient(#1f2531 2px, transparent 2px), linear-gradient(90deg, #1f2531 2px, transparent 2px), linear-gradient(#1f2531 1px, transparent 1px), linear-gradient(90deg, #1f2531 1px, transparent 1px) !important;
+  background-size: 50px 50px, 50px 50px, 5px 5px, 5px 5px !important;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px !important;
+}
+
+.body-bg-2 {
+  background-image: linear-gradient(#1f2531 1px, transparent 1px), linear-gradient(180deg, #1f2531 1px, transparent 1px), linear-gradient(#1f2531 1px, transparent 1px), linear-gradient(180deg, #1f2531 1px, transparent 1px) !important;
+  background-size: 5px 5px, 5px 5px, 5px 5px, 5px 5px !important;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px !important;
+}
+
+.body-bg-3 {
+  background-color: #181d27 !important;
+  opacity: 1 !important;
+  background-size: 7px 7px !important;
+  background-image: repeating-linear-gradient(45deg, #212735 0, #212735 0.7px, #1a202a 0, #181d27 50%) !important;
+}
+
+.body-bg-4 {
+  background-size: 5px 5px !important;
+  background-image: repeating-linear-gradient(to right, #1f2531, #1f2531 1px, #181d27 1px, #181d27) !important;
+}
+
+.body-bg-5 {
+  background-color: #181d27 !important;
+  background-image: linear-gradient(#1f2531 1px, transparent 1px), linear-gradient(to right, #1f2531 1px, #181d27 1px) !important;
+  background-size: 20px 20px !important;
+}
+
+p,
+li,
+a {
+  color: #9ba5b5;
+}
+
+[type=radio]:not(:checked) + label:before {
+  background: #1d1e24;
+  border-color: #3f4458;
+}
+[type=radio]:checked + label:before {
+  background: #1d1e24;
+  border-color: #3f4458;
+}
+
+input,
+textarea,
+.rx-from-control {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+  color: #9ba5b5;
+}
+
+.form-select option {
+  color: #9ba5b5;
+}
+
+a.back-to-top {
+  background-color: #14151a;
+}
+
+.rx-banner h4 {
+  color: #ced2d9;
+}
+.rx-banner p {
+  color: #9ba5b5;
+}
+
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-menu {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+}
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-menu li a {
+  color: #9ba5b5;
+}
+
+.rx-about-contact .inner-contact .rx-about-inner-box .rx-about-box {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-about-contact .inner-contact .rx-about-inner-box .rx-about-box h5 {
+  color: #ced2d9;
+}
+.rx-about-contact .inner-contact .rx-about-inner-box .rx-about-box p {
+  color: #9ba5b5;
+}
+.rx-about-contact .inner-contact p {
+  color: #9ba5b5;
+}
+
+.rx-services {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-services .services-contact h5 {
+  color: #ced2d9;
+}
+.rx-services .services-contact ul li {
+  color: #9ba5b5;
+}
+
+.rx-amenities-slider .owl-dots {
+  background-color: #1d1e24;
+}
+.rx-amenities-slider .owl-dots span {
+  border-color: #3f4458;
+}
+.rx-amenities-slider .owl-dots span:before {
+  background-color: #1d1e24;
+}
+
+.extra-services-contact {
+  border-color: #3f4458;
+}
+.extra-services-contact:hover {
+  border-color: #9499ad;
+}
+.extra-services-contact .rx-services-price p {
+  color: #ced2d9;
+}
+.extra-services-contact .rx-services-price h2 span {
+  color: #ced2d9;
+}
+.extra-services-contact .rx-services-ico .ico {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.extra-services-contact .rx-services-inner-contact ul li {
+  color: #9ba5b5;
+}
+
+.rx-testimonials-contact .rx-inner-banner h4 {
+  color: #ced2d9;
+}
+.rx-testimonials-contact .rx-inner-banner span {
+  color: #9ba5b5;
+}
+.rx-testimonials-contact .inner-contact {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+
+.rx-btn-one {
+  background-color: #14151a;
+  border-color: #3f4458;
+  color: #ced2d9;
+}
+
+.rx-btn-two {
+  background-color: #14151a;
+  border-color: #3f4458;
+  color: #ced2d9;
+}
+
+.extra-services-contact .extra-services-absolute-contact p {
+  color: #202129;
+}
+
+.rx-menu-tabs ul.nav-tabs li button {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+  color: #ced2d9;
+}
+.rx-menu-tabs ul.nav-tabs li button.active {
+  background-color: #1d1e24;
+}
+
+.rx-menu-tabs-contact .inner-menu {
+  border-color: #3f4458;
+}
+.rx-menu-tabs-contact .inner-menu .sub-contact h5 {
+  color: #ced2d9;
+}
+.rx-menu-tabs-contact .inner-menu .sub-contact p {
+  color: #9ba5b5;
+}
+
+.rx-team-card .rx-team-contact h5 {
+  color: #ced2d9;
+}
+.rx-team-card .rx-team-contact p {
+  color: #9ba5b5;
+}
+
+.bg-two-secondary {
+  background-color: #212229;
+}
+
+.rx-book-from .rx-input-box label {
+  color: #ced2d9;
+}
+
+.rx-booking-last-contact p {
+  color: #9ba5b5;
+}
+
+.rx-about-page-contact .items-details .rx-dark-img, .rx-about-contact .items-details .rx-dark-img {
+  display: block;
+}
+.rx-about-page-contact .items-details .rx-white-img, .rx-about-contact .items-details .rx-white-img {
+  display: none;
+}
+.rx-about-page-contact .items-details h5, .rx-about-contact .items-details h5 {
+  color: #ced2d9;
+}
+.rx-about-page-contact .items-details p, .rx-about-contact .items-details p {
+  color: #9ba5b5;
+}
+
+.rx-contact-form {
+  background-color: #212229;
+  border-color: #3f4458;
+}
+.rx-contact-form .rx-input-box label {
+  color: #ced2d9;
+}
+
+.rx-faq .accordion .accordion-item {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-faq .accordion .accordion-item .accordion-button {
+  color: #ced2d9;
+  background-color: #14151a;
+}
+.rx-faq .accordion .accordion-item .accordion-collapse .accordion-body {
+  border-color: #3f4458;
+}
+
+.rx-spa-card {
+  background-color: #14151a;
+}
+.rx-spa-card .spa-contact span {
+  color: #9ba5b5;
+}
+.rx-spa-card .spa-contact h4 {
+  color: #ced2d9;
+}
+.rx-spa-card .spa-contact p {
+  color: #9ba5b5;
+}
+
+.rx-spa-services .spa-services-contact {
+  background-color: #14151a;
+}
+.rx-spa-services .spa-services-contact h4 {
+  color: #ced2d9;
+}
+.rx-spa-services .spa-services-contact span {
+  color: #9ba5b5;
+}
+
+.rx-blog-details .rx-blog-details-cart .blog-details-contact .pagination ul {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-blog-details .rx-blog-details-cart .blog-details-contact span {
+  color: #9ba5b5;
+}
+.rx-blog-details .rx-blog-details-cart .blog-details-contact h4 a {
+  color: #ced2d9;
+}
+
+.rx-blog-details-sidebar {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-blog-details-sidebar h5.sub-title {
+  color: #ced2d9;
+}
+.rx-blog-details-sidebar .rx-details-categories .inner-contact ul li a {
+  color: #9ba5b5;
+}
+.rx-blog-details-sidebar .rx-recent-post .recent-inner-post .recent-post-cart .post-contact span {
+  color: #9ba5b5;
+}
+.rx-blog-details-sidebar .rx-recent-post .recent-inner-post .recent-post-cart .post-contact h4 a {
+  color: #ced2d9;
+}
+.rx-blog-details-sidebar .rx-popular-tags .popular-inner-tags ul li a {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+  color: #9ba5b5;
+}
+
+.modal-content {
+  background-color: #1d1e24;
+}
+
+.rx-modal .sub-title h4 {
+  color: #ced2d9;
+}
+.rx-modal .rx-booking-from .rx-inner-input label {
+  color: #ced2d9;
+}
+.rx-modal .rx-booking-from .rx-inner-input input,
+.rx-modal .rx-booking-from .rx-inner-input .rx-from-control {
+  background-color: #14151a;
+}
+
+.rx-tools-sidebar {
+  background-color: #1d1e24;
+}
+.rx-tools-sidebar .rx-inner-tools-sidebar .rx-bar-title {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+}
+.rx-tools-sidebar .rx-inner-tools-sidebar .rx-bar-title h6 {
+  color: #ced2d9;
+}
+.rx-tools-sidebar .rx-inner-tools-sidebar .rx-tools-detail .rx-tools-block h3 {
+  color: #ced2d9;
+}
+
+.rx-mobile-menu {
+  background-color: #1d1e24;
+}
+.rx-mobile-menu .rx-menu-title .menu_title {
+  color: #ced2d9;
+}
+.rx-mobile-menu .rx-menu-inner .rx-menu-contact ul li a {
+  color: #9ba5b5;
+  border-color: #3f4458;
+}
+.rx-mobile-menu .rx-menu-inner .rx-menu-contact ul li .sub-menu li a {
+  color: #9ba5b5;
+}
+.rx-mobile-menu .rx-menu-inner .rx-menu-contact ul li .menu-toggle:before {
+  color: #9ba5b5;
+}
+
+.rx-rooms-box .rx-rooms-back-side:after {
+  background-color: rgba(20, 21, 26, 0.9);
+}
+.rx-rooms-box .rx-rooms-back-side .inner-back-side {
+  border-color: #3f4458;
+}
+.rx-rooms-box .rx-rooms-back-side .inner-back-side .sub-inner-contact h5 {
+  color: #ced2d9;
+}
+.rx-rooms-box .rx-rooms-back-side .inner-back-side .sub-inner-contact ul li {
+  color: #9ba5b5;
+}
+
+.rx-room-details-sidebar {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-room-details-sidebar .sub-title {
+  border-color: #3f4458;
+}
+.rx-room-details-sidebar .sub-title h4 {
+  color: #ced2d9;
+}
+.rx-room-details-sidebar .inner-room-details .rx-room-details-from label {
+  color: #ced2d9;
+}
+.rx-room-details-sidebar .inner-room-details .rx-side-from h4 {
+  color: #ced2d9;
+}
+.rx-room-details-sidebar .inner-room-details .rx-side-from span {
+  color: #9ba5b5;
+}
+.rx-room-details-sidebar .inner-room-details .rx-side-from .form-check .form-check-label {
+  color: #9ba5b5;
+}
+.rx-room-details-sidebar .inner-room-details .rx-side-from .form-check input {
+  background-color: #1d1e24;
+  border-color: #3f4458;
+}
+
+.rx-room-details-main-contact .rx-inner-details {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-room-details-main-contact .rx-inner-details .rx-title h4 {
+  color: #ced2d9;
+}
+.rx-room-details-main-contact .rx-inner-details .rx-details-inner .inner-room-details .sub-title h4 {
+  color: #ced2d9;
+}
+.rx-room-details-main-contact .rx-main-room {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+
+.rx-input-box {
+  color: #ced2d9;
+}
+
+.rx-checkout .rx-checkout-wrap {
+  background-color: #14151a;
+  border-color: #3f4458;
+}
+.rx-checkout .rx-checkout-wrap .inner-title h4 {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-check-block h5.rx-check-subtitle {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-check-block .rx-new-option div label {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-check-login-form .rx-check-login-wrap label {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-check-login-form .rx-check-login-button .rx-check-login-fp {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-billing-details h5.rx-check-subtitle {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-billing-details .rx-new-option .option-radio label {
+  color: #ced2d9;
+}
+.rx-checkout .rx-checkout-wrap .rx-billing-details .rx-input-box label {
+  color: #ced2d9;
+}
+
+footer {
+  background-color: #14151a;
+}
+
+.rx-footer-copy {
+  background-color: #1d1e24;
+}
+/*# sourceMappingURL=dark.css.map */

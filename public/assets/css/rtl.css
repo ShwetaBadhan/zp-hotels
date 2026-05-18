@@ -1,0 +1,234 @@
+/* RTL css */
+/* variables */
+html * {
+  direction: rtl;
+}
+
+.slick-slider *,
+.owl-carousel * {
+  direction: ltr;
+}
+
+.rx-text-right {
+  text-align: left;
+}
+
+.rx-input-box i {
+  left: 15px;
+  right: auto;
+}
+
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-menu {
+  right: 0;
+  left: auto !important;
+}
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-item {
+  padding-right: 0;
+  padding-left: 20px;
+}
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-item:after {
+  right: auto;
+  left: 0;
+}
+.rx-inner-menu-desk .rx-main-menu ul li {
+  margin-right: 0;
+  margin-left: 45px;
+}
+
+.form-select {
+  background-position: left 0.75rem center;
+}
+
+.rx-about-img .rx-rounded-circle {
+  display: none;
+}
+
+.section-hero .rx-hero-contact .inner-contact {
+  float: inline-end;
+  text-align: right;
+}
+.section-hero .rx-hero-contact .inner-contact .booking-now {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.rx-amenities-contact p {
+  text-align: right;
+}
+.rx-amenities-contact .amenities-btn {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.extra-services-contact .extra-services-absolute-contact {
+  right: auto;
+  left: 0;
+}
+
+.rx-testimonials-contact .inner-contact {
+  text-align: right;
+}
+.rx-testimonials-contact .rx-inner-banner {
+  text-align: right;
+}
+
+.rx-blog-card .rx-blog-contact {
+  text-align: right;
+}
+
+.rx-footer-items .rx-items-heading:after {
+  left: auto;
+  right: 0;
+}
+.rx-footer-items .rx-items-contact ul li {
+  padding: 5px 12px 5px 0px;
+}
+.rx-footer-items .rx-items-contact ul li:hover {
+  padding-left: 0;
+  padding-right: 18px;
+}
+.rx-footer-items .rx-items-contact ul li:after {
+  left: auto;
+  right: 0;
+}
+
+.extra-services-contact .rx-services-ico .ico {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+.extra-services-contact:hover .rx-services-ico .ico {
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+
+.rx-breadcrumb-image .inner-breadcrumb-contact .rx-banner-breadcrumb .breadcrumb-contact .last-contact ul li:last-child:before {
+  display: none;
+}
+.rx-breadcrumb-image .inner-breadcrumb-contact .rx-banner-breadcrumb .breadcrumb-contact .last-contact ul li:last-child:after {
+  content: "\ea6e";
+  font-family: "remixicon";
+  font-size: 15px;
+  font-weight: 500;
+  padding-right: 0;
+  padding-left: 12px;
+}
+
+.accordion-button:after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.rx-side-menu-image {
+  right: auto;
+  left: 0;
+}
+.rx-side-menu-image .radius-one img {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 50px;
+}
+.rx-side-menu-image .radius-two img {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 50px;
+}
+.rx-side-menu-image .radius-three img {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.rx-side-menu-image .radius-four img {
+  border-top-right-radius: 0;
+  border-top-left-radius: 50px;
+}
+
+.rx-banner-effects p .left-side {
+  padding-right: 0;
+  padding-left: 10px;
+}
+.rx-banner-effects p .right-side {
+  padding-left: 0;
+  padding-right: 10px;
+}
+
+.rx-spa-services .border-tl-radius img {
+  border-top-left-radius: 0;
+  border-top-right-radius: 30px;
+}
+.rx-spa-services .border-br-radius img {
+  border-bottom-right-radius: 0;
+}
+
+.accordion-button {
+  text-align: right;
+}
+
+.rx-blog-details-sidebar .rx-recent-post .recent-inner-post .recent-post-cart .post-img {
+  margin-right: 0;
+  margin-left: 12px;
+}
+.rx-blog-details-sidebar .search-box .search-inner-box i {
+  right: auto;
+  left: 0;
+}
+.rx-blog-details-sidebar .rx-details-categories .inner-contact ul {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+.rx-mobile-menu .rx-menu-inner .rx-menu-contact ul li .sub-menu li a {
+  padding-left: 0;
+  padding-right: 15px;
+}
+.rx-mobile-menu .rx-menu-inner .rx-menu-contact ul li .menu-toggle {
+  right: auto;
+  left: 5px;
+}
+
+.rx-checkout .rx-checkout-wrap .rx-check-login-form .rx-check-login-button button {
+  margin-right: 0;
+  margin-left: 24px;
+}
+
+.form-check .form-check-input {
+  float: right;
+  margin-left: 1.5em;
+}
+
+.rx-modal .qty-close {
+  left: 0;
+  right: auto;
+}
+
+.rx-room-details-main-contact .rx-inner-details .rx-details-inner .inner-room-details .rx-cols-room ul {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1399px) {
+  .rx-inner-menu-desk .rx-main-menu ul li {
+    margin-left: 40px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .rx-inner-menu-desk .rx-main-menu ul li {
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .rx-spa-services .border-tl-radius img {
+    border-top-left-radius: 30px;
+  }
+  .rx-spa-services .border-br-radius img {
+    border-bottom-right-radius: 30px;
+  }
+  .rx-side-menu-image .radius-one img {
+    border-radius: 30px;
+  }
+}
+/*# sourceMappingURL=rtl.css.map */

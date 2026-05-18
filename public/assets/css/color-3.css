@@ -1,0 +1,157 @@
+/* color-3 */
+/* variables */
+::-moz-selection {
+  color: #f5885f;
+}
+::selection {
+  color: #f5885f;
+}
+
+[type=radio]:checked + label:after {
+  background: #f5885f;
+}
+
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown .rx-dropdown-menu li a:hover {
+  color: #f5885f;
+}
+.rx-inner-menu-desk .rx-main-menu ul .rx-dropdown:hover a {
+  color: #f5885f;
+}
+.rx-inner-menu-desk .rx-main-menu ul li a.nav-link::before {
+  background: #f5885f;
+}
+.rx-inner-menu-desk .rx-main-menu ul li a.nav-link:hover {
+  color: #f5885f;
+}
+.rx-inner-menu-desk .rx-main-menu ul li a.nav-link:hover::before {
+  background: #f5885f;
+}
+
+.rx-mobile-menu .rx-menu-inner .header-res-social ul li:hover {
+  background-color: #f5885f;
+}
+
+.rx-btn-one:hover {
+  background-color: #f5885f;
+  border-color: #f5885f;
+}
+
+.rx-btn-two:hover {
+  background-color: #f5885f;
+  border-color: #f5885f;
+}
+
+.section-hero .rx-hero-contact .inner-contact h2 span {
+  color: #f5885f;
+}
+
+.rx-banner h4 span {
+  color: #f5885f;
+}
+
+.rx-services .services-ico svg path {
+  fill: #f5885f;
+  stroke: #f5885f;
+}
+
+.rx-banner-effects p svg path {
+  fill: #f5885f;
+}
+.rx-banner-effects p svg .cls-2,
+.rx-banner-effects p svg .cls-3 {
+  stroke: #f5885f;
+}
+
+.rx-faq .accordion .accordion-item .accordion-button:not(.collapsed):after {
+  color: #f5885f;
+}
+
+.extra-services-contact .rx-services-ico .ico:hover {
+  background-color: #f5885f;
+}
+.extra-services-contact .rx-services-price h2 {
+  color: #f5885f;
+}
+
+.rx-blog-card .rx-blog-contact h4 a:hover {
+  color: #f5885f;
+}
+
+.rx-footer-items .rx-items-contact ul li:hover a {
+  color: #f5885f;
+}
+.rx-footer-items .rx-items-contact ul li:hover:after {
+  background-color: #f5885f;
+}
+
+.rx-footer-other-info .inner-info a:hover {
+  color: #f5885f;
+}
+
+.rx-footer-inner-contact .rx-footer-left-side-contact p a:hover {
+  color: #f5885f;
+}
+.rx-footer-inner-contact .rx-footer-last-logo .rx-inner-footer-logo:hover {
+  border-color: #f5885f;
+}
+.rx-footer-inner-contact .rx-footer-last-logo .rx-inner-footer-logo:hover i {
+  color: #f5885f;
+}
+
+a.back-to-top {
+  color: #f5885f;
+  border-color: #f5885f;
+}
+a.back-to-top svg path {
+  stroke: #f5885f;
+}
+
+.rx-menu-tabs ul.nav-tabs li button.active {
+  border-color: #f5885f;
+  color: #f5885f;
+}
+.rx-menu-tabs ul.nav-tabs li button:hover {
+  border-color: #f5885f;
+  color: #f5885f;
+}
+
+.rx-menu-tabs-contact .active-menu {
+  border-color: #f5885f !important;
+}
+.rx-menu-tabs-contact .inner-menu:hover {
+  border-color: #f5885f;
+}
+.rx-menu-tabs-contact .inner-menu .sub-prices h4 {
+  color: #f5885f;
+}
+
+.rx-team-card .rx-team-img .rx-team-social-media .social-media-item:hover {
+  border-color: #f5885f;
+}
+.rx-team-card .rx-team-img .rx-team-social-media .social-media-item:hover i {
+  color: #f5885f;
+}
+
+.rx-breadcrumb-image .inner-breadcrumb-contact .rx-banner-breadcrumb .breadcrumb-contact .last-contact ul li a:hover {
+  color: #f5885f;
+}
+
+.rx-blog-details-sidebar .rx-popular-tags .popular-inner-tags ul li a:hover {
+  background-color: #f5885f;
+}
+.rx-blog-details-sidebar .rx-details-categories .inner-contact ul li a:hover {
+  color: #f5885f;
+}
+.rx-blog-details-sidebar .rx-recent-post .recent-inner-post .recent-post-cart .post-contact h4 a:hover {
+  color: #f5885f;
+}
+
+.rx-blog-details .rx-blog-details-cart .blog-details-contact .pagination ul li a:hover {
+  color: #f5885f;
+}
+
+.rx-room-details-sidebar .inner-room-details .rx-side-from .form-check input:checked {
+  background-color: #f5885f;
+  border-color: #f5885f;
+}
+/*# sourceMappingURL=color-3.css.map */
