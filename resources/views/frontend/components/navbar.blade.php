@@ -40,7 +40,7 @@
                                          <li><a class="dropdown-item" href="{{ route('faqs') }}">Faq</a></li>
                                          <li><a class="dropdown-item" href="{{ route('spa') }}">Spa</a></li>
                                          <li><a class="dropdown-item" href="{{ route('checkout') }}">Checkout</a></li>
-                                         <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                                         {{-- <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li> --}}
                                      </ul>
                                  </li>
                                  <li class="nav-item rx-dropdown">
@@ -98,7 +98,7 @@
                              <li><a href="{{ route('faqs') }}">Faq</a></li>
                              <li><a href="{{ route('spa') }}">Spa</a></li>
                              <li><a href="{{ route('checkout') }}">Checkout</a></li>
-                             <li><a href="{{ route('login') }}">Login</a></li>
+                             {{-- <li><a href="{{ route('login') }}">Login</a></li> --}}
                          </ul>
                      </li>
                      <li>
