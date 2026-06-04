@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoomCategoryController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\GalleryCategoryController;
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -17,17 +18,17 @@ Route::get('/gallery', function () {
 })->name('gallery');
 
 // ==================== FRONTEND: ROOMS ====================
-Route::get('/rooms', function () {
+Route::get('/zp-rooms', function () {
     $categories = App\Models\RoomCategory::where('status', 'active')->get();
     $rooms = App\Models\Room::with('category')->where('status', 'active')->paginate(12);
     return view('frontend.pages.rooms.index', compact('rooms', 'categories'));
-})->name('rooms');
-
-Route::get('/rooms/{slug}', [RoomController::class, 'show'])->name('room-details');
-
+})->name('zp-rooms');
 Route::get('/room-details', function () {
     return view('frontend.pages.rooms.room-details');
 })->name('room-details');
+Route::get('/rooms/{slug}', [RoomController::class, 'show'])->name('room-details');
+
+
 
 Route::get('/about-us', function () {
     return view('frontend.pages.about-us');
@@ -102,6 +103,7 @@ Route::post('/admin-logout', [LoginController::class, 'adminLogout'])->name('adm
 // ==================== PROTECTED ADMIN CRUD ====================
 Route::middleware('auth')->group(function () {
 
+
     // Roles
     Route::prefix('roles')->name('roles.')->group(function () {
         Route::get('/', [RoleController::class, 'index'])->name('index');
@@ -129,22 +131,31 @@ Route::middleware('auth')->group(function () {
         Route::patch('/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('toggle-status');
     });
     // ==================== ADMIN: ROOM CATEGORIES ====================
-Route::middleware('auth')->prefix('room-categories')->name('room-categories.')->group(function () {
-    Route::get('/', [RoomCategoryController::class, 'index'])->name('index');
-    Route::post('/', [RoomCategoryController::class, 'store'])->name('store');
-    Route::put('/{id}', [RoomCategoryController::class, 'update'])->name('update');
-    Route::delete('/{id}', [RoomCategoryController::class, 'destroy'])->name('destroy');
-    Route::patch('/{id}/toggle-status', [RoomCategoryController::class, 'toggleStatus'])->name('toggle-status');
-});
+    Route::middleware('auth')->prefix('room-categories')->name('room-categories.')->group(function () {
+        Route::get('/', [RoomCategoryController::class, 'index'])->name('index');
+        Route::post('/', [RoomCategoryController::class, 'store'])->name('store');
+        Route::put('/{id}', [RoomCategoryController::class, 'update'])->name('update');
+        Route::delete('/{id}', [RoomCategoryController::class, 'destroy'])->name('destroy');
+        Route::patch('/{id}/toggle-status', [RoomCategoryController::class, 'toggleStatus'])->name('toggle-status');
+    });
 
-// ==================== ADMIN: ROOMS ====================
-Route::middleware('auth')->prefix('rooms')->name('rooms.')->group(function () {
-    Route::get('/', [RoomController::class, 'index'])->name('index');
-    Route::post('/', [RoomController::class, 'store'])->name('store');
-    Route::put('/{id}', [RoomController::class, 'update'])->name('update');
-    Route::delete('/{id}', [RoomController::class, 'destroy'])->name('destroy');
-    Route::patch('/{id}/toggle-status', [RoomController::class, 'toggleStatus'])->name('toggle-status');
-    Route::patch('/{id}/toggle-featured', [RoomController::class, 'toggleFeatured'])->name('toggle-featured');
-});
+    // ==================== ADMIN: ROOMS ====================
+    Route::middleware('auth')->prefix('rooms')->name('rooms.')->group(function () {
+        Route::get('/', [RoomController::class, 'index'])->name('index');
+        Route::post('/', [RoomController::class, 'store'])->name('store');
+        Route::put('/{id}', [RoomController::class, 'update'])->name('update');
+        Route::delete('/{id}', [RoomController::class, 'destroy'])->name('destroy');
+        Route::patch('/{id}/toggle-status', [RoomController::class, 'toggleStatus'])->name('toggle-status');
+        Route::patch('/{id}/toggle-featured', [RoomController::class, 'toggleFeatured'])->name('toggle-featured');
+    });
+    Route::get('admin-rooms', function () {
+        return view('backend.pages.rooms');
+    })->name('admin-rooms');
+
+    // admin gallery 
+    Route::get('/admin-gallery-category', [GalleryCategoryController::class, 'index'])->name('admin-gallery-categories.index');
+    Route::post('/admin-gallery-categories', [GalleryCategoryController::class, 'store'])->name('admin-gallery-categories.store');
+    Route::put('/admin-gallery-categories/{category}', [GalleryCategoryController::class, 'update'])->name('admin-gallery-categories.update');
+    Route::delete('/admin-gallery-categories/{category}', [GalleryCategoryController::class, 'destroy'])->name('admin-gallery-categories.destroy');
 
 });

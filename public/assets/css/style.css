@@ -1267,6 +1267,7 @@ header .header-fixed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin:auto 0;
 }
 
 /*===== Mobile menus =====*/

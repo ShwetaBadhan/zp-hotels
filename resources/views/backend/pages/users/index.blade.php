@@ -25,7 +25,7 @@
                             </button>
 
                             <div class="table-responsive">
-                                <table class="table align-middle">
+                                <table class="table table-hover table-striped align-middle">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -54,8 +54,7 @@
                                                 </td>
                                                 <td>
                                                     @forelse($user->roles as $role)
-                                                        <span
-                                                            class="badge bg-primary me-1 mb-1">{{ ucfirst($role->name) }}</span>
+                                                        <span class="badge bg-primary me-1 mb-1">{{ ucfirst($role->name) }}</span>
                                                     @empty
                                                         <span class="text-muted small">No roles</span>
                                                     @endforelse
@@ -82,8 +81,7 @@
                                                         <!-- Edit -->
                                                         <button type="button" class="btn btn-sm btn-outline-success"
                                                             data-bs-toggle="modal" data-bs-target="#editModal"
-                                                            data-user-id="{{ $user->id }}"
-                                                            data-user-name="{{ $user->name }}"
+                                                            data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}"
                                                             data-user-email="{{ $user->email }}"
                                                             data-user-status="{{ $user->status }}"
                                                             data-user-roles="@json($user->roles->pluck('id'))">
@@ -93,8 +91,7 @@
                                                         <!-- Delete -->
                                                         <button type="button" class="btn btn-sm btn-outline-danger"
                                                             data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-user-id="{{ $user->id }}"
-                                                            data-user-name="{{ $user->name }}">
+                                                            data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}">
                                                             <i class="ri-delete-bin-line"></i>
                                                         </button>
                                                     </div>
@@ -189,8 +186,7 @@
                                 <input type="email" name="email" id="editEmail" class="form-control" required>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">New Password <small
-                                        class="text-muted">(optional)</small></label>
+                                <label class="form-label">New Password <small class="text-muted">(optional)</small></label>
                                 <input type="password" name="password" class="form-control" minlength="6">
                             </div>
                             <div class="col-md-6">
@@ -243,8 +239,8 @@
                         <div class="list-group">
                             <!-- None/Remove Role Option -->
                             <label class="list-group-item d-flex gap-2">
-                                <input class="form-check-input flex-shrink-0 role-radio" type="radio" name="role"
-                                    value="" id="role_none">
+                                <input class="form-check-input flex-shrink-0 role-radio" type="radio" name="role" value=""
+                                    id="role_none">
                                 <div>
                                     <strong class="d-block">No Role</strong>
                                     <small class="text-muted">Remove assigned role</small>
@@ -253,8 +249,8 @@
 
                             @foreach ($roles as $role)
                                 <label class="list-group-item d-flex gap-2">
-                                    <input class="form-check-input flex-shrink-0 role-radio" type="radio"
-                                        name="role" value="{{ $role->id }}" id="role_{{ $role->id }}">
+                                    <input class="form-check-input flex-shrink-0 role-radio" type="radio" name="role"
+                                        value="{{ $role->id }}" id="role_{{ $role->id }}">
                                     <div>
                                         <strong class="d-block">{{ ucfirst($role->name) }}</strong>
                                         <small class="text-muted">Guard: {{ $role->guard_name }}</small>
@@ -334,7 +330,7 @@
         function toggleStatus(id, current) {
             Swal.fire({
                 title: 'Change Status?',
-                text: `This user will be ${current==='active'?'inactive':'active'}`,
+                text: `This user will be ${current === 'active' ? 'inactive' : 'active'}`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: current === 'active' ? '#ffc107' : '#28a745',
@@ -353,7 +349,7 @@
         }
 
         // Edit Modal - Populate fields
-        document.getElementById('editModal').addEventListener('show.bs.modal', function(e) {
+        document.getElementById('editModal').addEventListener('show.bs.modal', function (e) {
             const b = e.relatedTarget;
             const userId = b.getAttribute('data-user-id');
 
@@ -369,7 +365,7 @@
         });
 
         // Assign Role Modal - Populate radio buttons
-        document.getElementById('assignRolesModal').addEventListener('show.bs.modal', function(e) {
+        document.getElementById('assignRolesModal').addEventListener('show.bs.modal', function (e) {
             const b = e.relatedTarget;
             const userId = b.getAttribute('data-user-id');
 
@@ -386,7 +382,7 @@
         });
 
         // Delete Modal (same as before)
-        document.getElementById('deleteModal').addEventListener('show.bs.modal', function(e) {
+        document.getElementById('deleteModal').addEventListener('show.bs.modal', function (e) {
             const b = e.relatedTarget;
             const userId = b.getAttribute('data-user-id');
 

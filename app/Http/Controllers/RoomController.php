@@ -12,65 +12,82 @@ use Illuminate\Support\Facades\Log;
 class RoomController extends Controller
 {
     public function index()
-{
-    // ✅ Load category relationship
-    $rooms = Room::with('category')->orderBy('sort_order')->orderBy('name')->get();
-    $categories = RoomCategory::where('status', 'active')->orderBy('name')->get();
-    
-    return view('backend.pages.rooms.index', compact('rooms', 'categories'));
-}
+    {
+        //  Load category relationship
+        $rooms = Room::with('category')->orderBy('sort_order')->orderBy('name')->get();
+        $categories = RoomCategory::where('status', 'active')->orderBy('name')->get();
 
-   public function store(Request $request)
-{
-    // 🔍 Debug: Log incoming request
-    Log::info('Room Store Request:', $request->all());
+        return view('backend.pages.rooms.index', compact('rooms', 'categories'));
+    }
 
-    $request->validate([
-        'name' => 'required|string|max:150',
-        'category_id' => 'required|exists:room_categories,id',
-        'description' => 'required|string',
-        'price' => 'required|numeric|min:0',
-        'max_guests' => 'required|integer|min:1',
-        'bedrooms' => 'required|integer|min:1',
-        'bathrooms' => 'required|integer|min:1',
-        'status' => 'required|in:active,inactive',
-        'featured' => 'required|in:yes,no',
-        // 🔥 Temporarily remove file validation to test
-        // 'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ], [
-        'name.required' => 'Room name is required',
-        'category_id.required' => 'Please select a category',
-        'price.required' => 'Price is required',
-        'price.numeric' => 'Price must be a number',
-    ]);
-
-    try {
-        $data = $request->except(['thumbnail', 'images']); // Exclude files for now
-        $data['slug'] = \Illuminate\Support\Str::slug($request->name);
-        $data['amenities'] = $request->amenities ?? [];
-
-        // 🔍 Debug: Log data before create
-        Log::info('Creating room with data:', $data);
-
-        $room = \App\Models\Room::create($data);
-
-        Log::info('Room created successfully:', ['id' => $room->id]);
-
-        return redirect()->route('rooms.index')->with('success', 'Room created successfully!');
-
-    } catch (\Exception $e) {
-        // 🔍 Debug: Log the error
-        Log::error('Room creation failed:', [
-            'message' => $e->getMessage(),
-            'trace' => $e->getTraceAsString(),
-            'request' => $request->all()
+    public function store(Request $request)
+    {
+        // 🔍 Debug: Log incoming request
+        Log::info('Room Store Request:', $request->all());
+        // dd($request->all()); 
+        $request->validate([
+            'name' => 'required|string|max:150',
+            'category_id' => 'required|exists:room_categories,id',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'max_guests' => 'required|integer|min:1',
+            'bedrooms' => 'required|integer|min:1',
+            'bathrooms' => 'required|integer|min:1',
+            'status' => 'required|in:active,inactive',
+            'featured' => 'required|in:yes,no',
+            // 🔥 Temporarily remove file validation to test
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'name.required' => 'Room name is required',
+            'category_id.required' => 'Please select a category',
+            'price.required' => 'Price is required',
+            'price.numeric' => 'Price must be a number',
         ]);
 
-        return redirect()->back()
-            ->withInput()
-            ->with('error', 'Failed to create room: ' . $e->getMessage());
+        try {
+
+            $data = $request->except(['thumbnail', 'images']);
+
+            $data['slug'] = Str::slug($request->name);
+            $data['amenities'] = $request->amenities ?? [];
+            if ($request->hasFile('thumbnail')) {
+                $data['thumbnail'] = $request->file('thumbnail')
+                    ->store('rooms/thumbnails', 'public');
+            }
+            if ($request->hasFile('images')) {
+
+                $images = [];
+
+                foreach ($request->file('images') as $image) {
+                    $images[] = $image->store('rooms/gallery', 'public');
+                }
+
+                $data['images'] = $images;
+            }
+            // dd($data);
+
+            //  Debug: Log data before create
+            Log::info('Creating room with data:', $data);
+
+            $room = \App\Models\Room::create($data);
+
+            Log::info('Room created successfully:', ['id' => $room->id]);
+
+            return redirect()->route('rooms.index')->with('success', 'Room created successfully!');
+
+        } catch (\Exception $e) {
+            //  Debug: Log the error
+            Log::error('Room creation failed:', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'request' => $request->all()
+            ]);
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Failed to create room: ' . $e->getMessage());
+        }
     }
-}
 
     public function update(Request $request, $id)
     {
@@ -97,21 +114,21 @@ class RoomController extends Controller
         $data = $request->except(['thumbnail', 'images']);
         $data['slug'] = Str::slug($request->name);
         $data['amenities'] = $request->amenities ?? [];
+        $existingImages = json_decode($request->existing_images, true) ?? [];
 
-        // Handle thumbnail upload (replace)
-        if ($request->hasFile('thumbnail')) {
-            // Delete old thumbnail
-            if ($room->thumbnail) Storage::disk('public')->delete($room->thumbnail);
-            $data['thumbnail'] = $request->file('thumbnail')->store('rooms/thumbnails', 'public');
-        }
-
-        // Handle new images (append to existing)
         if ($request->hasFile('images')) {
-            $existingImages = $room->images ?? [];
             foreach ($request->file('images') as $image) {
                 $existingImages[] = $image->store('rooms/gallery', 'public');
             }
-            $data['images'] = $existingImages;
+        }
+
+        $data['images'] = $existingImages;
+        // Handle thumbnail upload (replace)
+        if ($request->hasFile('thumbnail')) {
+            // Delete old thumbnail
+            if ($room->thumbnail)
+                Storage::disk('public')->delete($room->thumbnail);
+            $data['thumbnail'] = $request->file('thumbnail')->store('rooms/thumbnails', 'public');
         }
 
         $room->update($data);
@@ -122,15 +139,16 @@ class RoomController extends Controller
     public function destroy($id)
     {
         $room = Room::findOrFail($id);
-        
+
         // Delete images from storage
-        if ($room->thumbnail) Storage::disk('public')->delete($room->thumbnail);
+        if ($room->thumbnail)
+            Storage::disk('public')->delete($room->thumbnail);
         if ($room->images) {
             foreach ($room->images as $image) {
                 Storage::disk('public')->delete($image);
             }
         }
-        
+
         $room->delete();
         return redirect()->route('rooms.index')->with('success', 'Room deleted successfully.');
     }
@@ -162,7 +180,7 @@ class RoomController extends Controller
             ->where('status', 'active')
             ->limit(4)
             ->get();
-        
+
         return view('frontend.pages.rooms.room-details', compact('room', 'relatedRooms'));
     }
 }

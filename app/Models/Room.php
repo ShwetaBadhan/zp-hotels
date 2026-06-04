@@ -9,9 +9,23 @@ use Illuminate\Support\Str;
 class Room extends Model
 {
     protected $fillable = [
-        'name', 'slug', 'category_id', 'description', 'short_description',
-        'price', 'offer_price', 'max_guests', 'bedrooms', 'bathrooms',
-        'size_sqft', 'thumbnail', 'images', 'amenities', 'status', 'featured', 'sort_order'
+        'name',
+        'slug',
+        'category_id',
+        'description',
+        'short_description',
+        'price',
+        'offer_price',
+        'max_guests',
+        'bedrooms',
+        'bathrooms',
+        'size_sqft',
+        'thumbnail',
+        'images',
+        'amenities',
+        'status',
+        'featured',
+        'sort_order'
     ];
 
     protected $casts = [

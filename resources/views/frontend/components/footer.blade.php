@@ -6,7 +6,7 @@
                  <div class="col-lg-3 col-sm-6 col-12 mb-24 footer-order-1">
                      <div class="rx-social-media">
                          <div class="rx-logo">
-                             <img src="assets/img/logo/zp.png" alt="logo">
+                             <img src="{{ asset('assets/img/logo/zphotel.png') }}" alt="logo">
                          </div>
                          <div class="inner-contact">
                              <p>Our hotel seamlessly blends timeless
@@ -44,7 +44,7 @@
                                      <a href="javascript:void(0)">Gym & Fitness</a>
                                  </li>
                                  <li>
-                                     <a href="{{ route('rooms') }}">Rooms & Suites</a>
+                                     <a href="{{ route('zp-rooms') }}">Rooms & Suites</a>
                                  </li>
                                  <li>
                                      <a href="javascript:void(0)">Book Now</a>

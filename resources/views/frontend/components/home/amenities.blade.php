@@ -29,7 +29,7 @@
                                         hustle and bustle, providing a perfect setting for any
                                         occasion.</p>
                                     <div class="amenities-btn">
-                                        <a href="room-details{{ route('rooms') }}" class="rx-btn-two">Book Now</a>
+                                        <a href="{{ route('rooms.index') }}" class="rx-btn-two">Book Now</a>
                                     </div>
                                 </div>
                             </div>
