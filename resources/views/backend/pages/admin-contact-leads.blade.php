@@ -5,10 +5,10 @@
         <div class=" container-fluid">
             <div class="lh-page-title">
                 <div class="lh-breadcrumb">
-                    <h5>Gallery Categories</h5>
+                    <h5>Contact Leads</h5>
                     <ul>
                         <li><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li>Gallery Categories</li>
+                        <li>Contact Leads</li>
                     </ul>
                 </div>
             </div>
@@ -19,44 +19,43 @@
                 <div class="col-xl-12">
                     <div class="lh-card">
                         <div class="lh-card-header">
-                            <h4 class="lh-card-title">Categories</h4>
+                            <h4 class="lh-card-title">Leads</h4>
                         </div>
                         <div class="lh-card-content">
 
-                            <a class="btn btn-primary mb-3" href="javascript:void(0);" data-bs-toggle="modal"
-                                data-bs-target="#add_inventory"> <i class="ri-add-line me-1"></i> Create Category</a>
+
 
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped align-middle">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>#</th>
-                                            <th>Category Name</th>
-                                            <th>Status</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>Enquiry For</th>
                                             <th class="no-sort">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($categories as $item)
+                                        @forelse($leads as $lead)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td class="fw-medium">{{ $item->name }}</td>
-                                                <td>
-                                                    <span
-                                                        class="badge {{ $item->status === 'active' ? 'bg-success' : 'bg-secondary' }}">
-                                                        {{ ucfirst($item->status) }}
-                                                    </span>
+                                                <td class="fw-medium">{{ $lead->name }}</td>
+                                                <td class="fw-medium">{{ $lead->phone }}</td>
+                                                <td class="fw-medium">
+                                                    {{ $lead->enuiry_for ? $lead->enuiry_for : 'Contact request' }}
                                                 </td>
+
 
                                                 <td class="text-center" style="white-space: nowrap;">
                                                     <div
                                                         class="d-flex justify-content-center align-items-center justify-content-center gap-2">
 
                                                         <button class=" btn btn-sm btn-outline-warning" href="#"
-                                                            data-bs-toggle="modal" data-bs-target="#edit{{ $item->id }}">
-                                                            <i class="ri-edit-line "></i></button>
+                                                            data-bs-toggle="modal" data-bs-target="#view{{ $lead->id }}">
+                                                            <i class="ri-eye-line"></i></button>
 
-                                                        <form action="{{ route('admin-gallery-categories.destroy', $item) }}"
+                                                        <form action="{{ route('admin-contact-leads.destroy', $lead) }}"
                                                             method="POST" class="d-inline">
                                                             @csrf @method('DELETE')
                                                             <button type="submit"
@@ -74,7 +73,7 @@
                                         @empty
                                             <tr>
                                                 <td></td>
-                                                <td class="text-center">No Gallery Category found.</td>
+                                                <td class="text-center">No Leads found.</td>
                                                 <td></td>
                                                 <td></td>
 
@@ -101,91 +100,84 @@
 
 
 
-    <!-- Add Inventory -->
-    <div class="modal custom-modal fade" id="add_inventory" role="dialog">
-        <div class="modal-dialog modal-custom">
-            <div class="modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <div class="form-header modal-header-title text-start mb-0">
-                        <h4 class="mb-0">Add Category</h4>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
-                    </button>
-                </div>
-                <form action="{{ route('admin-gallery-categories.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <label>Category Name <span class="text-danger">*</span></label>
-                                <input type="text" name="name" placeholder="Enter Gallery Category" class="form-control"
-                                    required>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="input-block mb-0">
-                                    <label>Status<span class="text-danger">*</span></label>
-                                    <select name="status" class="form-control" required>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" data-bs-dismiss="modal" class="btn btn-back cancel-btn me-2">Cancel</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary paid-continue-btn">Add</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- /Add Inventory -->
 
     <!-- Edit Inventory -->
-    @foreach($categories as $item)
+    @foreach($leads as $lead)
 
 
 
 
         {{-- edit modal --}}
 
-        <div class="modal fade" id="edit{{ $item->id }}">
+        <div class="modal fade" id="view{{ $lead->id }}">
             <div class="modal-dialog custom-modal">
-                <form action="{{ route('admin-gallery-categories.update', $item) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf @method('PUT')
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>Edit Category</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
+                <div class="modal-content">
 
-                            <div class="row g-3">
-
-                                <div class="col-12">
-                                    <label>Category Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="name" placeholder="Enter Gallery Category"
-                                        value="{{ old('name', $item->name) }}" class="form-control" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Status <span class="text-danger">*</span></label>
-                                    <select name="status" class="form-control" required>
-                                        <option value="active" {{ $item->status == 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="inactive" {{ $item->status == 'inactive' ? 'selected' : '' }}>Inactive
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
+                    <div class="modal-header border-0 pb-0">
+                        <div class="form-header modal-header-title text-start mb-0">
+                            <h4 class="mb-0">View Lead</h4>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Update Category</button>
-                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                </form>
+
+                    <div class="modal-body">
+
+                        <table class="table table-bordered table-striped mb-0">
+
+                            <tr>
+                                <th>Name :</th>
+                                <td>{{ $lead->name }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Email :</th>
+                                <td>{{ $lead->email }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Phone :</th>
+                                <td>{{ $lead->phone }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Enquiry For :</th>
+                                <td>{{ $lead->enuiry_for ? $lead->enuiry_for : 'Contact Lead' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Check In Date :</th>
+                                <td>{{ $lead->check_in }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Check Out Date :</th>
+                                <td>{{ $lead->check_out }}</td>
+                            </tr>
+                            <tr>
+                                <th>Created At :</th>
+                                <td>{{ $lead->created_at->format('d M Y, h:i A') }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Updated At :</th>
+                                <td>{{ $lead->updated_at->format('d M Y, h:i A') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Message :</th>
+                                <td >{{ $lead->message }}</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
     @endforeach
@@ -197,7 +189,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="form-header">
-                        <h3>Delete Category</h3>
+                        <h3>Delete Lead</h3>
                         <p>Are you sure want to delete?</p>
                     </div>
                     <div class="modal-btn delete-action">
@@ -235,8 +227,8 @@
                 var form = $(this).closest('form');
 
                 Swal.fire({
-                    title: 'Delete Category?',
-                    text: "This category will be permanently deleted !",
+                    title: 'Delete Lead?',
+                    text: "This Lead will be permanently deleted !",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',

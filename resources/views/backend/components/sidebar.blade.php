@@ -2,7 +2,7 @@
 <div class="lh-sidebar-overlay"></div>
 <div class="lh-sidebar" data-mode="light">
     <div class="lh-sb-logo">
-        <a href="{{ route('dashboard') }}" class="sb-full"><img src="{{ url('backend/assets/img/logo/full-logo.png') }}"
+        <a href="{{ route('dashboard') }}" class="sb-full"><img src="{{ url('assets/img/logo/zp.png') }}"
                 alt="logo"></a>
         <a href="{{ route('dashboard') }}" class="sb-collapse"><img
                 src="{{ url('backend/assets/img/logo/collapse-logo.png') }}" alt="logo"></a>
@@ -18,6 +18,14 @@
                     <a href="{{ route('dashboard') }}">
                         <i class="ri-dashboard-3-line"></i>
                         <span class="">Dashboard
+
+                        </span>
+                    </a>
+                </li>
+                <li class="lh-sb-item">
+                    <a href="{{ route('admin-contact-leads.index') }}">
+                        <i class="ri-dashboard-3-line"></i>
+                        <span class="">Contact Leads
 
                         </span>
                     </a>
@@ -76,7 +84,7 @@
                                     class="ri-stack-line"></i>Gallery Categories</a></li>
                         {{-- @endcan
                         @can('view-rooms') --}}
-                        <li><a href="{{ route('rooms.index') }}" class="lh-page-link drop"><i
+                        <li><a href="{{ route('admin-gallery-images.index') }}" class="lh-page-link drop"><i
                                     class="ri-layout-grid-line"></i>Gallery</a></li>
                         {{-- @endcan --}}
 

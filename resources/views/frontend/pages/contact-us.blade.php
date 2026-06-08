@@ -59,33 +59,39 @@
                             </div>
                             <div class="col-lg-6 col-12 mb-24">
                                 <div class="rx-inner-form">
-                                    <form action="#">
-                                       
+                                    <form action="{{ route('contact-us.store') }}" id="contactForm" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
                                                     <label for="firstname">Your Name<span
                                                             class="text-danger">*</span></label>
-                                                    <input type="text" id="firstname" class="rx-form-control" required>
+                                                    <input type="text" id="firstname" name="name" value="{{ old('name') }}"
+                                                        placeholder="Enter Your Name" class="rx-form-control" required>
+                                                    <small id="name-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
                                                     <label for="email">Your Email<span class="text-danger">*</span></label>
-                                                    <input type="email" id="email" class="rx-form-control" required>
+                                                    <input type="email" id="email" name="email" value="{{ old('email') }}"
+                                                        placeholder="Enter Your email" class="rx-form-control" required>
+                                                    <small id="email-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
                                                     <label for="phone">Your Phone<span class="text-danger">*</span></label>
-                                                    <input type="tel" id="phone" class="rx-form-control" required>
+                                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"
+                                                        placeholder="Enter your phone" class="rx-form-control" required>
+                                                    <small id="phone-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
-                                                    <label for="enquiry_type">Enquiry Type<span
+                                                    <label for="enuiry_for">Enquiry Type<span
                                                             class="text-danger">*</span></label>
-                                                    <select name="enquiry_type" class="form-control">
+                                                    <select name="enuiry_for" class="form-control" required>
                                                         <option value="">Select Enquiry Type</option>
                                                         <option>Room Booking</option>
                                                         <option>Event/Conference</option>
@@ -93,31 +99,43 @@
                                                         <option>General Inquiry</option>
                                                         <option>Feedback</option>
                                                     </select>
+                                                    <small id="enuiry_for-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
-                                                    <label for="checkin">Check In date<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="date" id="checkin" class="rx-form-control" required>
+                                                    <label for="checkinDate">
+                                                        Check In Date <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" name="check_in" id="checkinDate"
+                                                        class="rx-form-control" required>
+                                                    <small id="check_in-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6 col-12 mb-24">
                                                 <div class="rx-input-box">
-                                                    <label for="checkout">Check Out date<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="date" id="checkout" class="rx-form-control" required>
+                                                    <label for="checkoutDate">
+                                                        Check Out Date <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" name="check_out" id="checkoutDate"
+                                                        class="rx-form-control" required>
+                                                    <small id="check_out-error" class="text-danger error-message"></small>
+
                                                 </div>
                                             </div>
                                             <div class="col-12 mb-24">
                                                 <div class="rx-input-box">
-                                                    <label for="message">Message<span class="text-danger">*</span></label>
-                                                    <textarea class="rx-form-control" id="message" required></textarea>
+                                                    <label for="message">Message</label>
+                                                    <textarea class="rx-form-control" name="message"
+                                                        placeholder="Enter Your Message" id="message"></textarea>
+                                                    <small id="message-error" class="text-danger error-message"></small>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="rx-inner-button">
-                                                    <button type="button" class="rx-btn-two">Send Message</button>
+                                                    <button type="submit" id="submitBtn" class="rx-btn-two">Send
+                                                        Message</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,3 +151,97 @@
 
 
 @endsection
+@push('scripts')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- date picker  -->
+    <script>
+        flatpickr("#checkinDate", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            allowInput: true,
+            placeholder: "Select Check In Date"
+        });
+
+        flatpickr("#checkoutDate", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            allowInput: true,
+            placeholder: "Select Check Out Date"
+        });
+
+        // Set placeholders
+        document.getElementById('checkinDate').setAttribute('placeholder', 'Select Check In Date');
+        document.getElementById('checkoutDate').setAttribute('placeholder', 'Select Check Out Date');
+    </script>
+    <!-- form submission -->
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+
+                $('.error-message').text('');
+
+                grecaptcha.ready(function () {
+
+                    grecaptcha.execute('{{ env("RECAPTCHA_SITE_KEY") }}', { action: 'contact' }).then(function (token) {
+
+                        let form = $('#contactForm');
+
+                        let formData = form.serialize() + "&g-recaptcha-response=" + token;
+
+                        $('#submitBtn').prop('disabled', true);
+
+                        $.ajax({
+                            url: form.attr('action'),
+                            method: 'POST',
+                            data: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+
+                            success: function (response) {
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: response.message,
+                                    confirmButtonColor: '#28a745'
+                                });
+
+                                form[0].reset();
+                            },
+
+                            error: function (xhr) {
+
+                                if (xhr.status === 422) {
+
+                                    let errors = xhr.responseJSON.errors;
+
+                                    $.each(errors, function (key, value) {
+                                        $('#' + key + '-error').text(value[0]);
+                                    });
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Validation Error',
+                                        text: 'Please check form fields.'
+                                    });
+                                }
+                            },
+
+                            complete: function () {
+                                $('#submitBtn').prop('disabled', false);
+                            }
+                        });
+
+                    });
+
+                });
+
+            });
+        });
+    </script>
+@endpush

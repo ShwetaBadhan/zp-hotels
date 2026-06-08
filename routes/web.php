@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RoomCategoryController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GalleryCategoryController;
+use App\Http\Controllers\GalleryImageController;
+use App\Http\Controllers\ContactLeadController;
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -83,6 +85,8 @@ Route::get('/restaurant', function () {
     return view('frontend.pages.restaurant');
 })->name('restaurant');
 
+// contact leads
+Route::post('/store', [ContactLeadController::class, 'store'])->name('contact-us.store');
 
 // ==================== ADMIN PANEL ====================
 
@@ -158,4 +162,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin-gallery-categories/{category}', [GalleryCategoryController::class, 'update'])->name('admin-gallery-categories.update');
     Route::delete('/admin-gallery-categories/{category}', [GalleryCategoryController::class, 'destroy'])->name('admin-gallery-categories.destroy');
 
+    // gallery images
+    Route::get('/admin-gallery-images', [GalleryImageController::class, 'index'])->name('admin-gallery-images.index');
+    Route::post('/admin-gallery-images', [GalleryImageController::class, 'store'])->name('admin-gallery-images.store');
+    Route::put('/admin-gallery-images/{galleryImage}', [GalleryImageController::class, 'update'])->name('admin-gallery-images.update');
+    Route::delete('/admin-gallery-images/{galleryImage}', [GalleryImageController::class, 'destroy'])->name('admin-gallery-images.destroy');
+    // admin leads 
+
+    Route::get('/admin-contact-leads', [ContactLeadController::class, 'index'])->name('admin-contact-leads.index');
+    Route::delete('/admin-contact-leads/{lead}',[ContactLeadController::class,'destroy'])->name('admin-contact-leads.destroy');
 });

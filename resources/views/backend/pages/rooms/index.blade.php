@@ -82,14 +82,14 @@
                                                     <div class="d-flex justify-content-center align-items-center gap-1">
                                                         <button type="button"
                                                             class="btn btn-sm {{ $room->status === 'active' ? 'btn-outline-warning' : 'btn-outline-success' }}"
-                                                            onclick="toggleStatus({{ $room->id }}, '{{ $room->status }}')"
+                                                            onclick="toggleStatus('{{ $room->id }}', '{{ $room->status }}')"
                                                             title="Toggle Status">
                                                             <i
                                                                 class="ri-toggle-{{ $room->status === 'active' ? 'fill' : 'line' }}"></i>
                                                         </button>
                                                         <button type="button"
                                                             class="btn btn-sm {{ $room->featured === 'yes' ? 'btn-outline-warning' : 'btn-outline-secondary' }}"
-                                                            onclick="toggleFeatured({{ $room->id }}, '{{ $room->featured }}')"
+                                                            onclick="toggleFeatured('{{ $room->id }}', '{{ $room->featured }}')"
                                                             title="Toggle Featured">
                                                             <i
                                                                 class="ri-star-{{ $room->featured === 'yes' ? 'fill' : 'line' }}"></i>
@@ -334,7 +334,7 @@
 
                                 <div id="editGalleryPreview" class="row mt-3"></div>
                                 <input type="hidden" name="existing_images" id="existingImages">
-                                
+
                             </div>
                             <div class="col-12">
                                 <label class="form-label">Amenities</label>
@@ -415,34 +415,28 @@
     <script>
         // console.log('Rooms page loaded');
 
-        // SweetAlert notifications
-        @if(session('success'))
-            Swal.fire({ icon: 'success', title: 'Success!', text: '{{ session("success") }}', timer: 3000, showConfirmButton: false });
-        @endif
-        @if(session('error'))
-            Swal.fire({ icon: 'error', title: 'Error!', text: '{{ session("error") }}', timer: 5000, showConfirmButton: false });
-        @endif
 
-            // Toggle Status
-            function toggleStatus(id, current) {
-                Swal.fire({
-                    title: 'Change Status?',
-                    text: `Room will be ${current === 'active' ? 'inactive' : 'active'}`,
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: current === 'active' ? '#ffc107' : '#28a745',
-                    confirmButtonText: 'Yes, Change'
-                }).then(r => {
-                    if (r.isConfirmed) {
-                        const f = document.createElement('form');
-                        f.method = 'POST';
-                        f.action = `{{ url('rooms') }}/${id}/toggle-status`;
-                        f.innerHTML = `<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="PATCH">`;
-                        document.body.appendChild(f);
-                        f.submit();
-                    }
-                });
-            }
+
+        // Toggle Status
+        function toggleStatus(id, current) {
+            Swal.fire({
+                title: 'Change Status?',
+                text: `Room will be ${current === 'active' ? 'inactive' : 'active'}`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: current === 'active' ? '#ffc107' : '#28a745',
+                confirmButtonText: 'Yes, Change'
+            }).then(r => {
+                if (r.isConfirmed) {
+                    const f = document.createElement('form');
+                    f.method = 'POST';
+                    f.action = `{{ url('rooms') }}/${id}/toggle-status`;
+                    f.innerHTML = `<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="PATCH">`;
+                    document.body.appendChild(f);
+                    f.submit();
+                }
+            });
+        }
 
         // Toggle Featured
         function toggleFeatured(id, current) {
@@ -550,22 +544,22 @@
             existingGalleryImages.forEach((image, i) => {
 
                 preview.innerHTML += `
-                                    <div class="col-md-3 mb-2">
-                                        <div class="position-relative">
+                                                    <div class="col-md-3 mb-2">
+                                                        <div class="position-relative">
 
-                                            <img src="/storage/${image}"
-                                                 class="img-fluid rounded border"
-                                                 style="height:120px;width:100%;object-fit:cover;">
+                                                            <img src="/storage/${image}"
+                                                                 class="img-fluid rounded border"
+                                                                 style="height:120px;width:100%;object-fit:cover;">
 
-                                            <button type="button"
-                                                    class="btn btn-danger btn-sm position-absolute top-0 end-0"
-                                                    onclick="removeExistingImage(${i})">
-                                                ×
-                                            </button>
+                                                            <button type="button"
+                                                                    class="btn btn-danger btn-sm position-absolute top-0 end-0"
+                                                                    onclick="removeExistingImage(${i})">
+                                                                ×
+                                                            </button>
 
-                                        </div>
-                                    </div>
-                                `;
+                                                        </div>
+                                                    </div>
+                                                `;
             });
 
             // Newly selected images
@@ -576,22 +570,22 @@
                 reader.onload = function (e) {
 
                     preview.insertAdjacentHTML('beforeend', `
-                                        <div class="col-md-3 mb-2">
-                                            <div class="position-relative">
+                                                        <div class="col-md-3 mb-2">
+                                                            <div class="position-relative">
 
-                                                <img src="${e.target.result}"
-                                                     class="img-fluid rounded border"
-                                                     style="height:120px;width:100%;object-fit:cover;">
+                                                                <img src="${e.target.result}"
+                                                                     class="img-fluid rounded border"
+                                                                     style="height:120px;width:100%;object-fit:cover;">
 
-                                                <button type="button"
-                                                        class="btn btn-danger btn-sm position-absolute top-0 end-0"
-                                                        onclick="removeNewImage(${index})">
-                                                    ×
-                                                </button>
+                                                                <button type="button"
+                                                                        class="btn btn-danger btn-sm position-absolute top-0 end-0"
+                                                                        onclick="removeNewImage(${index})">
+                                                                    ×
+                                                                </button>
 
-                                            </div>
-                                        </div>
-                                    `);
+                                                            </div>
+                                                        </div>
+                                                    `);
                 };
 
                 reader.readAsDataURL(file);
@@ -675,18 +669,18 @@
                     div.className = 'col-md-3 mb-3';
 
                     div.innerHTML = `
-                                                                                                            <div class="position-relative">
-                                                                                                                <img src="${e.target.result}"
-                                                                                                                     class="img-fluid rounded border"
-                                                                                                                     style="height:120px;width:100%;object-fit:cover;">
+                                                                                                                            <div class="position-relative">
+                                                                                                                                <img src="${e.target.result}"
+                                                                                                                                     class="img-fluid rounded border"
+                                                                                                                                     style="height:120px;width:100%;object-fit:cover;">
 
-                                                                                                                <button type="button"
-                                                                                                                        class="btn btn-danger btn-sm position-absolute top-0 end-0"
-                                                                                                                        onclick="removeImage(${index})">
-                                                                                                                    ×
-                                                                                                                </button>
-                                                                                                            </div>
-                                                                                                        `;
+                                                                                                                                <button type="button"
+                                                                                                                                        class="btn btn-danger btn-sm position-absolute top-0 end-0"
+                                                                                                                                        onclick="removeImage(${index})">
+                                                                                                                                    ×
+                                                                                                                                </button>
+                                                                                                                            </div>
+                                                                                                                        `;
 
                     preview.appendChild(div);
                 };
@@ -721,10 +715,10 @@
                     col.className = 'col-md-6 mb-2';
 
                     col.innerHTML = `
-                                                                                                                    <img src="${e.target.result}"
-                                                                                                                         class="img-fluid rounded border"
-                                                                                                                         style="height:120px;width:100%;object-fit:cover;">
-                                                                                                                `;
+                                                                                                                                    <img src="${e.target.result}"
+                                                                                                                                         class="img-fluid rounded border"
+                                                                                                                                         style="height:120px;width:100%;object-fit:cover;">
+                                                                                                                                `;
 
                     preview.appendChild(col);
                 };
@@ -733,4 +727,17 @@
             });
         });
     </script>
+    // SweetAlert notifications
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success', title: 'Success!', text: '{{ session("success") }}', timer: 3000, showConfirmButton: false
+            });
+        </script>
+    @endif
+    @if(session('error'))
+        <script>
+            Swal.fire({ icon: 'error', title: 'Error!', text: '{{ session("error") }}', timer: 5000, showConfirmButton: false });
+        </script>
+    @endif
 @endpush
