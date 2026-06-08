@@ -10,6 +10,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GalleryCategoryController;
 use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\ContactLeadController;
+use App\Http\Controllers\TeamController;
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -170,5 +171,12 @@ Route::middleware('auth')->group(function () {
     // admin leads 
 
     Route::get('/admin-contact-leads', [ContactLeadController::class, 'index'])->name('admin-contact-leads.index');
-    Route::delete('/admin-contact-leads/{lead}',[ContactLeadController::class,'destroy'])->name('admin-contact-leads.destroy');
+    Route::delete('/admin-contact-leads/{lead}', [ContactLeadController::class, 'destroy'])->name('admin-contact-leads.destroy');
+
+    // admin team members 
+    // gallery images
+    Route::get('/admin-team', [TeamController::class, 'index'])->name('admin-team.index');
+    Route::post('/admin-team', [TeamController::class, 'store'])->name('admin-team.store');
+    Route::put('/admin-team/{team}', [TeamController::class, 'update'])->name('admin-team.update');
+    Route::delete('/admin-team/{team}', [TeamController::class, 'destroy'])->name('admin-team.destroy');
 });

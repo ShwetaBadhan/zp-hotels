@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,47 +26,52 @@
                             <div class="content-detail">
                                 <div class="main-info">
                                     <div class="hero-container">
-                                     <form class="login-form" method="POST" action="{{ route('admin.login') }}"> {{-- ✅ Use admin.login --}}
-    @csrf
-    
-    <div class="imgcontainer">
-        <a href="{{ route('admin-panel') }}">
-            <img src="{{ url('backend/assets/img/logo/full-logo.png') }}" alt="logo" class="logo">
-        </a>
-    </div>
+                                        <form class="login-form" method="POST" action="{{ route('admin.login') }}"> {{--
+                                            ✅ Use admin.login --}}
+                                            @csrf
 
-    @if(session('success'))
-        <div class="alert alert-success mb-3">{{ session('success') }}</div>
-    @endif
+                                            <div class="imgcontainer">
+                                                <a href="{{ route('admin-panel') }}">
+                                                    <img src="{{ url('assets/img/logo/zphotel.png') }}"
+                                                        alt="logo" class="logo">
+                                                </a>
+                                            </div>
 
-    @if($errors->any())
-        <div class="alert alert-danger mb-3">
-            <ul class="mb-0">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+                                            @if(session('success'))
+                                                <div class="alert alert-success mb-3">{{ session('success') }}</div>
+                                            @endif
 
-    <div class="input-control">
-        <input type="email" name="email" value="{{ old('email') }}" placeholder="Enter Email" required autofocus>
-        
-        <span class="password-field-show">
-            <input type="password" name="password" class="password-field" placeholder="Enter Password" required>
-            <span data-toggle=".password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-        </span>
-        
-        <label class="label-container">Remember me
-            <input type="checkbox" name="remember">
-            <span class="checkmark"></span>
-        </label>
-        
-        <div class="login-btns">
-            <button type="submit">Login as Admin</button>
-        </div>
-    </div>
-</form>
+                                            @if($errors->any())
+                                                <div class="alert alert-danger mb-3">
+                                                    <ul class="mb-0">
+                                                        @foreach($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+
+                                            <div class="input-control">
+                                                <input type="email" name="email" value="{{ old('email') }}"
+                                                    placeholder="Enter Email" required autofocus>
+
+                                                <span class="password-field-show">
+                                                    <input type="password" name="password" class="password-field"
+                                                        placeholder="Enter Password" required>
+                                                    <span data-toggle=".password-field"
+                                                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                </span>
+
+                                                <label class="label-container">Remember me
+                                                    <input type="checkbox" name="remember">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                                <div class="login-btns">
+                                                    <button type="submit">Login as Admin</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -80,4 +86,5 @@
     <script src="{{ url('backend/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('backend/assets/js/main.js') }}"></script>
 </body>
+
 </html>

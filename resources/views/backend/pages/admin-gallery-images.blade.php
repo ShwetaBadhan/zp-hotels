@@ -43,17 +43,16 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
                                                     <div class="d-flex align-items-center gap-2">
-                                                        <img src="{{ asset('storage/' . $image->image) }}" alt="{{ $image->name }}"
-                                                            class="rounded" style="width:50px;height:40px;object-fit:cover;">
+                                                        <img src="{{ asset('storage/' . $image->image) }}"
+                                                            alt="{{ $image->name }}" class="rounded"
+                                                            style="width:50px;height:40px;object-fit:cover;">
                                                         <div>
                                                             <div class="fw-medium">{{ $image->name }}</div>
-                                                            <small
-                                                                class="text-muted">{{ $image->category ?? '-' }}</small>
+                                                            <small class="text-muted">{{ $image->category ?? '-' }}</small>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td><span
-                                                        class="badge bg-light text-dark">{{ $image->category ?? '-' }}</span>
+                                                <td><span class="badge bg-light text-dark">{{ $image->category ?? '-' }}</span>
                                                 </td>
 
                                                 <td>
@@ -280,7 +279,7 @@
             console.log('Edit modal populated for image ID:', imageId);
         });
 
-       
+
 
         // Delete Modal - Populate room name
         document.getElementById('deleteModal')?.addEventListener('show.bs.modal', function (e) {
@@ -322,10 +321,10 @@
                     col.className = 'col-md-6 mb-2';
 
                     col.innerHTML = `
-                                                                                                                                                    <img src="${e.target.result}"
-                                                                                                                                                         class="img-fluid rounded border"
-                                                                                                                                                         style="height:120px;width:100%;object-fit:cover;">
-                                                                                                                                                `;
+                                                                                                                                                        <img src="${e.target.result}"
+                                                                                                                                                             class="img-fluid rounded border"
+                                                                                                                                                             style="height:120px;width:100%;object-fit:cover;">
+                                                                                                                                                    `;
 
                     preview.appendChild(col);
                 };

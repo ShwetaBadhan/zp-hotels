@@ -37,19 +37,11 @@
                 <!-- Apps: Staff -->
                 {{-- @can('view-users') --}}
                 <li class="lh-sb-title ">Apps</li>
-                <li class="lh-sb-item sb-drop-item">
-                    <a href="javascript:void(0)" class="lh-drop-toggle">
-                        <i class="ri-shield-user-line"></i><span class="">Staff<i
-                                class="drop-arrow ri-arrow-down-s-line"></i></span>
+               
+                <li class="lh-sb-item">
+                    <a href="{{ route('admin-team.index') }}" class="lh-page-link">
+                        <i class="ri-shield-user-line"></i><span class=""><span class="hover-title">Team Member</span></span>
                     </a>
-                    <ul class="lh-sb-drop ">
-                        {{-- @can('view-users') --}}
-                        <li><a href="" class="lh-page-link drop"><i class="ri-git-commit-line"></i>Staff List</a></li>
-                        {{-- @endcan
-                        @can('manage-users') --}}
-                        <li><a href="" class="lh-page-link drop"><i class="ri-git-commit-line"></i>Add Staff</a></li>
-                        {{-- @endcan --}}
-                    </ul>
                 </li>
                 {{-- @endcan --}}
 
@@ -69,7 +61,7 @@
                                 Details</span></span>
                     </a>
                 </li>
-               
+
                 <li class="lh-sb-item sb-drop-item">
                     <a href="javascript:void(0)" class="lh-drop-toggle">
                         <i class="ri-home-8-line"></i><span class="">Manage Gallery<i
