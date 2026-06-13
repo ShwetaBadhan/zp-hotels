@@ -5,10 +5,10 @@
         <div class="container-fluid">
             <div class="lh-page-title">
                 <div class="lh-breadcrumb">
-                    <h5>Team</h5>
+                    <h5>Testimonial</h5>
                     <ul>
                         <li><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li>Team</li>
+                        <li>Testimonial</li>
                     </ul>
                 </div>
             </div>
@@ -16,12 +16,12 @@
                 <div class="col-xl-12">
                     <div class="lh-card">
                         <div class="lh-card-header">
-                            <h4 class="lh-card-title">Team Members</h4>
+                            <h4 class="lh-card-title">Testimonial</h4>
                         </div>
                         <div class="lh-card-content">
                             <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                                 data-bs-target="#add_category">
-                                <i class="ri-add-line me-1"></i> Add Team Members
+                                <i class="ri-add-line me-1"></i> Add Testimonial
                             </button>
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped align-middle">
@@ -34,27 +34,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($teams as $team)
+                                        @forelse ($testimonials as $testimonial)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
 
 
-                                                <td>{{ $team->name }}</td>
-                                                <td>{{ $team->designation }}</td>
+                                                <td>{{ $testimonial->name }}</td>
+                                                <td>{{ $testimonial->designation }}</td>
                                                 <td class="text-center" style="white-space: nowrap;">
                                                     <div class="d-flex justify-content-center align-items-center gap-1">
 
 
+                                                        <!-- view Button -->
+                                                        <button class=" btn btn-sm btn-outline-warning" href="#"
+                                                            data-bs-toggle="modal" data-bs-target="#view_team{{ $testimonial->id }}">
+                                                            <i class="ri-eye-line"></i></button>
+                                                       
                                                         <!-- Edit Button -->
                                                         <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal" data-bs-target="#edit_team{{ $team->id }}">
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#edit_team{{ $testimonial->id }}">
                                                             <i class="ri-edit-line"></i>
                                                         </button>
 
                                                         <!-- Delete Button -->
                                                         <button type="button" class="btn btn-sm btn-outline-danger"
                                                             data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-team-id="{{ $team->id }}">
+                                                            data-testimonial-id="{{ $testimonial->id }}">
                                                             <i class="ri-delete-bin-line"></i>
                                                         </button>
                                                     </div>
@@ -67,7 +73,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    No Team Members found yet.
+                                                    No Testimonial found yet.
                                                 </td>
                                                 <td></td>
                                                 <td></td>
@@ -92,20 +98,20 @@
             <div class="modal-content">
                 <div class="modal-header border-0 pb-0">
                     <div class="form-header modal-header-title text-start mb-0">
-                        <h4 class="mb-0">Add Team Member</h4>
+                        <h4 class="mb-0">Add Testimonial</h4>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
                     </button>
                 </div>
-                <form action="{{ route('admin-team.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin-testimonial.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="modal-body">
                         <div class="row">
 
                             <div class="col-lg-6 mb-3">
-                                <label>Team Member Name <span class="text-danger">*</span></label>
+                                <label>Testimonial Name <span class="text-danger">*</span></label>
                                 <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
                             </div>
 
@@ -128,26 +134,14 @@
                             <div class="col-lg-6 mb-3">
                                 <label>Profile Image <span class="text-danger">*</span></label>
                                 <input type="file" name="image" class="form-control" required>
-                                <small class="text-muted">Recommended size: 302 × 396 (Max 5MB)</small>
+                                <small class="text-muted">Recommended size: 360 × 363 (Max 5MB)</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Description <span class="text-danger">*</span></label>
+                                <textarea name="description" placeholder="Enter Description Here" class="form-control"
+                                    rows="3" required></textarea>
                             </div>
 
-                            <div class="col-lg-12 mt-3">
-                                <h6 class="mb-2">Social Links</h6>
-                            </div>
-
-                            <div class="col-lg-4 mb-3">
-                                <label>Facebook</label>
-                                <input type="url" name="facebook_url" class="form-control"
-                                    placeholder="https://facebook.com/...">
-                            </div>
-
-
-
-                            <div class="col-lg-4 mb-3">
-                                <label>Instagram</label>
-                                <input type="url" name="instagram_url" class="form-control"
-                                    placeholder="https://instagram.com/...">
-                            </div>
 
 
                         </div>
@@ -155,7 +149,7 @@
 
                     <div class="modal-footer">
                         <button type="button" data-bs-dismiss="modal" class="btn btn-secondary me-3">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Add Team Member</button>
+                        <button type="submit" class="btn btn-primary">Add Testimonial</button>
                     </div>
 
                 </form>
@@ -163,15 +157,15 @@
         </div>
     </div>
     <!-- /Add  Modal -->
-    @foreach($teams as $team)
+    @foreach($testimonials as $testimonial)
         {{-- view modal --}}
-        <div class="modal custom-modal fade" id="view_team{{ $team->id }}" role="dialog">
+        <div class="modal custom-modal fade" id="view_team{{ $testimonial->id }}" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-header border-0 pb-0">
                         <div class="form-header modal-header-title text-start mb-0">
-                            <h4 class="mb-0">View Team Member</h4>
+                            <h4 class="mb-0">View Testimonial</h4>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
@@ -181,50 +175,44 @@
                         <table class="table table-bordered table-striped mb-0">
 
                             <tr>
-                                <th>Name :</th>
-                                <td>{{ $team->name }}</td>
+                                <th style="width:30%;">Name :</th>
+                                <td>{{ $testimonial->name }}</td>
 
-                                <th>Designation :</th>
-                                <td>{{ $team->designation }}</td>
                             </tr>
 
 
 
                             <tr>
-                                <th>Image :</th>
-                                <td>
-                                    @if($team->image)
-                                        <img src="{{ asset('storage/' . $team->image) }}" width="120">
-                                    @endif
-                                </td>
+                                <th style="width:30%;">Designation :</th>
+                                <td>{{ $testimonial->designation }}</td>
+                            </tr>
 
-                                <th>Facebook :</th>
+
+
+                            <tr>
+                                <th style="width:30%;">Image :</th>
                                 <td>
-                                    @if($team->facebook_url)
-                                        <a href="{{ $team->facebook_url }}" target="_blank">View</a>
-                                    @else
-                                        —
+                                    @if($testimonial->image)
+                                        <img src="{{ asset('storage/' . $testimonial->image) }}" width="120">
                                     @endif
                                 </td>
                             </tr>
 
-                            <tr>
-                                <th>Instagram :</th>
-                                <td>
-                                    @if($team->instagram_url)
-                                        <a href="{{ $team->instagram_url }}" target="_blank">View</a>
-                                    @else
-                                        —
-                                    @endif
-                                </td>
 
-                                <th>Status :</th>
+
+                            <tr>
+
+                                <th style="width:30%;">Status :</th>
                                 <td>
-                                    <span class="badge bg-{{ $team->status == 'active' ? 'success' : 'danger' }}">
-                                        {{ ucfirst($team->status) }}
+                                    <span class="badge bg-{{ $testimonial->status == 'active' ? 'success' : 'danger' }}">
+                                        {{ ucfirst($testimonial->status) }}
                                     </span>
                                 </td>
 
+                            </tr>
+                            <tr>
+                                <th style="width:30%;">Description</th>
+                                <td class="description">{{ $testimonial->description }}</td>
                             </tr>
 
                         </table>
@@ -238,18 +226,19 @@
                 </div>
             </div>
         </div>
-        <div class="modal custom-modal fade" id="edit_team{{ $team->id }}" role="dialog">
+        <div class="modal custom-modal fade" id="edit_team{{ $testimonial->id }}" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
 
                     <div class="modal-header border-0 pb-0">
                         <div class="form-header modal-header-title text-start mb-0">
-                            <h4 class="mb-0">Edit Team Member</h4>
+                            <h4 class="mb-0">Edit Testimonial</h4>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form action="{{ route('admin-team.update', $team->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin-testimonial.update', $testimonial->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -258,19 +247,22 @@
 
                                 <div class="col-lg-6 mb-3">
                                     <label>Name *</label>
-                                    <input type="text" name="name" class="form-control" value="{{ $team->name }}">
+                                    <input type="text" name="name" class="form-control" value="{{ $testimonial->name }}">
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <label>Designation *</label>
-                                    <input type="text" name="designation" class="form-control" value="{{ $team->designation }}">
+                                    <input type="text" name="designation" class="form-control"
+                                        value="{{ $testimonial->designation }}">
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <label>Status *</label>
                                     <select name="status" class="form-control">
-                                        <option value="active" {{ $team->status == 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="inactive" {{ $team->status == 'inactive' ? 'selected' : '' }}>Inactive
+                                        <option value="active" {{ $testimonial->status == 'active' ? 'selected' : '' }}>Active
+                                        </option>
+                                        <option value="inactive" {{ $testimonial->status == 'inactive' ? 'selected' : '' }}>
+                                            Inactive
                                         </option>
                                     </select>
                                 </div>
@@ -279,23 +271,15 @@
                                     <label>Image</label>
                                     <input type="file" name="image" class="form-control">
 
-                                    @if($team->image)
-                                        <img src="{{ asset('storage/' . $team->image) }}" width="80" class="mt-2">
+                                    @if($testimonial->image)
+                                        <img src="{{ asset('storage/' . $testimonial->image) }}" width="80" class="mt-2">
                                     @endif
                                 </div>
 
-                                <div class="col-lg-4 mb-3">
-                                    <label>Facebook</label>
-                                    <input type="url" name="facebook_url" placeholder="facebook url" class="form-control"
-                                        value="{{ $team->facebook_url }}">
-                                </div>
-
-
-
-                                <div class="col-lg-4 mb-3">
-                                    <label>Instagram</label>
-                                    <input type="url" name="instagram_url" placeholder="instagram url" class="form-control"
-                                        value="{{ $team->instagram_url }}">
+                                <div class="col-12">
+                                    <label class="form-label">Description <span class="text-danger">*</span></label>
+                                    <textarea name="description" class="form-control" rows="3"
+                                         required>{{ $testimonial->description }}</textarea>
                                 </div>
 
 
@@ -306,7 +290,7 @@
 
                         <div class="modal-footer">
                             <button class="btn btn-secondary me-3" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary">Update Team Member</button>
+                            <button class="btn btn-primary">Update Testimonial</button>
                         </div>
 
                     </form>
@@ -330,7 +314,7 @@
                     </div>
                     <div class="modal-body text-center py-4">
                         <i class="ri-delete-bin-line text-danger" style="font-size: 3rem;"></i>
-                        <h5 class="mt-3 mb-2">Delete Team Member?</h5>
+                        <h5 class="mt-3 mb-2">Delete Testimonial?</h5>
                         <p class="text-muted mb-1">Are you sure you want to delete:</p>
                         <h5 class="text-danger fw-bold" id="deleteRoomName"></h5>
                         <p class="text-warning small mb-0"><i class="ri-error-warning-line me-1"></i>This action cannot be
@@ -363,12 +347,11 @@
         // Delete Modal - Populate room name
         document.getElementById('deleteModal')?.addEventListener('show.bs.modal', function (e) {
             const b = e.relatedTarget;
-            const teamId = b.getAttribute('data-team-id');
+            const testimonialId = b.getAttribute('data-testimonial-id');
 
             document.getElementById('deleteForm').action =
-                `{{ url('admin-team') }}/${teamId}`;
+                `{{ url('admin-testimonial') }}/${testimonialId}`;
 
-            document.getElementById('deleteRoomName').textContent = imageName;
         });
     </script>
     @if(session('success'))

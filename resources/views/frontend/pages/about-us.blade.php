@@ -44,9 +44,9 @@
     </section>
 
 
-    @include('frontend.components.home.about')
+    @include('frontend.components.about-us.about-section')
     @include('frontend.components.home.services')
-    @include('frontend.components.home.extra-services')
+    @include('frontend.components.about-us.mission-vision')
     @include('frontend.components.home.team')
     @include('frontend.components.home.testimonials')
 

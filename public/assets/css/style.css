@@ -3602,7 +3602,7 @@ footer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: calc(-100% + 68px);
+  bottom: calc(-100% + 90px);
   height: 100%;
   width: 100%;
   padding: 20px;
@@ -3627,9 +3627,10 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+          /* justify-content: space-between; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3639,6 +3640,7 @@ footer {
   font-size: 20px;
   font-weight: 600;
   color: #fff;
+  width: 100%;
 }
 .rx-rooms-box-2 .inner-back-side .sub-title .rx-price {
   font-size: 16px;
@@ -3647,6 +3649,14 @@ footer {
 }
 .rx-rooms-box-2 .inner-back-side .inner-info {
   margin-bottom: 30px;
+}
+.rx-rooms-box-2 .inner-back-side .inner-info p {
+   margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #bbb;
+  text-align: justify;
 }
 .rx-rooms-box-2 .inner-back-side .inner-info ul li {
   margin-bottom: 12px;

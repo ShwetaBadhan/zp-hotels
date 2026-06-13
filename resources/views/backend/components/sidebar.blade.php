@@ -22,9 +22,17 @@
                         </span>
                     </a>
                 </li>
+                <li class="lh-sb-item-separator"></li>
+                <li class="lh-sb-title ">Lead Management</li>
+                <li class="lh-sb-item">
+                    <a href="" class="lh-page-link">
+                        <i class="ri-contacts-book-line"></i><span class=""><span
+                                class="hover-title">Booking Leads</span></span>
+                    </a>
+                </li>
                 <li class="lh-sb-item">
                     <a href="{{ route('admin-contact-leads.index') }}">
-                        <i class="ri-dashboard-3-line"></i>
+                        <i class="ri-bill-line"></i>
                         <span class="">Contact Leads
 
                         </span>
@@ -37,10 +45,16 @@
                 <!-- Apps: Staff -->
                 {{-- @can('view-users') --}}
                 <li class="lh-sb-title ">Apps</li>
-               
+
                 <li class="lh-sb-item">
                     <a href="{{ route('admin-team.index') }}" class="lh-page-link">
-                        <i class="ri-shield-user-line"></i><span class=""><span class="hover-title">Team Member</span></span>
+                        <i class="ri-shield-user-line"></i><span class=""><span class="hover-title">Team
+                                Member</span></span>
+                    </a>
+                </li>
+                <li class="lh-sb-item">
+                    <a href="{{ route('admin-testimonial.index') }}" class="lh-page-link">
+                        <i class="ri-group-line"></i><span class=""><span class="hover-title">Testimonials</span></span>
                     </a>
                 </li>
                 {{-- @endcan --}}
@@ -116,12 +130,7 @@
                 </li>
 
                 {{-- @can('view-bookings') --}}
-                <li class="lh-sb-item">
-                    <a href="" class="lh-page-link">
-                        <i class="ri-contacts-book-line"></i><span class=""><span
-                                class="hover-title">Bookings</span></span>
-                    </a>
-                </li>
+
                 {{-- @endcan
                 @can('view-invoices') --}}
                 <li class="lh-sb-item">

@@ -11,6 +11,7 @@ use App\Http\Controllers\GalleryCategoryController;
 use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\ContactLeadController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TestimonialController;
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -174,9 +175,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin-contact-leads/{lead}', [ContactLeadController::class, 'destroy'])->name('admin-contact-leads.destroy');
 
     // admin team members 
-    // gallery images
     Route::get('/admin-team', [TeamController::class, 'index'])->name('admin-team.index');
     Route::post('/admin-team', [TeamController::class, 'store'])->name('admin-team.store');
     Route::put('/admin-team/{team}', [TeamController::class, 'update'])->name('admin-team.update');
     Route::delete('/admin-team/{team}', [TeamController::class, 'destroy'])->name('admin-team.destroy');
+    // testimonial
+    Route::get('/admin-testimonial', [TestimonialController::class, 'index'])->name('admin-testimonial.index');
+    Route::post('/admin-testimonial', [TestimonialController::class, 'store'])->name('admin-testimonial.store');
+    Route::put('/admin-testimonial/{testimonial}', [TestimonialController::class, 'update'])->name('admin-testimonial.update');
+    Route::delete('/admin-testimonial/{testimonial}', [TestimonialController::class, 'destroy'])->name('admin-testimonial.destroy');
 });
