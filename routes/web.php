@@ -12,6 +12,8 @@ use App\Http\Controllers\GalleryImageController;
 use App\Http\Controllers\ContactLeadController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\RoomFacilityController;
+use App\Http\Controllers\IconController;
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -105,7 +107,7 @@ Route::get('/dashboard', function () {
 
 // ✅ POST: Admin logout
 Route::post('/admin-logout', [LoginController::class, 'adminLogout'])->name('admin.logout');
-
+Route::get('/admin/icons/search', [IconController::class, 'search']);
 // ==================== PROTECTED ADMIN CRUD ====================
 Route::middleware('auth')->group(function () {
 
@@ -184,4 +186,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin-testimonial', [TestimonialController::class, 'store'])->name('admin-testimonial.store');
     Route::put('/admin-testimonial/{testimonial}', [TestimonialController::class, 'update'])->name('admin-testimonial.update');
     Route::delete('/admin-testimonial/{testimonial}', [TestimonialController::class, 'destroy'])->name('admin-testimonial.destroy');
+    // room facility
+    Route::get('/admin-room-facility', [RoomFacilityController::class, 'index'])->name('admin-room-facility.index');
+    Route::post('/admin-room-facility', [RoomFacilityController::class, 'store'])->name('admin-room-facility.store');
+    Route::put('/admin-room-facility/{facility}', [RoomFacilityController::class, 'update'])->name('admin-room-facility.update');
+    Route::delete('/admin-room-facility/{facility}', [RoomFacilityController::class, 'destroy'])->name('admin-room-facility.destroy');
 });

@@ -26,8 +26,8 @@
                 <li class="lh-sb-title ">Lead Management</li>
                 <li class="lh-sb-item">
                     <a href="" class="lh-page-link">
-                        <i class="ri-contacts-book-line"></i><span class=""><span
-                                class="hover-title">Booking Leads</span></span>
+                        <i class="ri-contacts-book-line"></i><span class=""><span class="hover-title">Booking
+                                Leads</span></span>
                     </a>
                 </li>
                 <li class="lh-sb-item">
@@ -113,6 +113,8 @@
                         @can('manage-rooms') --}}
                         <li><a href="{{ route('room-categories.index') }}" class="lh-page-link drop"><i
                                     class="ri-stack-line"></i>Room Categories</a></li>
+                        <li><a href="{{ route('admin-room-facility.index') }}" class="lh-page-link drop"><i
+                                    class="ri-hotel-bed-line"></i>Room Facilities</a></li>
                         {{-- @endcan
                         @can('view-rooms') --}}
                         <li><a href="{{ route('rooms.index') }}" class="lh-page-link drop"><i

@@ -26,6 +26,7 @@
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ url('assets/css/style.css')}}">
 
+
 </head>
 
 <body>
@@ -38,7 +39,6 @@
     @include('frontend.components.back-to-top')
     @include('frontend.components.book-modal')
     @include('frontend.components.theme-settings')
-
 
 
     <!-- Plugins -->

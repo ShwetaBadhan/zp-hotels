@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', 'Home Page')
+@section('title', 'Welcome to ZP Grand Hotel')
 @section('content')
 
     @include('frontend.components.home.hero')
