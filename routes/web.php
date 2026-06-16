@@ -14,6 +14,10 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\RoomFacilityController;
 use App\Http\Controllers\IconController;
+use App\Http\Controllers\HomeAboutSectionController;
+use App\Http\Controllers\AboutSectionController;
+use App\Http\Controllers\MissionVisionController;
+
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
     return view('frontend.pages.index');
@@ -191,4 +195,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin-room-facility', [RoomFacilityController::class, 'store'])->name('admin-room-facility.store');
     Route::put('/admin-room-facility/{facility}', [RoomFacilityController::class, 'update'])->name('admin-room-facility.update');
     Route::delete('/admin-room-facility/{facility}', [RoomFacilityController::class, 'destroy'])->name('admin-room-facility.destroy');
+
+    // home about section
+    Route::get('/admin-home-about', [HomeAboutSectionController::class, 'index'])->name('admin-home-about.index');
+    Route::put('/admin-home-about', [HomeAboutSectionController::class, 'update'])->name('admin-home-about.update');
+
+    // about page 
+    Route::get('/admin-about', [AboutSectionController::class, 'index'])->name('admin-about.index');
+    Route::put('/admin-about', [AboutSectionController::class, 'update'])->name('admin-about.update');
+    // mission vision page 
+    Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('mission-vision.index');
+    Route::put('/mission-vision', [MissionVisionController::class, 'update'])->name('mission-vision.update');
+
 });
