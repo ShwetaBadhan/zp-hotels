@@ -14,7 +14,7 @@
                 <div class="rx-about-page-contact">
                     <div class="rx-banner">
                         <p>{{ $HomeAbout->sub_title ?? 'Zp grand Hotel' }}</p>
-                        <h4>{{ $HomeAbout->main_title ?? 'Where Elegance Meets <span>Excellence</span>' }}</h4>
+                        <h4>{{ $HomeAbout->main_title ?? 'Where Elegance Meets Excellence' }}</h4>
                     </div>
                     <div class="inner-about-contact">
                         <p> {{ $HomeAbout->description_1 ?? 'Nestled in the heart of Delhi, Royalx stands as a beacon of

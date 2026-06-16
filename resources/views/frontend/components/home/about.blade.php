@@ -32,7 +32,7 @@
                 <div class="rx-about-contact">
                     <div class="rx-banner">
                         <p> {{ $HomeAbout->sub_title ?? 'ZP Grand Hotel' }}</p>
-                        <h4> {{ $HomeAbout->main_title ?? 'Where Elegance Meets <span>Excellence</span>' }}</h4>
+                        <h4> {{ $HomeAbout->main_title ?? 'Where Elegance Meets Excellence' }}</h4>
                     </div>
                     <div class="inner-contact">
                         <p> {{ $HomeAbout->description_1 ?? 'Nestled in the heart of Delhi, Royalx stands as a beacon of

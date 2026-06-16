@@ -11,7 +11,7 @@
                             class="svg-img left-side">{{ $missionVission->sub_title ?? ' Our Purpose' }}<img
                             src="{{ asset('assets/img/banner/right-shape.svg') }}" alt="banner-right-shape"
                             class="svg-img right-side"></p>
-                    <h4>{{ $missionVission->main_title ?? 'Mission & <span>Vision</span>' }}</h4>
+                    <h4>{{ $missionVission->main_title ?? 'Mission & Vision' }}</h4>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-24" data-aos="fade-up" data-aos-duration="1000">
