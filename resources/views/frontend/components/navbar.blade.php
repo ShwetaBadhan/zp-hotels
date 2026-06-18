@@ -28,6 +28,18 @@
                                     <a class="nav-link" href="{{ route('zp-rooms') }}">Rooms</a>
 
                                 </li>
+                                <li class="nav-item rx-dropdown">
+                                    <a class="nav-link" href="{{ route('zp-rooms') }}">Meeting & Events</a>
+
+                                </li>
+                                <li class="nav-item rx-dropdown">
+                                    <a class="nav-link" href="{{ route('facilities') }}">Facilities</a>
+
+                                </li>
+                                <li class="nav-item rx-dropdown">
+                                    <a class="nav-link" href="{{ route('nearby-attraction') }}">Nearby attraction</a>
+
+                                </li>
                                 <!-- <li class="nav-item rx-dropdown">
                                     <a class="nav-link rx-dropdown-item" href="javascript:void(0)">Pages</a>
                                     <ul class="rx-dropdown-menu">

@@ -17,6 +17,8 @@ use App\Http\Controllers\IconController;
 use App\Http\Controllers\HomeAboutSectionController;
 use App\Http\Controllers\AboutSectionController;
 use App\Http\Controllers\MissionVisionController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FacilityController;
 
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
@@ -92,7 +94,10 @@ Route::get('/blog-details', function () {
 Route::get('/restaurant', function () {
     return view('frontend.pages.restaurant');
 })->name('restaurant');
-
+// near by attraction
+Route::get('nearby-attraction',function(){
+    return view('frontend.pages.nearby-attractions');
+})->name('nearby-attraction');
 // contact leads
 Route::post('/store', [ContactLeadController::class, 'store'])->name('contact-us.store');
 
@@ -206,5 +211,15 @@ Route::middleware('auth')->group(function () {
     // mission vision page 
     Route::get('/mission-vision', [MissionVisionController::class, 'index'])->name('mission-vision.index');
     Route::put('/mission-vision', [MissionVisionController::class, 'update'])->name('mission-vision.update');
+    // admin FAQ
+    Route::get('/admin-faq', [FaqController::class, 'index'])->name('admin-faq.index');
+    Route::post('/admin-faq', [FaqController::class, 'store'])->name('admin-faq.store');
+    Route::put('/admin-faq/{faq}', [FaqController::class, 'update'])->name('admin-faq.update');
+    Route::delete('/admin-faq/{faq}', [FaqController::class, 'destroy'])->name('admin-faq.destroy');
+    // admin Facilities
+    Route::get('/admin-facility', [FacilityController::class, 'index'])->name('admin-facility.index');
+    Route::post('/admin-facility', [FacilityController::class, 'store'])->name('admin-facility.store');
+    Route::put('/admin-facility/{facility}', [FacilityController::class, 'update'])->name('admin-facility.update');
+    Route::delete('/admin-facility/{facility}', [FacilityController::class, 'destroy'])->name('admin-facility.destroy');
 
 });

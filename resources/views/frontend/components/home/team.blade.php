@@ -13,7 +13,7 @@
             <div class="col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <div class="owl-carousel rx-team-slider">
                     @php
-                        $team = \App\Models\Team::where('status', 'active')->latest()->get() ?? collect();
+                        $team = \App\Models\Team::where('status' , 'active')->latest()->get() ?? collect();
                        @endphp
                     @forelse($team as $item)
                         <div class="rx-team-card">
