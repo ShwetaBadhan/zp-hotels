@@ -273,8 +273,7 @@
 											<tbody>
 												<tr>
 													<td class="token">2650</td>
-													<td><img class="cat-thumb" src="assets/img/user/1.jpg"
-															alt="clients Image"><span class="name">Zara nails</span>
+													<td><span class="name">Zara nails</span>
 													</td>
 													<td>15/01/2024</td>
 													<td>20/01/2024</td>
@@ -306,8 +305,7 @@
 												</tr>
 												<tr>
 													<td class="token">2650</td>
-													<td><img class="cat-thumb" src="assets/img/user/2.jpg"
-															alt="clients Image"><span class="name">Zara nails
+													<td><span class="name">Zara nails
 															Pvt.</span></td>
 													<td>19/04/2024</td>
 													<td>29/04/2024</td>
@@ -339,8 +337,7 @@
 												</tr>
 												<tr>
 													<td class="token">2365</td>
-													<td><img class="cat-thumb" src="assets/img/user/3.jpg"
-															alt="clients Image"><span class="name">Olive Yew</span></td>
+													<td><span class="name">Olive Yew</span></td>
 													<td>01/07/2024</td>
 													<td>02/07/2024</td>
 													<td>Pan Card</td>
@@ -371,8 +368,7 @@
 												</tr>
 												<tr>
 													<td class="token">2205</td>
-													<td><img class="cat-thumb" src="assets/img/user/4.jpg"
-															alt="clients Image"><span class="name">Allie Grater</span></td>
+													<td><span class="name">Allie Grater</span></td>
 													<td>01/07/2024</td>
 													<td>02/07/2024</td>
 													<td>Adhar Card</td>
@@ -403,8 +399,7 @@
 												</tr>
 												<tr>
 													<td class="token">2187</td>
-													<td><img class="cat-thumb" src="assets/img/user/5.jpg"
-															alt="clients Image"><span class="name">Stanley Knife</span>
+													<td><span class="name">Stanley Knife</span>
 													</td>
 													<td>22/03/2024</td>
 													<td>05/04/2024</td>
@@ -436,8 +431,7 @@
 												</tr>
 												<tr>
 													<td class="token">2050</td>
-													<td><img class="cat-thumb" src="assets/img/user/6.jpg"
-															alt="clients Image"><span class="name">Zara nails</span>
+													<td><span class="name">Zara nails</span>
 													</td>
 													<td>09/09/2022</td>
 													<td>15/09/2022</td>
@@ -469,8 +463,7 @@
 												</tr>
 												<tr>
 													<td class="token">1995</td>
-													<td><img class="cat-thumb" src="assets/img/user/7.jpg"
-															alt="clients Image"><span class="name">Ivan Itchinos</span>
+													<td><span class="name">Ivan Itchinos</span>
 													</td>
 													<td>16/08/2024</td>
 													<td>20/08/2024</td>
@@ -502,8 +495,7 @@
 												</tr>
 												<tr>
 													<td class="token">1985</td>
-													<td><img class="cat-thumb" src="assets/img/user/8.jpg"
-															alt="clients Image"><span class="name">Moris Waites</span>
+													<td><span class="name">Moris Waites</span>
 													</td>
 													<td>19/12/2021</td>
 													<td>25/12/2021</td>
@@ -535,8 +527,7 @@
 												</tr>
 												<tr>
 													<td class="token">1945</td>
-													<td><img class="cat-thumb" src="assets/img/user/9.jpg"
-															alt="clients Image"><span class="name">Sarah Moanees</span>
+													<td><span class="name">Sarah Moanees</span>
 													</td>
 													<td>25/02/2024</td>
 													<td>25/02/2024</td>
@@ -568,8 +559,7 @@
 												</tr>
 												<tr>
 													<td class="token">1865</td>
-													<td><img class="cat-thumb" src="assets/img/user/10.jpg"
-															alt="clients Image"><span class="name">Anne Ortha</span>
+													<td><span class="name">Anne Ortha</span>
 													</td>													
 													<td>28/02/2024</td>
 													<td>05/03/2024</td>

@@ -19,6 +19,9 @@ use App\Http\Controllers\AboutSectionController;
 use App\Http\Controllers\MissionVisionController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\NearbyAttractionController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeSliderController;
 
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
@@ -221,5 +224,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin-facility', [FacilityController::class, 'store'])->name('admin-facility.store');
     Route::put('/admin-facility/{facility}', [FacilityController::class, 'update'])->name('admin-facility.update');
     Route::delete('/admin-facility/{facility}', [FacilityController::class, 'destroy'])->name('admin-facility.destroy');
+    // admin nearby attraction
+    Route::get('/admin-nearby-attraction', [NearbyAttractionController::class, 'index'])->name('admin-nearby-attraction.index');
+    Route::post('/admin-nearby-attraction', [NearbyAttractionController::class, 'store'])->name('admin-nearby-attraction.store');
+    Route::put('/admin-nearby-attraction/{attraction}', [NearbyAttractionController::class, 'update'])->name('admin-nearby-attraction.update');
+    Route::delete('/admin-nearby-attraction/{attraction}', [NearbyAttractionController::class, 'destroy'])->name('admin-nearby-attraction.destroy');
+    // admin event
+    Route::get('/admin-event', [EventController::class, 'index'])->name('admin-event.index');
+    Route::post('/admin-event', [EventController::class, 'store'])->name('admin-event.store');
+    Route::put('/admin-event/{event}', [EventController::class, 'update'])->name('admin-event.update');
+    Route::delete('/admin-event/{event}', [EventController::class, 'destroy'])->name('admin-event.destroy');
+    // admin slider
+    Route::get('/admin-slider', [HomeSliderController::class, 'index'])->name('admin-slider.index');
+    Route::post('/admin-slider', [HomeSliderController::class, 'store'])->name('admin-slider.store');
+    Route::put('/admin-slider/{event}', [HomeSliderController::class, 'update'])->name('admin-slider.update');
+    Route::delete('/admin-slider/{event}', [HomeSliderController::class, 'destroy'])->name('admin-slider.destroy');
 
 });

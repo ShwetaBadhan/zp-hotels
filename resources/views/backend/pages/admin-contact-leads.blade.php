@@ -76,6 +76,7 @@
                                                 <td class="text-center">No Leads found.</td>
                                                 <td></td>
                                                 <td></td>
+                                                <td></td>
 
                                             </tr>
                                         @endforelse
