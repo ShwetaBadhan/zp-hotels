@@ -122,11 +122,11 @@
                          </div>
                          <div class="inner-info">
                              <h5>Email</h5>
-                             <a href="javascript:void(0)">info@zphotels.com</a>
+                             <a href="mailto:rasheed.khan.rk554@gmail.com" target="_blank">rasheed.khan.rk554@gmail.com</a>
                          </div>
                          <div class="inner-info">
                              <h5>Phone No</h5>
-                             <a href="javascript:void(0)">+91XXXXXXXXXX</a>
+                             <a href="tel:+917000872953" target="_blank">+91 7000 872 953</a>
                          </div>
                      </div>
                  </div>

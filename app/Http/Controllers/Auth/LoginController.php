@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Http;
 class LoginController extends Controller
 {
     /**
@@ -24,17 +24,47 @@ class LoginController extends Controller
      */
     public function adminLogin(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'cf-turnstile-response' => 'required',
         ]);
+
+        // Verify Turnstile
+        $response = Http::asForm()->post(
+            'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+            [
+                'secret' => config('services.turnstile.secret_key'),
+                'response' => $request->input('cf-turnstile-response'),
+                'remoteip' => $request->ip(),
+            ]
+        );
+
+        $result = $response->json();
+
+        if (!($result['success'] ?? false)) {
+            return back()
+                ->withErrors([
+                    'captcha' => 'Captcha verification failed.'
+                ])
+                ->withInput();
+        }
+
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials.'])->onlyInput('email');
+        return back()
+            ->withErrors([
+                'email' => 'Invalid credentials.'
+            ])
+            ->onlyInput('email');
     }
 
     /**

@@ -22,6 +22,7 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\NearbyAttractionController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\EventAboutSectionController;
 
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
@@ -98,9 +99,19 @@ Route::get('/restaurant', function () {
     return view('frontend.pages.restaurant');
 })->name('restaurant');
 // near by attraction
-Route::get('nearby-attraction',function(){
+Route::get('nearby-attraction', function () {
     return view('frontend.pages.nearby-attractions');
 })->name('nearby-attraction');
+// meeting
+Route::get('meetings-events', function () {
+    return view('frontend.pages.meetings-events');
+})->name('meetings-events');
+
+Route::get('meetings-events-detail/{id}', function ($id) {
+    $event = \App\Models\Event::findOrFail($id);
+
+    return view('frontend.pages.event-details', compact('event'));
+})->name('meetings-events-detail');
 // contact leads
 Route::post('/store', [ContactLeadController::class, 'store'])->name('contact-us.store');
 
@@ -239,5 +250,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin-slider', [HomeSliderController::class, 'store'])->name('admin-slider.store');
     Route::put('/admin-slider/{event}', [HomeSliderController::class, 'update'])->name('admin-slider.update');
     Route::delete('/admin-slider/{event}', [HomeSliderController::class, 'destroy'])->name('admin-slider.destroy');
+    //event about page 
+    Route::get('/admin-event-about', [EventAboutSectionController::class, 'index'])->name('admin-event-about.index');
+    Route::put('/admin-event-about', [EventAboutSectionController::class, 'update'])->name('admin-event-about.update');
 
 });

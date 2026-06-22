@@ -9,11 +9,19 @@
 
     <title>@yield('title', 'Login | Zp Grand Hotels')</title>
 
-    <link rel="shortcut icon" href="{{ url('backend/assets/img/favicon/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url('/assets/img/logo/favicon.png') }}">
     <link href="{{ url('backend/assets/css/vendor/materialdesignicons.min.css') }}" rel="stylesheet">
     <link href="{{ url('backend/assets/css/vendor/remixicon.css') }}" rel="stylesheet">
     <link href="{{ url('backend/assets/css/vendor/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url('backend/assets/css/style.css') }}" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <style>
+        #loginBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body data-lh-mode="light">
@@ -32,8 +40,8 @@
 
                                             <div class="imgcontainer">
                                                 <a href="{{ route('admin-panel') }}">
-                                                    <img src="{{ url('assets/img/logo/zphotel.png') }}"
-                                                        alt="logo" class="logo">
+                                                    <img src="{{ url('assets/img/logo/zphotel.png') }}" alt="logo"
+                                                        class="logo">
                                                 </a>
                                             </div>
 
@@ -62,13 +70,25 @@
                                                         class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                                 </span>
 
-                                                <label class="label-container">Remember me
-                                                    <input type="checkbox" name="remember">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                                <div class="mb-3 text-center">
+                                                    <div class="cf-turnstile"
+                                                        data-sitekey="{{ config('services.turnstile.site_key') }}"
+                                                        data-callback="turnstileSuccess"
+                                                        data-expired-callback="turnstileExpired"
+                                                        data-error-callback="turnstileError">
+                                                    </div>
+                                                </div>
+
+                                                @error('captcha')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
 
                                                 <div class="login-btns">
-                                                    <button type="submit">Login as Admin</button>
+                                                    <button type="submit" id="loginBtn" disabled>
+                                                        Login as Admin
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -85,6 +105,19 @@
     <script src="{{ url('backend/assets/js/vendor/jquery-3.6.4.min.js') }}"></script>
     <script src="{{ url('backend/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('backend/assets/js/main.js') }}"></script>
+    <script>
+        function turnstileSuccess(token) {
+            document.getElementById('loginBtn').disabled = false;
+        }
+
+        function turnstileExpired() {
+            document.getElementById('loginBtn').disabled = true;
+        }
+
+        function turnstileError() {
+            document.getElementById('loginBtn').disabled = true;
+        }
+    </script>
 </body>
 
 </html>

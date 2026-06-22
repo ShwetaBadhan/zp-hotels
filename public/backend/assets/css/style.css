@@ -5309,7 +5309,7 @@ div.dataTables_wrapper div.dataTables_info {
 
 .auth-section.anim::after {
     content: "";
-    width: 50%;
+    width: 100%;
     height: 100vh;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -5323,11 +5323,11 @@ div.dataTables_wrapper div.dataTables_info {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url(../img/bg/2.jpg);
+    background-image: url(../img/bg/auth.png);
     background-position: center;
     background-size: cover;
     background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0 0 0 / 35%);
     z-index: -1;
 }
 
@@ -5448,7 +5448,7 @@ div.dataTables_wrapper div.dataTables_info {
 .lh-error-page .login-form .input-control,
 .lh-error-page .signup-form .input-control,
 .lh-error-page .forgot-form .input-control {
-    padding: 15px 30px 30px 30px;
+    padding: 15px 15px 30px 15px;
     position: relative;
 }
 .lh-login-page .login-form .input-control .p-l-5,

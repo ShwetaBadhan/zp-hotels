@@ -9,7 +9,7 @@
 	<title>@yield('title', 'Zp Grand Hotels')</title>
 
 	<!-- App favicon -->
-	<link rel="shortcut icon" href="{{ url('backend/assets/img/favicon/favicon.ico')}}">
+	<link rel="shortcut icon" href="{{ url('assets/img/logo/favicon.png')}}">
 
 	<!-- Icon CSS -->
 	<link href="{{ url('backend/assets/css/vendor/materialdesignicons.min.css')}}" rel="stylesheet">

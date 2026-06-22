@@ -29,7 +29,7 @@
 
                                 </li>
                                 <li class="nav-item rx-dropdown">
-                                    <a class="nav-link" href="{{ route('zp-rooms') }}">Meeting & Events</a>
+                                    <a class="nav-link" href="{{ route('meetings-events') }}">Meeting & Events</a>
 
                                 </li>
                                 <li class="nav-item rx-dropdown">

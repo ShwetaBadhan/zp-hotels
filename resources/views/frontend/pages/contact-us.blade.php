@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="rx-banner-contact">
-                                    <h2>Contact</h2>
+                                    <h2>Contact Us</h2>
                                 </div>
                             </div>
                         </div>
@@ -24,14 +24,14 @@
                             <div class="col-12">
                                 <div class="breadcrumb-contact">
                                     <div class="main-heading">
-                                        <h4>Contact</h4>
+                                        <h4>Contact Us</h4>
                                     </div>
                                     <div class="last-contact">
                                         <ul>
                                             <li>
                                                 <a href="{{ route('home') }}">Home</a>
                                             </li>
-                                            <li>Contact</li>
+                                            <li>Contact Us</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
     <!-- Contact -->
     <section class="section-contact padding-t-50 padding-b-100">
         <div class="container">
-            <h2 class="d-none">Contact</h2>
+            <h2 class="d-none">Contact Us</h2>
             <div class="row">
                 <div class="col-12" data-aos="fade-up" data-aos-duration="1000">
                     <div class="rx-contact-form">

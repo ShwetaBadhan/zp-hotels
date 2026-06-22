@@ -156,6 +156,18 @@
                                     class="ri-arrow-right-s-line"></i>Mission vision</a></li>
                     </ul>
                 </li>
+                <!-- event about -->
+                <li class="lh-sb-item sb-drop-item">
+                    <a href="javascript:void(0)" class="lh-drop-toggle">
+                       <i id="side-icon" class="ri-calendar-event-line"></i><span class="">Events Page<i
+                                class="drop-arrow ri-arrow-down-s-line"></i></span>
+                    </a>
+                    <ul class="lh-sb-drop ">
+                        <li><a href="{{ route('admin-event-about.index') }}" class="lh-page-link drop"><i
+                                    class="ri-arrow-right-s-line"></i>About Section</a></li>
+                    
+                    </ul>
+                </li>
                 <li class="lh-sb-item">
                     <a href="{{ route('admin-faq.index') }}" class="lh-page-link">
                         <i id="side-icon" class="ri-question-line"></i><span class=""><span class="hover-title">Manage
