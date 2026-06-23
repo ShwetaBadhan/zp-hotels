@@ -3,25 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RoomCategory extends Model
 {
     protected $fillable = [
-        'name', 'slug', 'description', 'status', 'sort_order'
+        'name',
+        'slug',
+        'price',
+        'offer_price',
+        'max_guests',
+        'bedrooms',
+        'bathrooms',
+        'size_sqft',
+        'description',
+        'thumbnail',
+        'images',
+        'amenities',
+        'status'
     ];
 
     protected $casts = [
-        'sort_order' => 'integer',
+        'images' => 'array',
+        'amenities' => 'array',
     ];
 
-    public function rooms(): HasMany
+    public function rooms()
     {
         return $this->hasMany(Room::class, 'category_id');
-    }
-
-    public function getActiveRoomsCount()
-    {
-        return $this->rooms()->where('status', 'active')->count();
     }
 }

@@ -6,21 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
-    {
-        Schema::create('room_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->integer('sort_order')->default(0);
-            $table->timestamps();
-        });
-    }
+    // public function up(): void
+    // {
+    //     Schema::create('room_categories', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->string('name');
+    //         $table->string('slug')->unique();
+    //         $table->text('description')->nullable();
+    //         $table->enum('status', ['active', 'inactive'])->default('active');
+    //         $table->integer('sort_order')->default(0);
+    //         $table->timestamps();
+    //     });
+    // }
 
-    public function down(): void
-    {
-        Schema::dropIfExists('room_categories');
-    }
+    // public function down(): void
+    // {
+    //     Schema::dropIfExists('room_categories');
+    // }
 };
