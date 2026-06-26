@@ -1300,7 +1300,7 @@ header .header-fixed {
     color: #9d7e54;
 }
 .rx-inner-menu-desk .rx-main-menu ul li {
-    margin-right: 45px;
+    margin-right: 30px;
 }
 .rx-inner-menu-desk .rx-main-menu ul li a.nav-link {
     -webkit-transition: all 0.3s ease-in-out;
