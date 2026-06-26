@@ -113,6 +113,12 @@ Route::get('/meetings-events', function () {
 Route::get('/booking', function () {
     return view('frontend.pages.booking');
 })->name('booking');
+Route::get('/privacy-policy', function () {
+    return view('frontend.pages.privacy-policy');
+})->name('privacy-policy');
+Route::get('/terms-conditions', function () {
+    return view('frontend.pages.terms-condiotions');
+})->name('terms-conditions');
 
 Route::get('meetings-events-detail/{id}', function ($id) {
     $event = \App\Models\Event::findOrFail($id);

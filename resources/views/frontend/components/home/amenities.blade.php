@@ -16,7 +16,7 @@
                         <img src="{{ asset('assets/img/banner/right-shape.svg') }}" alt=""
                             class="svg-img right-side">
                     </p>
-                    <h4>Our <span>Amenities</span></h4>
+                    <h4>Our <span>Facilities</span></h4>
                 </div>
             </div>
 

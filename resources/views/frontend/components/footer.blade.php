@@ -105,10 +105,10 @@
                                 </li>
 
                                 <li>
-                                    <a href="javascript:void(0)">Privacy Policy</a>
+                                    <a href="{{ route('privacy-policy') }}">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">Terms & Conditions</a>
+                                    <a href="{{ route('terms-conditions') }}">Terms & Conditions</a>
                                 </li>
                             </ul>
                         </div>
