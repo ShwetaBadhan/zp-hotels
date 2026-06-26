@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\HomeSlider;
-use illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 class HomeSliderController extends Controller
 {
     public function index()

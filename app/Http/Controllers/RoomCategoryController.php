@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\RoomCategory;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Storage;
 class RoomCategoryController extends Controller
 {
     public function index()
@@ -33,6 +33,8 @@ class RoomCategoryController extends Controller
             'thumbnail' => 'nullable|image',
             'images.*' => 'nullable|image',
             'status' => 'required|in:active,inactive',
+            'amenities' => 'nullable|array',
+            'amenities.*' => 'nullable|string|max:255',
         ]);
 
         $thumbnail = null;
@@ -49,7 +51,7 @@ class RoomCategoryController extends Controller
                 $images[] = $image->store('room-categories/images', 'public');
             }
         }
-
+        $amenities = array_values(array_filter($request->amenities ?? []));
         RoomCategory::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
@@ -69,7 +71,7 @@ class RoomCategoryController extends Controller
             'thumbnail' => $thumbnail,
             'images' => $images,
 
-            'amenities' => $request->amenities ?? [],
+            'amenities' => $amenities,
 
             'status' => $request->status,
         ]);
@@ -105,6 +107,8 @@ class RoomCategoryController extends Controller
             'thumbnail' => 'nullable|image',
             'images.*' => 'nullable|image',
             'status' => 'required|in:active,inactive',
+            'amenities' => 'nullable|array',
+            'amenities.*' => 'nullable|string|max:255',
         ]);
 
         $thumbnail = $category->thumbnail;
@@ -115,15 +119,30 @@ class RoomCategoryController extends Controller
         }
 
         $images = $category->images ?? [];
+        // Delete existing images selected by the user
+        if ($request->filled('deleted_images')) {
+
+            foreach ($request->deleted_images as $deletedImage) {
+
+                // Delete file from storage
+                Storage::disk('public')->delete($deletedImage);
+
+            }
+
+            // Remove deleted images from the array
+            $images = array_values(
+                array_diff($images, $request->deleted_images)
+            );
+        }
 
         if ($request->hasFile('images')) {
-            $images = [];
 
             foreach ($request->file('images') as $image) {
                 $images[] = $image->store('room-categories/images', 'public');
             }
-        }
 
+        }
+        $amenities = array_values(array_filter($request->amenities ?? []));
         $category->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
@@ -143,7 +162,7 @@ class RoomCategoryController extends Controller
             'thumbnail' => $thumbnail,
             'images' => $images,
 
-            'amenities' => $request->amenities ?? [],
+            'amenities' => $amenities,
 
             'status' => $request->status,
         ]);

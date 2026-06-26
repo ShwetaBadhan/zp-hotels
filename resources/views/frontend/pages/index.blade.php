@@ -7,7 +7,6 @@
     @include('frontend.components.home.services')
     @include('frontend.components.home.rooms')
     @include('frontend.components.home.faq')
-    @include('frontend.components.home.extra-services')
     @include('frontend.components.home.testimonials')
 
 

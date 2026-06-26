@@ -23,6 +23,11 @@ use App\Http\Controllers\NearbyAttractionController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\EventAboutSectionController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\SocialSettingController;
+use App\Http\Controllers\Backend\DashboardController;
+
 
 // ==================== FRONTEND ROUTES ====================
 Route::get('/', function () {
@@ -39,9 +44,8 @@ Route::get('/zp-rooms', function () {
     $rooms = App\Models\Room::with('category')->where('status', 'active')->paginate(12);
     return view('frontend.pages.rooms.index', compact('rooms', 'categories'));
 })->name('zp-rooms');
-Route::get('/room-details', function () {
-    return view('frontend.pages.rooms.room-details');
-})->name('room-details');
+Route::get('/room-details/{slug}', [RoomController::class, 'show'])
+    ->name('room-details');
 Route::get('/rooms/{slug}', [RoomController::class, 'show'])->name('room-details');
 
 
@@ -99,13 +103,16 @@ Route::get('/restaurant', function () {
     return view('frontend.pages.restaurant');
 })->name('restaurant');
 // near by attraction
-Route::get('nearby-attraction', function () {
+Route::get('/nearby-attraction', function () {
     return view('frontend.pages.nearby-attractions');
 })->name('nearby-attraction');
 // meeting
-Route::get('meetings-events', function () {
+Route::get('/meetings-events', function () {
     return view('frontend.pages.meetings-events');
 })->name('meetings-events');
+Route::get('/booking', function () {
+    return view('frontend.pages.booking');
+})->name('booking');
 
 Route::get('meetings-events-detail/{id}', function ($id) {
     $event = \App\Models\Event::findOrFail($id);
@@ -124,13 +131,17 @@ Route::get('/admin-panel', [LoginController::class, 'showAdminLoginForm'])->name
 Route::post('/admin-panel', [LoginController::class, 'adminLogin'])->name('admin.login');
 
 // ✅ GET: Protected dashboard
-Route::get('/dashboard', function () {
-    return view('backend.pages.dashboard');
-})->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
 
 // ✅ POST: Admin logout
 Route::post('/admin-logout', [LoginController::class, 'adminLogout'])->name('admin.logout');
 Route::get('/admin/icons/search', [IconController::class, 'search']);
+Route::post('/booking/search', [BookingController::class, 'searchAvailability'])
+    ->name('booking.search');
+Route::post('/booking/store', [BookingController::class, 'store'])
+    ->name('booking.store');
 // ==================== PROTECTED ADMIN CRUD ====================
 Route::middleware('auth')->group(function () {
 
@@ -248,10 +259,16 @@ Route::middleware('auth')->group(function () {
     // admin slider
     Route::get('/admin-slider', [HomeSliderController::class, 'index'])->name('admin-slider.index');
     Route::post('/admin-slider', [HomeSliderController::class, 'store'])->name('admin-slider.store');
-    Route::put('/admin-slider/{event}', [HomeSliderController::class, 'update'])->name('admin-slider.update');
-    Route::delete('/admin-slider/{event}', [HomeSliderController::class, 'destroy'])->name('admin-slider.destroy');
+    Route::put('/admin-slider/{slider}', [HomeSliderController::class, 'update'])->name('admin-slider.update');
+    Route::delete('/admin-slider/{slider}', [HomeSliderController::class, 'destroy'])->name('admin-slider.destroy');
     //event about page 
     Route::get('/admin-event-about', [EventAboutSectionController::class, 'index'])->name('admin-event-about.index');
     Route::put('/admin-event-about', [EventAboutSectionController::class, 'update'])->name('admin-event-about.update');
+    //general settings
+    Route::get('/admin-general-settings', [GeneralSettingController::class, 'index'])->name('admin-general-settings.index');
+    Route::put('/admin-general-settings', [GeneralSettingController::class, 'update'])->name('admin-general-settings.update');
 
+
+
+    Route::put('/admin-social-settings', [SocialSettingController::class, 'update'])->name('admin-social-settings.update');
 });

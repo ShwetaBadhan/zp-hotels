@@ -60,14 +60,17 @@
                     </div>
                 </div>
                 @forelse($gallery as $item)
-                        <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000">
-                            <figure class="rx-gallery-card">
-                                <a class="rx-gallery-img" href="{{ $item->image ? asset('storage/'. $item->image) : 'assets/img/gallery/1.jpg' }}" data-fancybox="gallery">
-                                    <img src="{{ $item->image ? asset('storage/'. $item->image) : 'assets/img/gallery/1.jpg' }}" alt="gallery-1">
-                                </a>
-                            </figure>
-                        </div>
-                      
+                    <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000">
+                        <figure class="rx-gallery-card">
+                            <a class="rx-gallery-img"
+                                href="{{ $item->image ? asset('storage/' . $item->image) : 'assets/img/gallery/1.jpg' }}"
+                                data-fancybox="gallery">
+                                <img src="{{ $item->image ? asset('storage/' . $item->image) : 'assets/img/gallery/1.jpg' }}"
+                                    alt="gallery-1">
+                            </a>
+                        </figure>
+                    </div>
+
 
                 @empty
 
@@ -86,75 +89,6 @@
 
                 @endforelse
 
-                <!-- <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/1.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/1.jpg" alt="gallery-1">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/2.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/2.jpg" alt="gallery-2">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="400">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/3.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/3.jpg" alt="gallery-3">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/4.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/4.jpg" alt="gallery-4">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/5.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/5.jpg" alt="gallery-5">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="400">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/6.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/6.jpg" alt="gallery-6">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/7.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/7.jpg" alt="gallery-7">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/8.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/8.jpg" alt="gallery-8">
-                        </a>
-                    </figure>
-                </div>
-                <div class="col-lg-4 col-sm-6 col-12 rx-575-50 mb-24 d-none-991" data-aos="fade-up" data-aos-duration="1000"
-                    data-aos-delay="400">
-                    <figure class="rx-gallery-card">
-                        <a class="rx-gallery-img" href="assets/img/gallery/9.jpg" data-fancybox="gallery">
-                            <img src="assets/img/gallery/9.jpg" alt="gallery-9">
-                        </a>
-                    </figure>
-                </div> -->
             </div>
         </div>
     </section>

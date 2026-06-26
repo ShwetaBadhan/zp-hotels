@@ -192,25 +192,20 @@
                                 Users</a></li>
                         <li><a href="{{ route('roles.index') }}" class="lh-page-link drop"><i
                                     class="ri-arrow-right-s-line"></i>Manage Roles</a></li>
-                        <li><a href="{{ route('permissions.index') }}" class="lh-page-link drop"><i
-                                    class="ri-arrow-right-s-line"></i>Permissions</a></li>
+                        <!-- <li><a href="{{ route('permissions.index') }}" class="lh-page-link drop"><i
+                                    class="ri-arrow-right-s-line"></i>Permissions</a></li> -->
                     </ul>
                 </li>
                 {{-- @endcan --}}
 
                 <li class="lh-sb-item">
-                    <a href="" class="lh-page-link">
+                    <a href="{{ route('admin-general-settings.index') }}" class="lh-page-link">
                         <i id="side-icon" class="ri-settings-3-line"></i><span class=""><span
                                 class="hover-title">General
                                 Settings</span></span>
                     </a>
                 </li>
-                <li class="lh-sb-item">
-                    <a href="" class="lh-page-link">
-                        <i id="side-icon" class="ri-server-line"></i><span class=""><span class="hover-title">System
-                                Config</span></span>
-                    </a>
-                </li>
+              
 
                 <li class="lh-sb-item-separator"></li>
                 <li id="side-logout" class="lh-sb-item">

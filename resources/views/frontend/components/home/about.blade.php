@@ -42,28 +42,7 @@
                         <p>{{ $HomeAbout->description_2  ?? 'Our hotel seamlessly blends timeless charm with modern
                             amenities, offering an unparalleled experience for
                             discerning travelers.' }}</p>
-                        <div class="rx-about-inner-box">
-                            <div class="row mb-minus-24">
-                                <div class="col-sm-4 col-12 rx-575-50 mb-24">
-                                    <div class="rx-about-box">
-                                        <h5>554+</h5>
-                                        <p>Awards</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-12 rx-575-50 mb-24 mt-24">
-                                    <div class="rx-about-box">
-                                        <h5>251K+</h5>
-                                        <p>Visitors</p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-12 rx-575-50 mb-24">
-                                    <div class="rx-about-box">
-                                        <h5>84K+</h5>
-                                        <p>Events</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>

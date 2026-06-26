@@ -5,8 +5,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="rx-inner-menu-desk">
+                        @php
+                            $generalSetting = App\Models\GeneralSetting::first();
+                        @endphp
+
                         <a href="{{ route('home') }}" class="rx-header-btn">
-                            <img src="{{ asset('assets/img/logo/zphotel.png') }}" alt="logo">
+                            <img src="{{ $generalSetting && $generalSetting->logo
+    ? asset('storage/' . $generalSetting->logo)
+    : asset('assets/img/logo/zphotel.png') }}" alt="logo">
                         </a>
                         <button class="navbar-toggler shadow-none rx-toggle-menu" type="button"
                             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -72,12 +78,11 @@
                                     <a class="nav-link" href="{{ route('contact-us') }}">Contact Us</a>
 
                                 </li>
-                                
+
 
                             </ul>
                             <div class="header-button">
-                                <a href="javascript:void(0)" class="rx-btn-one" data-bs-toggle="modal"
-                                    data-bs-target="#rx_booking_from">Book Now</a>
+                                <a href="{{ route('booking') }}" class="rx-btn-one">Book Now</a>
                             </div>
                         </div>
                     </div>
@@ -89,7 +94,9 @@
     <div id="rx-mobile-menu" class="rx-mobile-menu">
         <div class="rx-menu-title">
             <a href="{{ route('home') }}" class="rx-header-btn">
-                <img src="{{ asset('assets/img/logo/zphotel.png') }}" alt="logo" style="width: 149px;">
+                <img src="{{ $generalSetting && $generalSetting->logo
+    ? asset('storage/' . $generalSetting->logo)
+    : asset('assets/img/logo/zphotel.png') }}" alt="logo">
             </a>
             <button type="button" class="rx-close-menu">×</button>
         </div>

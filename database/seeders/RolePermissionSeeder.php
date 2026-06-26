@@ -18,11 +18,32 @@ class RolePermissionSeeder extends Seeder
     // Permissions
     $permissions = [
         'view-dashboard',
-        'view-rooms', 'manage-rooms',
-        'view-bookings', 'manage-bookings',
-        'view-invoices', 'manage-invoices',
-        'view-settings', 'manage-settings',
-        'view-users', 'manage-roles', 'assign-permissions'
+        'manage-booking-leads',
+        'manage-contact-leads',
+        'manage-events',
+        'manage-facilities',
+        'manage-gallery-category',
+        'manage-gallery',
+        'manage-room-category',
+        'manage-room',
+        'manage-room-facilities',
+        'manage-nearby-attraction',
+        'manage-team-member',
+        'manage-testimonials',
+        'manage-home-about',
+        'manage-home-slider',
+        'manage-about-about',
+        'manage-about-mission',
+        'manage-event-about',
+        'manage-faq',
+        'manage-user',
+        'manage-roles',
+        'manage-permission',
+        'manage-settings',
+        'delete',
+        'view',
+        '',
+        
     ];
     foreach ($permissions as $perm) {
         \Spatie\Permission\Models\Permission::firstOrCreate(['name' => $perm]);
@@ -34,7 +55,5 @@ class RolePermissionSeeder extends Seeder
     $staff = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'staff']);
 
     $admin->givePermissionTo($permissions); // Admin gets everything
-    $manager->givePermissionTo(['view-rooms','manage-rooms','view-bookings','manage-bookings','view-settings']);
-    $staff->givePermissionTo(['view-dashboard','view-rooms','view-bookings']);
 }
 }
