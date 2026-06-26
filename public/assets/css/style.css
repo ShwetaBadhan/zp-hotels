@@ -1558,7 +1558,7 @@ header .header-fixed {
 /* Responsive */
 @media screen and (max-width: 1399px) {
     .rx-inner-menu-desk .rx-main-menu ul li {
-        margin-right: 40px;
+        margin-right: 30px;
     }
     .rx-inner-menu-desk .rx-header-btn img {
         width: 184px;
