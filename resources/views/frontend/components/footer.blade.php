@@ -65,22 +65,14 @@
                 <div class="col-lg-2 col-sm-4 col-6 col-420-full mb-24 footer-order-3">
                     <div class="rx-footer-items">
                         <div class="rx-items-heading">
-                            <h4>City Branches</h4>
+                            <h4>Nearby Attractions</h4>
                         </div>
                         <div class="rx-items-contact">
                             <ul>
                                 <li>
-                                    <a href="javascript:void(0)">Bharat</a>
+                                    <a href="{{ route('nearby-attraction') }}">Sukhna Lake</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)">Mexico</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Venezuela</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">Germany</a>
-                                </li>
+                               
 
                             </ul>
                         </div>

@@ -76,7 +76,7 @@
         </div>
     </section>
     <!-- About -->
-    <section class="section-about padding-tb-50">
+    <!-- <section class="section-about padding-tb-50">
         <div class="container">
             <div class="row mb-minus-24">
                 <div class="col-lg-6 col-12 mb-24" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
@@ -108,7 +108,7 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
 
 
 @endsection

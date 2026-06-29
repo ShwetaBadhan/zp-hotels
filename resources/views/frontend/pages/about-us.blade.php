@@ -48,7 +48,6 @@
     @include('frontend.components.home.services')
     @include('frontend.components.about-us.mission-vision')
     @include('frontend.components.home.team')
-    @include('frontend.components.home.testimonials')
 
 
 @endsection
