@@ -47,22 +47,28 @@
 
                                                         <!-- view Button -->
                                                         <button class=" btn btn-sm btn-outline-warning" href="#"
-                                                            data-bs-toggle="modal" data-bs-target="#view_team{{ $testimonial->id }}">
-                                                            <i class="ri-eye-line"></i></button>
-                                                       
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#edit_team{{ $testimonial->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
+                                                            data-bs-target="#view_team{{ $testimonial->id }}">
+                                                            <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-testimonial-id="{{ $testimonial->id }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('edit')
+
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#edit_team{{ $testimonial->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
+                                                        @can('delete')
+
+                                                            <!-- Delete Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-testimonial-id="{{ $testimonial->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -279,7 +285,7 @@
                                 <div class="col-12">
                                     <label class="form-label">Description <span class="text-danger">*</span></label>
                                     <textarea name="description" class="form-control" rows="3"
-                                         required>{{ $testimonial->description }}</textarea>
+                                        required>{{ $testimonial->description }}</textarea>
                                 </div>
 
 

@@ -68,12 +68,22 @@
                             <h4>Nearby Attractions</h4>
                         </div>
                         <div class="rx-items-contact">
-                            <ul>
-                                <li>
-                                    <a href="{{ route('nearby-attraction') }}">Sukhna Lake</a>
-                                </li>
-                               
+                            @php
+                                $attractions = App\Models\NearbyAttraction::where('status', 'active')->latest()->get();
+                            @endphp
 
+                            <ul>
+                                @forelse($attractions as $attraction)
+                                    <li>
+                                        <a href="{{ route('nearby-attraction') }}">
+                                            {{ $attraction->title }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li>
+                                        <a href="javascript:void(0)">No Attractions Found</a>
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>

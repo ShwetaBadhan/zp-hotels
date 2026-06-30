@@ -45,18 +45,22 @@
                                                     <div class="d-flex justify-content-center align-items-center gap-1">
 
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal" data-bs-target="#edit_team{{ $team->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal" data-bs-target="#edit_team{{ $team->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
 
-                                                        <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-team-id="{{ $team->id }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('delete')
+                                                            <!-- Delete Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-team-id="{{ $team->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 

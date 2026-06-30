@@ -26,6 +26,7 @@ class DashboardController extends Controller
         $totalTeams = Team::count();
 
         $contactLeads = ContactLead::latest()->take(10)->get();
+        $bookingLeads = Booking::latest()->take(10)->get();
 
         return view('backend.pages.dashboard', compact(
             'totalUsers',
@@ -34,7 +35,8 @@ class DashboardController extends Controller
             'totalRooms',
             'availableRooms',
             'totalTeams',
-            'contactLeads'
+            'contactLeads',
+            'bookingLeads'
         ));
     }
 }

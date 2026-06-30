@@ -36,6 +36,69 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="container-fluid">
+					<div class="hotel-welcome-banner">
+						<div class="row align-items-center">
+
+							<div class="col-lg-8">
+								<div class="welcome-content">
+									<span class="welcome-tag">
+										<i class="ri-hotel-line"></i> ZP Grand Hotel
+									</span>
+
+									<h2>Welcome Back, {{ Auth::user()->name ?? 'Admin' }} !!!</h2>
+
+									<p>
+										Here's a quick overview of your hotel today.
+										Manage bookings, monitor occupancy, and keep everything running smoothly.
+									</p>
+
+									<!-- <div class="welcome-stats">
+
+											<div class="stat-box">
+												<i class="ri-hotel-bed-line"></i>
+												<div>
+													<h4>{{ $availableRooms ?? 0 }}</h4>
+													<span>Available Rooms</span>
+												</div>
+											</div>
+
+											<div class="stat-box">
+												<i class="ri-calendar-check-line"></i>
+												<div>
+													<h4>{{ $totalBookings ?? 0 }}</h4>
+													<span>Total Bookings</span>
+												</div>
+											</div>
+
+
+										</div> -->
+
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+
+								<div class="welcome-right">
+
+									<div class="today-card">
+										<h6>Today's Date</h6>
+
+										<h3>{{ now()->format('d M Y') }}</h3>
+
+										<span>{{ now()->format('l') }}</span>
+									</div>
+
+
+
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
 				<div class="row">
 
 					<!-- Users -->
@@ -147,188 +210,277 @@
 					</div>
 
 				</div>
-				<div class="row">
-					<div class="col-xl-8 col-md-12">
-						<div class="lh-card revenue-overview">
-							<div class="lh-card-header header-575">
-								<h4 class="lh-card-title">Revenue Overview</h4>
-								<div class="header-tools">
-									<a href="javascript:void(0)" class="m-r-10 lh-full-card">
-										<i class="ri-fullscreen-line" title="Full Screen"></i></a>
-									<div class="lh-date-range date" title="Date">
-										<span></span>
+				<!-- <div class="row">
+						<div class="col-xl-8 col-md-12">
+							<div class="lh-card revenue-overview">
+								<div class="lh-card-header header-575">
+									<h4 class="lh-card-title">Revenue Overview</h4>
+									<div class="header-tools">
+										<a href="javascript:void(0)" class="m-r-10 lh-full-card">
+											<i class="ri-fullscreen-line" title="Full Screen"></i></a>
+										<div class="lh-date-range date" title="Date">
+											<span></span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="lh-card-content">
-								<div class="lh-chart-header">
-									<div class="block">
-										<h6>Bookings</h6>
-										<h5>825
-											<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
-										</h5>
+								<div class="lh-card-content">
+									<div class="lh-chart-header">
+										<div class="block">
+											<h6>Bookings</h6>
+											<h5>825
+												<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
+											</h5>
+										</div>
+										<div class="block">
+											<h6>Revenue</h6>
+											<h5>$89k
+												<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
+											</h5>
+										</div>
+										<div class="block">
+											<h6>Expence</h6>
+											<h5>$68k
+												<span class="down"><i class="ri-arrow-down-line"></i>24%</span>
+											</h5>
+										</div>
+										<div class="block">
+											<h6>Profit</h6>
+											<h5>$21k
+												<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
+											</h5>
+										</div>
 									</div>
-									<div class="block">
-										<h6>Revenue</h6>
-										<h5>$89k
-											<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
-										</h5>
+									<div class="lh-chart-content">
+										<div id="overviewChart"></div>
 									</div>
-									<div class="block">
-										<h6>Expence</h6>
-										<h5>$68k
-											<span class="down"><i class="ri-arrow-down-line"></i>24%</span>
-										</h5>
-									</div>
-									<div class="block">
-										<h6>Profit</h6>
-										<h5>$21k
-											<span class="up"><i class="ri-arrow-up-line"></i>24%</span>
-										</h5>
-									</div>
-								</div>
-								<div class="lh-chart-content">
-									<div id="overviewChart"></div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-xl-4 col-md-12">
-						<div class="lh-card" id="lhmap">
-							<div class="lh-card-header">
-								<h4 class="lh-card-title">Top Country</h4>
-								<div class="header-tools">
-									<div class="lh-date-range dots">
-										<span></span>
+						<div class="col-xl-4 col-md-12">
+							<div class="lh-card" id="lhmap">
+								<div class="lh-card-header">
+									<h4 class="lh-card-title">Top Country</h4>
+									<div class="header-tools">
+										<div class="lh-date-range dots">
+											<span></span>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="lh-card-content">
-								<div class="lh-map-view">
-									<div id="world-map"></div>
-								</div>
-								<div class="lh-map-detail">
+								<div class="lh-card-content">
+									<div class="lh-map-view">
+										<div id="world-map"></div>
+									</div>
 									<div class="lh-map-detail">
-										<div class="title">
-											<h5>Revenue</h5>
-											<a href="#" class="visit" title="View all data">view <i
-													class="ri-arrow-right-line"></i></a>
-										</div>
-										<div class="lh-detail-list">
-											<div class="lh-label">
-												<div>
-													<label>India</label>
-													<span class="down"><i class="ri-arrow-down-line"></i>2.6%</span>
+										<div class="lh-map-detail">
+											<div class="title">
+												<h5>Revenue</h5>
+												<a href="#" class="visit" title="View all data">view <i
+														class="ri-arrow-right-line"></i></a>
+											</div>
+											<div class="lh-detail-list">
+												<div class="lh-label">
+													<div>
+														<label>India</label>
+														<span class="down"><i class="ri-arrow-down-line"></i>2.6%</span>
+													</div>
+													<p>$958.5k</p>
 												</div>
-												<p>$958.5k</p>
-											</div>
-											<div class="progress">
-												<div class="progress-bar bg-primary" role="progressbar" style="width: 95%"
-													aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-										</div>
-										<div class="lh-detail-list">
-											<div class="lh-label">
-												<div>
-													<label>Morocco</label>
-													<span class="up"><i class="ri-arrow-up-line"></i>5.6%</span>
+												<div class="progress">
+													<div class="progress-bar bg-primary" role="progressbar" style="width: 95%"
+														aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
-												<p>$788.7k</p>
 											</div>
-											<div class="progress">
-												<div class="progress-bar bg-secondary" role="progressbar" style="width: 84%"
-													aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-										</div>
-										<div class="lh-detail-list">
-											<div class="lh-label">
-												<div>
-													<label>Brazil</label>
-													<span class="up"><i class="ri-arrow-up-line"></i>3.7%</span>
+											<div class="lh-detail-list">
+												<div class="lh-label">
+													<div>
+														<label>Morocco</label>
+														<span class="up"><i class="ri-arrow-up-line"></i>5.6%</span>
+													</div>
+													<p>$788.7k</p>
 												</div>
-												<p>$592.2k</p>
+												<div class="progress">
+													<div class="progress-bar bg-secondary" role="progressbar" style="width: 84%"
+														aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
 											</div>
-											<div class="progress">
-												<div class="progress-bar bg-secondary" role="progressbar" style="width: 76%"
-													aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="lh-detail-list">
+												<div class="lh-label">
+													<div>
+														<label>Brazil</label>
+														<span class="up"><i class="ri-arrow-up-line"></i>3.7%</span>
+													</div>
+													<p>$592.2k</p>
+												</div>
+												<div class="progress">
+													<div class="progress-bar bg-secondary" role="progressbar" style="width: 76%"
+														aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-				</div>
+					</div> -->
 				<div class="row">
-					<div class="col-xl-12 col-md-12">
-						<div class="lh-card" id="bookingtbl">
-							<div class="lh-card-header">
-								<h4 class="lh-card-title">Contact Leads</h4>
-								<div class="header-tools">
-									<a href="javascript:void(0)" class="m-r-10 lh-full-card"><i class="ri-fullscreen-line"
-											title="Full Screen"></i></a>
-									<div class="lh-date-range dots">
-										<span></span>
-									</div>
+					<div class="col-xl-6">
+						<div class="lead-card">
+
+							<div class="lead-header">
+								<div>
+									<h4><i class="ri-customer-service-2-line"></i> Contact Leads</h4>
+									<span>Latest enquiries</span>
 								</div>
+
+								<a href="{{ route('admin-contact-leads.index') }}">
+									View All
+									<i class="ri-arrow-right-line"></i>
+								</a>
 							</div>
-							<div class="lh-card-content card-default">
-								<div class="booking-table">
-									<div class="table-responsive">
-										<table id="booking_table" class="table">
-											<thead>
-												<tr>
-													<th>ID</th>
-													<th>Name</th>
-													<th>Email</th>
-													<th>Phone</th>
-													<th>Enquiry For</th>
-													<th>Check In</th>
-													<th>Check Out</th>
-												</tr>
-											</thead>
-											<tbody>
-												@forelse($contactLeads ?? [] as $lead)
-													<tr>
-														<td>{{ $lead->id }}</td>
 
-														<td>
-															<strong>{{ $lead->name ?? '-' }}</strong><br>
-															<small>{{ $lead->email ?? '-' }}</small>
-														</td>
+							<div class="lead-body">
 
-														<td>{{ $lead->phone ?? '-' }}</td>
+								@forelse($contactLeads as $lead)
 
-														<td>{{ $lead->enuiry_for ?? '-' }}</td>
+									<div class="lead-item">
 
-														<td>
-															{{ $lead->check_in ? \Carbon\Carbon::parse($lead->check_in)->format('d M Y') : '-' }}
-														</td>
+										<div class="lead-avatar">
+											{{ strtoupper(substr($lead->name, 0, 1)) }}
+										</div>
 
-														<td>
-															{{ $lead->check_out ? \Carbon\Carbon::parse($lead->check_out)->format('d M Y') : '-' }}
-														</td>
+										<div class="lead-info">
 
-														
-													</tr>
-												@empty
-													<tr>
-														<td colspan="8" class="text-center text-muted py-4">
-															No contact leads found.
-														</td>
-													</tr>
-												@endforelse
-											</tbody>
-										</table>
+											<h5>{{ $lead->name }}</h5>
+
+											<p>
+												<i class="ri-mail-line"></i>
+												{{ $lead->email }}
+											</p>
+
+											<p>
+												<i class="ri-phone-line"></i>
+												{{ $lead->phone }}
+											</p>
+
+										</div>
+
+										<div class="lead-date">
+
+											<span class="badge bg-success">
+												New
+											</span>
+
+											<small>
+												{{ $lead->created_at->format('d M') }}
+											</small>
+
+										</div>
+
 									</div>
-								</div>
+
+								@empty
+
+									<div class="empty-state">
+
+										<i class="ri-inbox-line"></i>
+
+										<h5>No Contact Leads</h5>
+
+										<p>New enquiries will appear here.</p>
+
+									</div>
+
+								@endforelse
+
 							</div>
+
+						</div>
+					</div>
+					<div class="col-xl-6">
+						<div class="lead-card">
+
+							<div class="lead-header">
+
+								<div>
+									<h4><i class="ri-hotel-bed-line"></i> Booking Leads</h4>
+									<span>Latest booking requests</span>
+								</div>
+
+								<a href="#">
+									View All
+									<i class="ri-arrow-right-line"></i>
+								</a>
+
+							</div>
+
+							<div class="lead-body">
+
+								@forelse($bookingLeads as $lead)
+
+														<div class="lead-item">
+
+															<div class="lead-avatar bg-warning">
+																{{ strtoupper(substr($lead->name, 0, 1)) }}
+															</div>
+
+															<div class="lead-info">
+
+																<h5>{{ $lead->name }}</h5>
+
+																<p>
+																	<i class="ri-mail-line"></i>
+																	{{ $lead->email }}
+																</p>
+
+																<p>
+																	<i class="ri-phone-line"></i>
+																	{{ $lead->phone }}
+																</p>
+
+															</div>
+
+															<div class="lead-date">
+
+																<span class="badge bg-primary">
+
+																	{{ $lead->check_in
+									? \Carbon\Carbon::parse($lead->check_in)->format('d M')
+									: '-' }}
+
+																</span>
+
+																<small>
+
+																	{{ $lead->created_at->format('d M') }}
+
+																</small>
+
+															</div>
+
+														</div>
+
+								@empty
+
+									<div class="empty-state">
+
+										<i class="ri-calendar-close-line"></i>
+
+										<h5>No Booking Leads</h5>
+
+										<p>Booking requests will appear here.</p>
+
+									</div>
+
+								@endforelse
+
+							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
+	</main>
 @endsection

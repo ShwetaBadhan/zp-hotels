@@ -55,14 +55,16 @@
                                                             data-bs-toggle="modal" data-bs-target="#view{{ $lead->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <form action="{{ route('admin-contact-leads.destroy', $lead) }}"
-                                                            method="POST" class="d-inline">
-                                                            @csrf @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-outline-danger delete-btn">
-                                                                <i class="ri-delete-bin-line"></i>
-                                                            </button>
-                                                        </form>
+                                                        @can('delete')
+                                                            <form action="{{ route('admin-contact-leads.destroy', $lead) }}"
+                                                                method="POST" class="d-inline">
+                                                                @csrf @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-sm btn-outline-danger delete-btn">
+                                                                    <i class="ri-delete-bin-line"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endcan
 
 
                                                         </ul>
@@ -165,7 +167,7 @@
                             </tr>
                             <tr>
                                 <th>Message :</th>
-                                <td >{{ $lead->message }}</td>
+                                <td>{{ $lead->message }}</td>
                             </tr>
 
                         </table>

@@ -65,24 +65,27 @@
                                                 <td class="text-center" style="white-space: nowrap;">
                                                     <div class="d-flex justify-content-center align-items-center gap-1">
 
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal" data-bs-target="#editModal"
+                                                                data-image-id="{{ $image->id }}"
+                                                                data-image-cat="{{ $image->category ?? '-' }}"
+                                                                data-image-thumb="{{ $image->image }}"
+                                                                data-image-status="{{ $image->status }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal" data-bs-target="#editModal"
-                                                            data-image-id="{{ $image->id }}"
-                                                            data-image-cat="{{ $image->category ?? '-' }}"
-                                                            data-image-thumb="{{ $image->image }}"
-                                                            data-image-status="{{ $image->status }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
-
-                                                        <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-image-id="{{ $image->id }}"
-                                                            data-image-name="{{ $image->name }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('delete')
+                                                            <!-- Delete Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-image-id="{{ $image->id }}"
+                                                                data-image-name="{{ $image->name }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
                                             </tr>
@@ -321,10 +324,10 @@
                     col.className = 'col-md-6 mb-2';
 
                     col.innerHTML = `
-                                                                                                                                                        <img src="${e.target.result}"
-                                                                                                                                                             class="img-fluid rounded border"
-                                                                                                                                                             style="height:120px;width:100%;object-fit:cover;">
-                                                                                                                                                    `;
+                                                                                                                                                                    <img src="${e.target.result}"
+                                                                                                                                                                         class="img-fluid rounded border"
+                                                                                                                                                                         style="height:120px;width:100%;object-fit:cover;">
+                                                                                                                                                                `;
 
                     preview.appendChild(col);
                 };

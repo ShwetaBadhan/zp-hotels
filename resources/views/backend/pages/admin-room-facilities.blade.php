@@ -51,20 +51,24 @@
                                                             data-bs-target="#view_team{{ $facility->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#edit_team{{ $facility->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#edit_team{{ $facility->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
 
 
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-facility-id="{{ $facility->id }}"
-                                                            data-facility-title="{{ $facility->title }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('delete')
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-facility-id="{{ $facility->id }}"
+                                                                data-facility-title="{{ $facility->title }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -392,22 +396,22 @@
                     if (!item.icon) return item.text;
 
                     return $(`
-                                                                                <span>
-                                                                                    <i class="${item.icon} me-2"></i>
-                                                                                    ${item.text}
-                                                                                </span>
-                                                                            `);
+                                                                                        <span>
+                                                                                            <i class="${item.icon} me-2"></i>
+                                                                                            ${item.text}
+                                                                                        </span>
+                                                                                    `);
                 },
 
                 templateSelection: function (item) {
                     if (!item.icon) return item.text;
 
                     return $(`
-                                                                                <span>
-                                                                                    <i class="${item.icon} me-2"></i>
-                                                                                    ${item.text}
-                                                                                </span>
-                                                                            `);
+                                                                                        <span>
+                                                                                            <i class="${item.icon} me-2"></i>
+                                                                                            ${item.text}
+                                                                                        </span>
+                                                                                    `);
                 }
             });
 
@@ -455,41 +459,41 @@
                         if (!item.icon) return item.text;
 
                         return $(`
-                                    <span>
-                                        <i class="${item.icon} me-2"></i>
-                                        ${item.text}
-                                    </span>
-                                `);
+                                            <span>
+                                                <i class="${item.icon} me-2"></i>
+                                                ${item.text}
+                                            </span>
+                                        `);
                     },
 
                     templateSelection: function (item) {
                         if (!item.icon) return item.text;
 
                         return $(`
-                                    <span>
-                                        <i class="${item.icon} me-2"></i>
-                                        ${item.text}
-                                    </span>
-                                `);
+                                            <span>
+                                                <i class="${item.icon} me-2"></i>
+                                                ${item.text}
+                                            </span>
+                                        `);
                     }
                 });
 
             });
         });
-        
+
         $(document).ready(function () {
 
             $(document).on('click', '.add-facility', function () {
 
                 $('#facility-list-wrapper').append(`
-                                                                                                                            <div class="input-group mb-2">
-                                                                                                                                <input type="text" name="list[]" class="form-control"
-                                                                                                                                    placeholder="Enter Facility">
-                                                                                                                                <button type="button" class="btn btn-danger remove-facility">
-                                                                                                                                    -
-                                                                                                                                </button>
-                                                                                                                            </div>
-                                                                                                                        `);
+                                                                                                                                    <div class="input-group mb-2">
+                                                                                                                                        <input type="text" name="list[]" class="form-control"
+                                                                                                                                            placeholder="Enter Facility">
+                                                                                                                                        <button type="button" class="btn btn-danger remove-facility">
+                                                                                                                                            -
+                                                                                                                                        </button>
+                                                                                                                                    </div>
+                                                                                                                                `);
 
             });
 
@@ -499,35 +503,35 @@
             $(document).on('click', '.add-edit-facility', function () {
 
                 $(this).siblings('.edit-facility-wrapper').append(`
-                                                        <div class="input-group mb-2">
-                                                            <input type="text" name="list[]" class="form-control">
+                                                                <div class="input-group mb-2">
+                                                                    <input type="text" name="list[]" class="form-control">
 
-                                                            <button type="button"
-                                                                class="btn btn-danger remove-facility">
-                                                                -
-                                                            </button>
-                                                        </div>
-                                                    `);
+                                                                    <button type="button"
+                                                                        class="btn btn-danger remove-facility">
+                                                                        -
+                                                                    </button>
+                                                                </div>
+                                                            `);
 
             });
 
         });
         $('#deleteModal').on('show.bs.modal', function (event) {
 
-    let button = $(event.relatedTarget);
+            let button = $(event.relatedTarget);
 
-    let facilityId = button.data('facility-id');
-    let facilityTitle = button.data('facility-title');
+            let facilityId = button.data('facility-id');
+            let facilityTitle = button.data('facility-title');
 
-    $('#deleteRoomName').text(facilityTitle);
+            $('#deleteRoomName').text(facilityTitle);
 
-    $('#deleteForm').attr(
-        'action',
-        '/admin-room-facility/' + facilityId
-    );
+            $('#deleteForm').attr(
+                'action',
+                '/admin-room-facility/' + facilityId
+            );
 
-    console.log($('#deleteForm').attr('action'));
-});
+            console.log($('#deleteForm').attr('action'));
+        });
     </script>
     @if(session('success'))
 

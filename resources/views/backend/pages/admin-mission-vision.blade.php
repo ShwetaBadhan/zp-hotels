@@ -245,13 +245,15 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="text-end mt-4">
+                                                @can('edit')
+                                                    <div class="text-end mt-4">
 
-                                                    <button type="submit" class="btn btn-primary btn-lg px-5">
-                                                        <i class="fas fa-save me-2"></i>Update
-                                                    </button>
+                                                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                                                            <i class="fas fa-save me-2"></i>Update
+                                                        </button>
 
-                                                </div>
+                                                    </div>
+                                                @endcan
                                             </form>
                                         </div>
                                     </div>

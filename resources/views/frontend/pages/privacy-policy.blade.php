@@ -42,7 +42,9 @@
             </div>
         </div>
     </section>
-
+    @php
+        $privacyPolicy = App\Models\PrivacyPolicy::where('is_active', true)->first();
+    @endphp
 
     <!-- Privacy Policy Section Start -->
     <section class="ht-terms-section py-5">
@@ -52,10 +54,10 @@
                     <div class="rx-banner text-center rx-banner-effects">
                         <p>
                             <img src="{{ asset('assets/img/banner/left-shape.svg') }}" alt="" class="svg-img left-side">
-                            Hotel Policies
+                            {{ $privacyPolicy->sub_title ?? 'Hotel Policies' }}
                             <img src="{{ asset('assets/img/banner/right-shape.svg') }}" alt="" class="svg-img right-side">
                         </p>
-                        <h4> <span>Privacy Policy</span></h4>
+                        <h4> <span>{{ $privacyPolicy->main_title ?? 'Privacy Policy' }}</span></h4>
                     </div>
                 </div>
             </div>
@@ -66,7 +68,7 @@
 
                 <div class="ht-terms-card">
 
-                    <h4>1. Introduction</h4>
+                    {{ $privacyPolicy->description_1 ?? '<h4>1. Introduction</h4>
                     <p>
                         At <strong>ZP Grand Hotel</strong>, we respect your privacy and are committed to protecting the
                         personal information you share with us. This Privacy Policy explains how we collect, use,
@@ -151,7 +153,7 @@
                         <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
                         <p><strong>Email:</strong> info@hotel.com</p>
                     </div>
-
+' }}
                 </div>
 
             </div>

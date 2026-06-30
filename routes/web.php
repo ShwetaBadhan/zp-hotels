@@ -26,6 +26,8 @@ use App\Http\Controllers\EventAboutSectionController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\SocialSettingController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\TermsConditionsController;
 use App\Http\Controllers\Backend\DashboardController;
 
 
@@ -273,6 +275,12 @@ Route::middleware('auth')->group(function () {
     //general settings
     Route::get('/admin-general-settings', [GeneralSettingController::class, 'index'])->name('admin-general-settings.index');
     Route::put('/admin-general-settings', [GeneralSettingController::class, 'update'])->name('admin-general-settings.update');
+    //admin privacy policy
+    Route::get('/admin-privacy-policy', [PrivacyPolicyController::class, 'index'])->name('admin-privacy-policy.index');
+    Route::put('/admin-privacy-policy', [PrivacyPolicyController::class, 'update'])->name('admin-privacy-policy.update');
+    //admin Terms condtions
+    Route::get('/admin-terms-conditions', [TermsConditionsController::class, 'index'])->name('admin-terms-conditions.index');
+    Route::put('/admin-terms-conditions', [TermsConditionsController::class, 'update'])->name('admin-terms-conditions.update');
 
 
 

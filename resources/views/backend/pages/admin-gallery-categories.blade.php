@@ -52,18 +52,21 @@
                                                     <div
                                                         class="d-flex justify-content-center align-items-center justify-content-center gap-2">
 
-                                                        <button class=" btn btn-sm btn-outline-warning" href="#"
-                                                            data-bs-toggle="modal" data-bs-target="#edit{{ $item->id }}">
-                                                            <i class="ri-edit-line "></i></button>
-
-                                                        <form action="{{ route('admin-gallery-categories.destroy', $item) }}"
-                                                            method="POST" class="d-inline">
-                                                            @csrf @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-outline-danger delete-btn">
-                                                                <i class="ri-delete-bin-line"></i>
-                                                            </button>
-                                                        </form>
+                                                        @can('edit')
+                                                            <button class=" btn btn-sm btn-outline-warning" href="#"
+                                                                data-bs-toggle="modal" data-bs-target="#edit{{ $item->id }}">
+                                                                <i class="ri-edit-line "></i></button>
+                                                        @endcan
+                                                        @can('delete')
+                                                            <form action="{{ route('admin-gallery-categories.destroy', $item) }}"
+                                                                method="POST" class="d-inline">
+                                                                @csrf @method('DELETE')
+                                                                <button type="submit"
+                                                                    class="btn btn-sm btn-outline-danger delete-btn">
+                                                                    <i class="ri-delete-bin-line"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endcan
 
 
                                                         </ul>

@@ -54,19 +54,23 @@
                                                             data-bs-target="#view_team{{ $attraction->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#edit_team{{ $attraction->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#edit_team{{ $attraction->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
 
-                                                        <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-testimonial-id="{{ $attraction->id }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('delete')
+                                                            <!-- Delete Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-testimonial-id="{{ $attraction->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -120,7 +124,8 @@
                             </div>
                             <div class="col-lg-6 mb-3">
                                 <label>Sub Title <span class="text-danger">*</span></label>
-                                <input type="text" name="sub_title" class="form-control" placeholder="Enter Sub Title" required>
+                                <input type="text" name="sub_title" class="form-control" placeholder="Enter Sub Title"
+                                    required>
                             </div>
                             <div class="col-lg-6 mb-3">
                                 <label>Status <span class="text-danger">*</span></label>

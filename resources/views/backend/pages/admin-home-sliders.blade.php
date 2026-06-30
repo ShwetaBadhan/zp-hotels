@@ -53,18 +53,22 @@
                                                             data-bs-toggle="modal" data-bs-target="#view_team{{ $slider->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal" data-bs-target="#edit_team{{ $slider->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal" data-bs-target="#edit_team{{ $slider->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
+                                                        @can('delete')
 
-                                                        <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-testimonial-id="{{ $slider->id }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                            <!-- Delete Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-testimonial-id="{{ $slider->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -121,7 +125,7 @@
                                 <input type="text" name="sub_title" class="form-control" placeholder="Enter Sub Title"
                                     required>
                             </div>
-                            
+
                             <div class="col-lg-6 mb-3">
                                 <label>Status <span class="text-danger">*</span></label>
                                 <select name="status" class="form-control">
@@ -135,7 +139,7 @@
                                 <input type="file" name="image" class="form-control" required>
                                 <small class="text-muted">Recommended size: 360 × 363 (Max 5MB)</small>
                             </div>
-                           
+
 
 
 
@@ -160,7 +164,7 @@
 
                     <div class="modal-header border-0 pb-0">
                         <div class="form-header modal-header-title text-start mb-0">
-                            <h4 class="mb-0">View  slider</h4>
+                            <h4 class="mb-0">View slider</h4>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
@@ -179,7 +183,7 @@
                                 <td>{{ $slider->sub_title }}</td>
 
                             </tr>
-                           
+
 
 
 
@@ -207,7 +211,7 @@
                                 </td>
 
                             </tr>
-                           
+
 
                         </table>
 
@@ -246,7 +250,7 @@
                                     <label>Sub Title *</label>
                                     <input type="text" name="sub_title" class="form-control" value="{{ $slider->sub_title }}">
                                 </div>
-                               
+
                                 <div class="col-lg-6 mb-3">
                                     <label>Status *</label>
                                     <select name="status" class="form-control">
@@ -267,7 +271,7 @@
                                     @endif
                                 </div>
 
-                              
+
 
 
 

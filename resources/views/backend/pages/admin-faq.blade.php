@@ -50,19 +50,21 @@
                                                             data-bs-toggle="modal" data-bs-target="#view_team{{ $faq->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal" data-bs-target="#edit_team{{ $faq->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
-
-
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-facility-id="{{ $faq->id }}"
-                                                            data-facility-title="{{ $faq->question }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal" data-bs-target="#edit_team{{ $faq->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
+                                                        @can('delete')
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-facility-id="{{ $faq->id }}"
+                                                                data-facility-title="{{ $faq->question }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -177,7 +179,7 @@
                             <tr>
                                 <th>Asnwer :</th>
                                 <td>
-                                   {{ $faq->answer }}
+                                    {{ $faq->answer }}
 
                                 </td>
                             </tr>
@@ -232,7 +234,7 @@
                                 <div class="col-lg-12 mb-3">
                                     <label>FAQ Answer <span class="text-danger">*</span></label>
                                     <!-- <input type="text" name="answer" class="form-control" placeholder="Enter Answer" required> -->
-                                    <textarea type="text" name="answer" class="form-control"  
+                                    <textarea type="text" name="answer" class="form-control"
                                         required>{{ $faq->answer }} </textarea>
                                 </div>
 
@@ -298,7 +300,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-       $('#deleteModal').on('show.bs.modal', function (event) {
+        $('#deleteModal').on('show.bs.modal', function (event) {
 
             let button = $(event.relatedTarget);
 

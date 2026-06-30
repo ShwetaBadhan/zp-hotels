@@ -334,13 +334,14 @@
                                                 </div>
 
                                             </div>
-
+                                            @can('edit')
                                             <div class="text-end mt-4">
                                                 <button type="submit" class="btn btn-primary px-5">
                                                     <i class="fas fa-save me-2"></i>
                                                     Update Social Links
                                                 </button>
                                             </div>
+                                            @endcan
 
                                         </form>
                                     </div>

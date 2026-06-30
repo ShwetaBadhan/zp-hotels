@@ -50,23 +50,24 @@
 
                                                         <!-- view Button -->
                                                         <button class=" btn btn-sm btn-outline-warning" href="#"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#view_team{{ $event->id }}">
+                                                            data-bs-toggle="modal" data-bs-target="#view_team{{ $event->id }}">
                                                             <i class="ri-eye-line"></i></button>
 
-                                                        <!-- Edit Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-success"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#edit_team{{ $event->id }}">
-                                                            <i class="ri-edit-line"></i>
-                                                        </button>
-
+                                                        @can('edit')
+                                                            <!-- Edit Button -->
+                                                            <button type="button" class="btn btn-sm btn-outline-success"
+                                                                data-bs-toggle="modal" data-bs-target="#edit_team{{ $event->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
                                                         <!-- Delete Button -->
-                                                        <button type="button" class="btn btn-sm btn-outline-danger"
-                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                            data-testimonial-id="{{ $event->id }}">
-                                                            <i class="ri-delete-bin-line"></i>
-                                                        </button>
+                                                        @can('delete')
+                                                            <button type="button" class="btn btn-sm btn-outline-danger"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                                data-testimonial-id="{{ $event->id }}">
+                                                                <i class="ri-delete-bin-line"></i>
+                                                            </button>
+                                                        @endcan
                                                     </div>
                                                 </td>
 
@@ -77,7 +78,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    No  event found yet.
+                                                    No event found yet.
                                                 </td>
                                                 <td></td>
                                                 <td></td>
@@ -125,8 +126,7 @@
                             </div>
                             <div class="col-lg-6 mb-3">
                                 <label>Date <span class="text-danger">*</span></label>
-                                <input type="date" name="date" class="form-control" placeholder="12|11|2020"
-                                    required>
+                                <input type="date" name="date" class="form-control" placeholder="12|11|2020" required>
                             </div>
                             <div class="col-lg-6 mb-3">
                                 <label>Status <span class="text-danger">*</span></label>
@@ -248,8 +248,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form action="{{ route('admin-event.update', $event->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('admin-event.update', $event->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -326,7 +325,7 @@
                     </div>
                     <div class="modal-body text-center py-4">
                         <i class="ri-delete-bin-line text-danger" style="font-size: 3rem;"></i>
-                        <h5 class="mt-3 mb-2">Delete  event?</h5>
+                        <h5 class="mt-3 mb-2">Delete event?</h5>
                         <p class="text-muted mb-1">Are you sure you want to delete:</p>
                         <h5 class="text-danger fw-bold" id="deleteRoomName"></h5>
                         <p class="text-warning small mb-0"><i class="ri-error-warning-line me-1"></i>This action cannot be
