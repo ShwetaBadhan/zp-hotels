@@ -129,9 +129,8 @@
 
                     <div class="ht-contact-info">
                         <p><strong>Hotel:</strong> ZP Grand Hotel</p>
-                        <p><strong>Address:</strong> Your Hotel Address</p>
-                        <p><strong>Phone:</strong> +91 XXXXX XXXXX</p>
-                        <p><strong>Email:</strong> info@hotel.com</p>
+                        <p><strong>Address:</strong> Rani Avanti Bai Chouk, kohka, Bhilai, Chhattisgarh. Pin- 490023</p>
+                        
                     </div>' }}
                 </div>
 
