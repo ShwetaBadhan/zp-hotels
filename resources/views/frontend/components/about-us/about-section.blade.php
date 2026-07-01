@@ -17,11 +17,11 @@
                         <h4>{{ $HomeAbout->main_title ?? 'Where Elegance Meets Excellence' }}</h4>
                     </div>
                     <div class="inner-about-contact">
-                        <p> {{ $HomeAbout->description_1 ?? 'Nestled in the heart of Delhi, Royalx stands as a beacon of
+                        <p align="jusitfy"> {{ $HomeAbout->description_1 ?? 'Nestled in the heart of Delhi, Royalx stands as a beacon of
                                 elegance and sophistication. Our hotel seamlessly blends
                                 timeless charm with modern amenities, offering an
                                 unparalleled experience for discerning travelers.' }}</p>
-                        <p>{{ $HomeAbout->description_2 ?? 'Our hotel seamlessly blends timeless charm with modern
+                        <p align="justify">{{ $HomeAbout->description_2 ?? 'Our hotel seamlessly blends timeless charm with modern
                             amenities, offering an unparalleled experience for
                             discerning travelers.' }}</p>
                     </div>
