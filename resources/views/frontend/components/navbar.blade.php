@@ -82,7 +82,7 @@
 
                             </ul>
                             <div class="header-button">
-                                <a href="{{ route('booking') }}" class="rx-btn-one">Book Now</a>
+                                <a href="{{ route('booking') }}" class="rx-btn-one">Book Now <i class="ri-arrow-right-line"></i></a>
                             </div>
                         </div>
                     </div>
