@@ -29,7 +29,7 @@
                 <li class="lh-sb-title ">Leads Management :</li>
                 @can('manage-booking-leads')
                     <li class="lh-sb-item">
-                        <a href="" class="lh-page-link">
+                        <a href="{{ route('admin-booking-leads.index') }}" class="lh-page-link">
                             <i id="side-icon" class="ri-contacts-book-line"></i><span class=""><span
                                     class="hover-title">Booking
                                     Leads</span></span>

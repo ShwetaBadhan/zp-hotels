@@ -9,7 +9,7 @@
 
                 <div class="rx-slider">
                     @forelse($sliders as $slider)
-                        <div class="rx-slide slide-{{ $loop->iteration }}">
+                        <div class="rx-slide slide-{{ $loop->iteration }}"   style="background-image: url('{{ asset("storage/" . $slider->image) }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
                             <img src="{{ asset('storage/' . $slider->image) }}" alt="{{ $slider->title }}"
                                 class="banner-arrow-img">
 

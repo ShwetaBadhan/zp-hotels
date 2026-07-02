@@ -8,6 +8,13 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 class BookingController extends Controller
 {
+
+    public function index()
+    {
+        $leads = Booking::latest()->get();
+        return view('backend.pages.admin-booking-leads', compact('leads'));
+    }
+
     public function search()
     {
         return view('frontend.pages.booking');
@@ -136,5 +143,10 @@ class BookingController extends Controller
                 'message' => $e->getMessage()
             ], 500);
         }
+    }
+    public function destroy(Booking $lead)
+    {
+        $lead->delete();
+        return redirect()->back()->with('success', 'Lead deleted successfully!');
     }
 }

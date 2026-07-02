@@ -217,6 +217,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin-contact-leads', [ContactLeadController::class, 'index'])->name('admin-contact-leads.index');
     Route::delete('/admin-contact-leads/{lead}', [ContactLeadController::class, 'destroy'])->name('admin-contact-leads.destroy');
+    Route::get('/admin-booking-leads', [BookingController::class, 'index'])->name('admin-booking-leads.index');
+    Route::delete('/admin-booking-leads/{lead}', [BookingController::class, 'destroy'])->name('admin-booking-leads.destroy');
 
     // admin team members 
     Route::get('/admin-team', [TeamController::class, 'index'])->name('admin-team.index');
