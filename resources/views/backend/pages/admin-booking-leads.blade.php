@@ -47,7 +47,7 @@
                                                 <td>{{ $lead->booking_no }}</td>
                                                 <td>{{ $lead->name }}</td>
                                                 <td>{{ $lead->phone }}</td>
-                                                <td>{{ $lead->room->title ?? '-' }}</td>
+                                                <td>{{ $lead->room->name ?? '-' }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($lead->check_in)->format('d M Y') }}</td>
                                                 <td>
                                                     <span class="badge
@@ -166,7 +166,7 @@
                                 <td>{{ $lead->city ?? '-' }}</td>
 
                                 <th>Room</th>
-                                <td>{{ $lead->room->title ?? '-' }}</td>
+                                <td>{{ $lead->room->name ?? '-' }}</td>
                             </tr>
 
 
