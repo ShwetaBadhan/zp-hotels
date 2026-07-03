@@ -51,12 +51,12 @@
                                                 <td>{{ \Carbon\Carbon::parse($lead->check_in)->format('d M Y') }}</td>
                                                 <td>
                                                     <span class="badge
-                                                            @if($lead->status == 'pending') bg-warning
-                                                            @elseif($lead->status == 'confirmed') bg-success
-                                                            @elseif($lead->status == 'checked_in') bg-info
-                                                            @elseif($lead->status == 'checked_out') bg-secondary
-                                                            @else bg-danger
-                                                            @endif">
+                                                                                    @if($lead->status == 'pending') bg-warning
+                                                                                    @elseif($lead->status == 'confirmed') bg-success
+                                                                                    @elseif($lead->status == 'checked_in') bg-info
+                                                                                    @elseif($lead->status == 'checked_out') bg-secondary
+                                                                                    @else bg-danger
+                                                                                    @endif">
                                                         {{ ucfirst(str_replace('_', ' ', $lead->status)) }}
                                                     </span>
                                                 </td>
@@ -143,14 +143,12 @@
 
                     <div class="modal-body">
 
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped mb-0">
 
                             <tr>
                                 <th width="35%">Booking No</th>
                                 <td>{{ $lead->booking_no }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Customer Name</th>
                                 <td>{{ $lead->name }}</td>
                             </tr>
@@ -158,9 +156,7 @@
                             <tr>
                                 <th>Email</th>
                                 <td>{{ $lead->email }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Phone</th>
                                 <td>{{ $lead->phone }}</td>
                             </tr>
@@ -168,34 +164,25 @@
                             <tr>
                                 <th>City</th>
                                 <td>{{ $lead->city ?? '-' }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Room</th>
                                 <td>{{ $lead->room->title ?? '-' }}</td>
                             </tr>
 
-                            <tr>
-                                <th>Category</th>
-                                <td>{{ $lead->category->name ?? '-' }}</td>
-                            </tr>
 
                             <tr>
                                 <th>Check In</th>
                                 <td>{{ \Carbon\Carbon::parse($lead->check_in)->format('d M Y') }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Check Out</th>
                                 <td>{{ \Carbon\Carbon::parse($lead->check_out)->format('d M Y') }}</td>
                             </tr>
 
+
                             <tr>
                                 <th>Adults</th>
                                 <td>{{ $lead->adults }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Children</th>
                                 <td>{{ $lead->children }}</td>
                             </tr>
@@ -203,23 +190,23 @@
                             <tr>
                                 <th>Price</th>
                                 <td>₹{{ number_format($lead->price, 2) }}</td>
-                            </tr>
 
-                            <tr>
                                 <th>Total Amount</th>
                                 <td>₹{{ number_format($lead->total_amount, 2) }}</td>
                             </tr>
-
                             <tr>
+                                <th>Category</th>
+                                <td>{{ $lead->category->name ?? '-' }}</td>
+                            
                                 <th>Status</th>
                                 <td>
                                     <span class="badge
-                        @if($lead->status == 'pending') bg-warning
-                        @elseif($lead->status == 'confirmed') bg-success
-                        @elseif($lead->status == 'checked_in') bg-info
-                        @elseif($lead->status == 'checked_out') bg-secondary
-                        @else bg-danger
-                        @endif">
+                                                @if($lead->status == 'pending') bg-warning
+                                                @elseif($lead->status == 'confirmed') bg-success
+                                                @elseif($lead->status == 'checked_in') bg-info
+                                                @elseif($lead->status == 'checked_out') bg-secondary
+                                                @else bg-danger
+                                                @endif">
                                         {{ ucfirst(str_replace('_', ' ', $lead->status)) }}
                                     </span>
                                 </td>
@@ -227,12 +214,12 @@
 
                             <tr>
                                 <th>Special Request</th>
-                                <td>{{ $lead->special_request ?: '-' }}</td>
+                                <td colspan="3">{{ $lead->special_request ?: '-' }}</td>
                             </tr>
 
                             <tr>
                                 <th>Created At</th>
-                                <td>{{ $lead->created_at->format('d M Y h:i A') }}</td>
+                                <td colspan="3">{{ $lead->created_at->format('d M Y h:i A') }}</td>
                             </tr>
 
                         </table>
