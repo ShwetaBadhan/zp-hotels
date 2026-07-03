@@ -7,6 +7,89 @@
     @include('frontend.components.home.services')
     @include('frontend.components.home.rooms')
     @include('frontend.components.home.faq')
+    <section class="zp-social-wall ">
+        <div class="container">
+            <div class="rx-banner text-center rx-banner-effects">
+                <p class="text-white"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16"
+                        src="assets/img/banner/left-shape.svg" alt="banner-left-shape" class="svg-img left-side">
+                        <path class="cls-1" d="M9,9V7H67V9H9Z"></path>
+                        <path class="cls-2" d="M71.713,1.787L77.9,7.972l-6.185,6.185L65.528,7.972Z"></path>
+                        <circle class="cls-3" cx="6" cy="8" r="4"></circle>
+                    </svg>Follow Our Journey<svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16"
+                        src="assets/img/banner/right-shape.svg" alt="banner-right-shape" class="svg-img right-side">
+                        <path class="cls-1" d="M70.906,9V7h-58V9h58Z"></path>
+                        <path class="cls-2" d="M8.194,1.787L2.009,7.972l6.185,6.185,6.185-6.185Z"></path>
+                        <circle class="cls-3" cx="73.906" cy="8" r="4"></circle>
+                    </svg></p>
+                <h4 class="text-white">Connect With ZP Grand Hotel</h4>
+            </div>
+           
+
+            <div class="zp-social-grid">
+
+                
+                <div class="zp-social-card">
+                    <div class="zp-social-title">
+                        <i class="ri-facebook-circle-fill"></i>
+                        <h4>Facebook</h4>
+                    </div>
+
+                    <div class="zp-social-frame">
+
+                        <!-- Facebook Page Plugin -->
+                        <iframe
+                            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/YOUR_PAGE_NAME&tabs=timeline&width=500&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                            width="100%" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                            allowfullscreen="true">
+                        </iframe>
+
+                    </div>
+                </div>
+
+            
+
+                <div class="zp-social-card">
+
+                    <div class="zp-social-title">
+                        <i class="ri-instagram-line"></i>
+                        <h4>Instagram</h4>
+                    </div>
+
+                    <div class="zp-social-frame">
+
+                      
+
+                        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+
+                        <div class="elfsight-app-YOUR_WIDGET_ID"></div>
+
+                    </div>
+
+                </div>
+
+                <!-- Linkedin -->
+
+                <div class="zp-social-card">
+
+                    <div class="zp-social-title">
+                        <i class="ri-linkedin-box-fill"></i>
+                        <h4>LinkedIn</h4>
+                    </div>
+
+                    <div class="zp-social-frame">
+
+                        <iframe src="https://www.linkedin.com/embed/feed/update/YOUR_POST_ID" height="550" width="100%"
+                            frameborder="0" allowfullscreen="">
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
     @include('frontend.components.home.testimonials')
 
 

@@ -70,7 +70,7 @@
                                                         </button>
 
                                                         @can('delete')
-                                                            <form action="{{ route('admin-bookings.destroy', $lead->id) }}"
+                                                            <form action="{{ route('admin-booking-leads.destroy', $lead->id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')

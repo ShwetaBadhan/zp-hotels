@@ -79,8 +79,8 @@
                         <div class="col-lg-2 col-md-6">
                             <label class="bk-search-label">Adults</label>
                             <select name="adults" class="form-select bk-search-input">
-                                <option value="{{ old('adults', $search['adults'] ?? '') }}">
-                                    {{ old('adults', $search['adults'] ?? '') }}
+                                <option value="{{ old('adults', $search['adults'] ?? 'Select Adults') }}">
+                                    {{ old('adults', $search['adults'] ?? 'Select Adults') }}
                                 </option>
                                 <option value="1">1 Adult</option>
                                 <option value="2">2 Adults</option>
