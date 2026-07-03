@@ -183,14 +183,15 @@
                                         {{ $category->max_guests }}
                                     </p>
 
-                                    <a href="#" class="htl-btn openBookingModal" data-category="{{ $category->id }}"
-                                        data-room="{{ $category->name }}"
-                                        data-price="{{ $category->offer_price ?? $category->price }}"
-                                        data-checkin="{{ $search['check_in'] }}" data-checkout="{{ $search['check_out'] }}"
-                                        data-adults="{{ $search['adults'] }}" data-children="{{ $search['children'] }}">
+                                    <a href="{{ route('booking-form', [
+                        'category' => $category->id,
+                        'check_in' => $search['check_in'],
+                        'check_out' => $search['check_out'],
+                        'adults' => $search['adults'],
+                        'children' => $search['children'],
+                    ]) }}" class="htl-btn">
                                         Book Now
                                     </a>
-
                                 </div>
 
                             </div>
@@ -207,7 +208,13 @@
 
                                 </div>
 
-                                <a href="{{ route('room-details', $category->slug) }}" class="htl-details">
+                                <a href="{{ route('room-details', [
+                        'slug' => $category->slug,
+                        'check_in' => $search['check_in'],
+                        'check_out' => $search['check_out'],
+                        'adults' => $search['adults'],
+                        'children' => $search['children'],
+                    ]) }}" class="htl-details">
                                     View Room Details →
                                 </a>
 

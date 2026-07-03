@@ -19,6 +19,64 @@ class BookingController extends Controller
     {
         return view('frontend.pages.booking');
     }
+    public function booking(Request $request)
+    {
+        $category = RoomCategory::findOrFail($request->category);
+
+        $checkIn = $request->check_in;
+        $checkOut = $request->check_out;
+
+        $days = 1;
+
+        if ($checkIn && $checkOut) {
+            $days = max(
+                \Carbon\Carbon::parse($checkIn)
+                    ->diffInDays($checkOut),
+                1
+            );
+        }
+
+        $price = $category->offer_price ?: $category->price;
+
+        return view('frontend.pages.booking-form', [
+            'category' => $category,
+            'search' => [
+                'check_in' => $checkIn,
+                'check_out' => $checkOut,
+                'adults' => $request->adults ?? 1,
+                'children' => $request->children ?? 0,
+            ],
+            'days' => $days,
+            'price' => $price,
+            'total' => $days * $price,
+        ]);
+    }
+    public function update(Request $request, Booking $lead)
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'phone' => 'required',
+        'check_in' => 'required|date',
+        'check_out' => 'required|date|after:check_in',
+        'status' => 'required',
+    ]);
+
+    $lead->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'city' => $request->city,
+        'check_in' => $request->check_in,
+        'check_out' => $request->check_out,
+        'adults' => $request->adults,
+        'children' => $request->children,
+        'status' => $request->status,
+        'special_request' => $request->special_request,
+    ]);
+
+    return back()->with('success', 'Booking updated successfully.');
+}
     public function searchAvailability(Request $request)
     {
         // dd($request->all());
@@ -61,7 +119,7 @@ class BookingController extends Controller
             'phone' => 'required|max:20',
             'city' => 'nullable|max:255',
             'check_in' => 'required|date|after_or_equal:today',
-            'check_out' => 'required|date|after_or_equal:check_in',
+            'check_out' => 'required|date|after:check_in',
             'adults' => 'required|integer|min:1',
             'children' => 'nullable|integer|min:0',
             'special_request' => 'nullable|string',
@@ -71,24 +129,18 @@ class BookingController extends Controller
 
         try {
 
+            // Find Available Room
             $room = Room::where('category_id', $request->category_id)
                 ->where('status', 'available')
                 ->whereDoesntHave('bookings', function ($query) use ($request) {
 
-                    $query->whereIn('status', [
-                        'pending',
-                        'confirmed',
-                        'checked_in'
-                    ])->where(function ($q) use ($request) {
+                    $query->whereIn('status', ['pending', 'confirmed', 'checked_in'])
+                        ->where(function ($q) use ($request) {
 
-                        $q->whereBetween('check_in', [$request->check_in, $request->check_out])
-                            ->orWhereBetween('check_out', [$request->check_in, $request->check_out])
-                            ->orWhere(function ($q2) use ($request) {
-                                $q2->where('check_in', '<=', $request->check_in)
-                                    ->where('check_out', '>=', $request->check_out);
-                            });
+                            $q->where('check_in', '<', $request->check_out)
+                                ->where('check_out', '>', $request->check_in);
 
-                    });
+                        });
 
                 })->first();
 
@@ -96,10 +148,13 @@ class BookingController extends Controller
 
                 DB::rollBack();
 
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Sorry! No rooms are available for the selected dates.'
-                ], 422);
+                return redirect()->route('booking-form', [
+                    'category' => $request->category_id,
+                    'check_in' => $request->check_in,
+                    'check_out' => $request->check_out,
+                    'adults' => $request->adults,
+                    'children' => $request->children,
+                ])->with('error', 'Sorry! No rooms are available for the selected dates.');
             }
 
             $category = RoomCategory::findOrFail($request->category_id);
@@ -107,9 +162,11 @@ class BookingController extends Controller
             $days = \Carbon\Carbon::parse($request->check_in)
                 ->diffInDays($request->check_out);
 
+            $days = max($days, 1);
+
             $price = $category->offer_price ?: $category->price;
 
-            Booking::create([
+            $booking = Booking::create([
                 'room_id' => $room->id,
                 'category_id' => $category->id,
                 'booking_no' => 'BK' . now()->format('YmdHis') . rand(100, 999),
@@ -124,24 +181,26 @@ class BookingController extends Controller
                 'price' => $price,
                 'total_amount' => $days * $price,
                 'special_request' => $request->special_request,
-                'status' => 'pending'
+                'status' => 'pending',
             ]);
 
             DB::commit();
 
-            return response()->json([
-                'status' => true,
-                'message' => 'Booking submitted successfully.'
-            ]);
+            return redirect()
+                ->route('home')
+                ->with('success', 'Booking submitted successfully.');
 
         } catch (\Exception $e) {
 
             DB::rollBack();
 
-            return response()->json([
-                'status' => false,
-                'message' => $e->getMessage()
-            ], 500);
+            return redirect()->route('booking-form', [
+                'category' => $request->category_id,
+                'check_in' => $request->check_in,
+                'check_out' => $request->check_out,
+                'adults' => $request->adults,
+                'children' => $request->children,
+            ])->with('error', $e->getMessage());
         }
     }
     public function destroy(Booking $lead)

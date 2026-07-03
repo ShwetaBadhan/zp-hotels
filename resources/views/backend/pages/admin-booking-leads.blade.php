@@ -47,16 +47,16 @@
                                                 <td>{{ $lead->booking_no }}</td>
                                                 <td>{{ $lead->name }}</td>
                                                 <td>{{ $lead->phone }}</td>
-                                                <td>{{ $lead->room->name ?? '-' }}</td>
+                                                <td>{{ $lead->room->room_no ?? '-' }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($lead->check_in)->format('d M Y') }}</td>
                                                 <td>
                                                     <span class="badge
-                                                                                    @if($lead->status == 'pending') bg-warning
-                                                                                    @elseif($lead->status == 'confirmed') bg-success
-                                                                                    @elseif($lead->status == 'checked_in') bg-info
-                                                                                    @elseif($lead->status == 'checked_out') bg-secondary
-                                                                                    @else bg-danger
-                                                                                    @endif">
+                                                                                                            @if($lead->status == 'pending') bg-warning
+                                                                                                            @elseif($lead->status == 'confirmed') bg-success
+                                                                                                            @elseif($lead->status == 'checked_in') bg-info
+                                                                                                            @elseif($lead->status == 'checked_out') bg-secondary
+                                                                                                            @else bg-danger
+                                                                                                            @endif">
                                                         {{ ucfirst(str_replace('_', ' ', $lead->status)) }}
                                                     </span>
                                                 </td>
@@ -68,7 +68,12 @@
                                                             data-bs-target="#view{{ $lead->id }}">
                                                             <i class="ri-eye-line"></i>
                                                         </button>
-
+                                                        @can('edit')
+                                                            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal"
+                                                                data-bs-target="#edit{{ $lead->id }}">
+                                                                <i class="ri-edit-line"></i>
+                                                            </button>
+                                                        @endcan
                                                         @can('delete')
                                                             <form action="{{ route('admin-booking-leads.destroy', $lead->id) }}"
                                                                 method="POST">
@@ -166,7 +171,7 @@
                                 <td>{{ $lead->city ?? '-' }}</td>
 
                                 <th>Room</th>
-                                <td>{{ $lead->room->name ?? '-' }}</td>
+                                <td>{{ $lead->room->room_no ?? '-' }}</td>
                             </tr>
 
 
@@ -197,16 +202,16 @@
                             <tr>
                                 <th>Category</th>
                                 <td>{{ $lead->category->name ?? '-' }}</td>
-                            
+
                                 <th>Status</th>
                                 <td>
                                     <span class="badge
-                                                @if($lead->status == 'pending') bg-warning
-                                                @elseif($lead->status == 'confirmed') bg-success
-                                                @elseif($lead->status == 'checked_in') bg-info
-                                                @elseif($lead->status == 'checked_out') bg-secondary
-                                                @else bg-danger
-                                                @endif">
+                                                                        @if($lead->status == 'pending') bg-warning
+                                                                        @elseif($lead->status == 'confirmed') bg-success
+                                                                        @elseif($lead->status == 'checked_in') bg-info
+                                                                        @elseif($lead->status == 'checked_out') bg-secondary
+                                                                        @else bg-danger
+                                                                        @endif">
                                         {{ ucfirst(str_replace('_', ' ', $lead->status)) }}
                                     </span>
                                 </td>
@@ -231,6 +236,150 @@
                             Close
                         </button>
                     </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Edit Booking Modal -->
+        <div class="modal fade" id="edit{{ $lead->id }}">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <form action="{{ route('admin-booking-leads.update', $lead->id) }}" method="POST">
+
+                        @csrf
+                        @method('PUT')
+
+                        <div class="modal-header">
+                            <h4>Edit Booking</h4>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Customer Name</label>
+
+                                    <input type="text" class="form-control" name="name" value="{{ $lead->name }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Email</label>
+
+                                    <input type="email" class="form-control" name="email" value="{{ $lead->email }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Phone</label>
+
+                                    <input type="text" class="form-control" name="phone" value="{{ $lead->phone }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>City</label>
+
+                                    <input type="text" class="form-control" name="city" value="{{ $lead->city }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Check In</label>
+
+                                    <input type="date" class="form-control" name="check_in"
+                                        value="{{ \Carbon\Carbon::parse($lead->check_in)->format('Y-m-d') }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Check Out</label>
+
+                                    <input type="date" class="form-control" name="check_out"
+                                        value="{{ \Carbon\Carbon::parse($lead->check_out)->format('Y-m-d') }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Adults</label>
+
+                                    <input type="number" class="form-control" name="adults" value="{{ $lead->adults }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Children</label>
+
+                                    <input type="number" class="form-control" name="children" value="{{ $lead->children }}">
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Status</label>
+
+                                    <select name="status" class="form-select">
+
+                                        <option value="pending" {{ $lead->status == 'pending' ? 'selected' : '' }}>
+                                            Pending
+                                        </option>
+
+                                        <option value="confirmed" {{ $lead->status == 'confirmed' ? 'selected' : '' }}>
+                                            Confirmed
+                                        </option>
+
+                                        <option value="checked_in" {{ $lead->status == 'checked_in' ? 'selected' : '' }}>
+                                            Checked In
+                                        </option>
+
+                                       
+
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+
+                                    <label>Room</label>
+
+                                    <input type="text" class="form-control" value="{{ $lead->room->room_no ?? '-' }}" readonly>
+
+                                </div>
+
+                                <div class="col-12">
+
+                                    <label>Special Request</label>
+
+                                    <textarea class="form-control" rows="4"
+                                        name="special_request">{{ $lead->special_request }}</textarea>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+
+                            <button class="btn btn-success">
+                                Update Booking
+                            </button>
+
+                        </div>
+
+                    </form>
 
                 </div>
             </div>

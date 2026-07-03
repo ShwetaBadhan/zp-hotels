@@ -122,6 +122,7 @@ Route::get('/terms-conditions', function () {
     return view('frontend.pages.terms-condiotions');
 })->name('terms-conditions');
 
+
 Route::get('meetings-events-detail/{id}', function ($id) {
     $event = \App\Models\Event::findOrFail($id);
 
@@ -148,8 +149,18 @@ Route::post('/admin-logout', [LoginController::class, 'adminLogout'])->name('adm
 Route::get('/admin/icons/search', [IconController::class, 'search']);
 Route::post('/booking/search', [BookingController::class, 'searchAvailability'])
     ->name('booking.search');
+
+
 Route::post('/booking/store', [BookingController::class, 'store'])
     ->name('booking.store');
+
+
+// booking form
+Route::get('/booking-form', function () {
+    return view('frontend.pages.booking-form');
+})->name('booking-form');
+Route::get('/booking-form', [BookingController::class, 'booking'])->name('booking-form');
+Route::post('/booking-form/store', [BookingController::class, 'store'])->name('booking-form.store');
 // ==================== PROTECTED ADMIN CRUD ====================
 Route::middleware('auth')->group(function () {
 
@@ -219,7 +230,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin-contact-leads/{lead}', [ContactLeadController::class, 'destroy'])->name('admin-contact-leads.destroy');
     Route::get('/admin-booking-leads', [BookingController::class, 'index'])->name('admin-booking-leads.index');
     Route::delete('/admin-booking-leads/{lead}', [BookingController::class, 'destroy'])->name('admin-booking-leads.destroy');
-
+    Route::put('/admin-booking-leads/{lead}', [BookingController::class, 'update'])
+        ->name('admin-booking-leads.update');
     // admin team members 
     Route::get('/admin-team', [TeamController::class, 'index'])->name('admin-team.index');
     Route::post('/admin-team', [TeamController::class, 'store'])->name('admin-team.store');

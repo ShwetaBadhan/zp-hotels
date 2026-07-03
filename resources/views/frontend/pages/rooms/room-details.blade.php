@@ -132,6 +132,7 @@
 
                     <div class="hbk-room-sidebar">
 
+
                         <!-- CTA -->
                         <div class="hbk-sidebar-box">
 
@@ -148,7 +149,7 @@
                                 and unforgettable experiences.
                             </p>
 
-                           
+
 
                         </div>
 
@@ -168,26 +169,52 @@
 
                         <!-- Services -->
 
+
                         <div class="hbk-sidebar-box">
+                            <form action="{{ route('booking-form') }}" method="GET">
 
-                            <h4>Services</h4>
+                                <input type="hidden" name="category" value="{{ $category->id }}">
 
-                            <ul class="hbk-list">
+                                <div class="mb-3">
+                                    <label>Check In</label>
+                                    <input type="date" id="check_in" name="check_in" value="{{ request('check_in') }}"
+                                        class="form-control" min="{{ date('Y-m-d') }}" required>
+                                </div>
 
-                                <li>✔ 24×7 Room Service</li>
-                                <li>✔ Airport Pickup</li>
-                                <li>✔ Housekeeping</li>
-                                <li>✔ Laundry Service</li>
-                                <li>✔ Restaurant Access</li>
-                                <li>✔ Swimming Pool</li>
-                                <li>✔ Fitness Center</li>
-                                <li>✔ Free Parking</li>
+                                <div class="mb-3">
+                                    <label>Check Out</label>
+                                    <input type="date" id="check_out" name="check_out" value="{{ request('check_out') }}"
+                                        class="form-control" min="{{ date('Y-m-d') }}" required>
+                                </div>
 
-                            </ul>
+                                <div class="mb-3">
+                                    <label>Adults</label>
+                                    <select name="adults" class="form-select" required>
+                                        @for($i = 1; $i <= $category->max_guests; $i++)
+                                            <option value="{{ $i }}" {{ request('adults', 1) == $i ? 'selected' : '' }}>
+                                                {{ $i }} Adult{{ $i > 1 ? 's' : '' }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
 
+                                <div class="mb-3">
+                                    <label>Children</label>
+                                    <select name="children" class="form-select">
+                                        @for($i = 0; $i <= $category->max_guests; $i++)
+                                            <option value="{{ $i }}" {{ request('children', 0) == $i ? 'selected' : '' }}>
+                                                {{ $i }} {{ $i == 1 ? 'Child' : 'Children' }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <button class="bk-search-btn w-100">
+                                    Book Now
+                                </button>
+
+                            </form>
                         </div>
-
-                        
 
 
 
@@ -242,6 +269,26 @@
                 }
 
             }
+
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const checkIn = document.getElementById('check_in');
+            const checkOut = document.getElementById('check_out');
+
+            // Today's date
+            const today = new Date().toISOString().split('T')[0];
+
+            // Prevent selecting past dates
+            checkIn.setAttribute('min', today);
+            checkOut.setAttribute('min', today);
+
+            // Update checkout minimum when check-in changes
+            checkIn.addEventListener('change', function () {
+                checkOut.value = '';
+                checkOut.setAttribute('min', this.value);
+            });
 
         });
     </script>

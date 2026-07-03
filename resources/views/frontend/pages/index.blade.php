@@ -7,7 +7,7 @@
     @include('frontend.components.home.services')
     @include('frontend.components.home.rooms')
     @include('frontend.components.home.faq')
-    <!-- <section class="zp-social-wall ">
+    <section class="zp-social-wall ">
         <div class="container">
             <div class="rx-banner text-center rx-banner-effects">
                 <p class="text-white"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16"
@@ -15,19 +15,20 @@
                         <path class="cls-1" d="M9,9V7H67V9H9Z"></path>
                         <path class="cls-2" d="M71.713,1.787L77.9,7.972l-6.185,6.185L65.528,7.972Z"></path>
                         <circle class="cls-3" cx="6" cy="8" r="4"></circle>
-                    </svg>Follow Our Journey<svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16"
-                        src="assets/img/banner/right-shape.svg" alt="banner-right-shape" class="svg-img right-side">
+                    </svg>Follow Our Journey<svg xmlns="http://www.w3.org/2000/svg" width="80" height="16"
+                        viewBox="0 0 80 16" src="assets/img/banner/right-shape.svg" alt="banner-right-shape"
+                        class="svg-img right-side">
                         <path class="cls-1" d="M70.906,9V7h-58V9h58Z"></path>
                         <path class="cls-2" d="M8.194,1.787L2.009,7.972l6.185,6.185,6.185-6.185Z"></path>
                         <circle class="cls-3" cx="73.906" cy="8" r="4"></circle>
                     </svg></p>
                 <h4 class="text-white">Connect With ZP Grand Hotel</h4>
             </div>
-           
+
 
             <div class="zp-social-grid">
 
-                
+
                 <div class="zp-social-card">
                     <div class="zp-social-title">
                         <i class="ri-facebook-circle-fill"></i>
@@ -36,9 +37,9 @@
 
                     <div class="zp-social-frame">
 
-                       
+
                         <iframe
-                            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/YOUR_PAGE_NAME&tabs=timeline&width=500&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/Marriott&tabs=timeline&width=500&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
                             width="100%" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
                             allowfullscreen="true">
                         </iframe>
@@ -46,7 +47,7 @@
                     </div>
                 </div>
 
-            
+
 
                 <div class="zp-social-card">
 
@@ -57,7 +58,17 @@
 
                     <div class="zp-social-frame">
 
-                      
+                        <div class="zp-social-profile">
+                            <i class="ri-instagram-fill"></i>
+
+                            <h5>@marriott</h5>
+
+                            <p>Follow us for luxury stays, travel inspiration and exclusive offers.</p>
+
+                            <a href="https://www.instagram.com/marriott/" target="_blank" class="zp-social-btn">
+                                View Instagram
+                            </a>
+                        </div>
 
                         <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
@@ -67,7 +78,7 @@
 
                 </div>
 
-            
+
 
                 <div class="zp-social-card">
 
@@ -77,7 +88,24 @@
                     </div>
 
                     <div class="zp-social-frame">
+                        <div class="zp-social-profile">
 
+                            <i class="ri-linkedin-box-fill"></i>
+
+                            <h5>Marriott International</h5>
+
+                            <p>
+                                Follow our latest hospitality news and company updates.
+                            </p>
+
+                            <a href="https://www.linkedin.com/company/marriott-international/" target="_blank"
+                                class="zp-social-btn">
+
+                                View LinkedIn
+
+                            </a>
+
+                        </div>
                         <iframe src="https://www.linkedin.com/embed/feed/update/YOUR_POST_ID" height="550" width="100%"
                             frameborder="0" allowfullscreen="">
                         </iframe>
@@ -89,13 +117,32 @@
             </div>
 
         </div>
-    </section> -->
+    </section>
     @include('frontend.components.home.testimonials')
 
 
 
 @endsection
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Booking Successful!',
+                    text: '{{ session("success") }}',
+                    confirmButtonColor: '#c19b76',
+                    timer: 2500,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+
+            });
+        </script>
+    @endif
     <script>
         var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?86687';
         var s = document.createElement('script');
