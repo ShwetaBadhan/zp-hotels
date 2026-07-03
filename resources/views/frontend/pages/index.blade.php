@@ -7,7 +7,7 @@
     @include('frontend.components.home.services')
     @include('frontend.components.home.rooms')
     @include('frontend.components.home.faq')
-    <section class="zp-social-wall ">
+    <!-- <section class="zp-social-wall ">
         <div class="container">
             <div class="rx-banner text-center rx-banner-effects">
                 <p class="text-white"><svg xmlns="http://www.w3.org/2000/svg" width="80" height="16" viewBox="0 0 80 16"
@@ -36,7 +36,7 @@
 
                     <div class="zp-social-frame">
 
-                        <!-- Facebook Page Plugin -->
+                       
                         <iframe
                             src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/YOUR_PAGE_NAME&tabs=timeline&width=500&height=550&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
                             width="100%" height="550" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
@@ -67,7 +67,7 @@
 
                 </div>
 
-                <!-- Linkedin -->
+            
 
                 <div class="zp-social-card">
 
@@ -89,7 +89,7 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
     @include('frontend.components.home.testimonials')
 
 
