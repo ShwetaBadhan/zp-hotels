@@ -35,7 +35,7 @@
                                                     <div class="booking-text">
                                                         <p>Book Now</p>
                                                         <span><a class="text-white"
-                                                                href="tel:{{ $generalSetting->phone }}" target="_blank">{{ $generalSetting->phone }}</a></span>
+                                                                href="tel:{{ $generalSetting->phone ?? '+91 78693 89086' }}" target="_blank">{{ $generalSetting->phone  ?? '+91 78693 89086'}}</a></span>
                                                     </div>
                                                 </div>
 
@@ -63,7 +63,7 @@
                                                     <div class="booking-text">
                                                         <p>Book Now</p>
                                                         <span><a class="text-white"
-                                                                href="tel:{{ $generalSetting->phone }}" target="_blank">{{ $generalSetting->phone }}</a></span>
+                                                                href="tel:{{ $generalSetting->phone ?? '+91 78693 89086' }}" target="_blank">{{ $generalSetting->phone  ?? '+91 78693 89086'}}</a></span>
                                                     </div>
                                                 </div>
                                             </div>
