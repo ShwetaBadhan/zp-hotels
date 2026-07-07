@@ -278,10 +278,15 @@
 
                                 <div class="col-lg-6 mb-3">
                                     <label>Icon *</label>
-
                                     <select name="icon" class="form-control edit-icon-select"
-                                        data-selected="{{ $facility->icon }}">
+                                        data-selected="{{ $facility->icon }}" data-name="{{ $facility->icon }}">
+                                        <option value="{{ $facility->icon }}" selected>
+                                            {{ $facility->icon }}
+                                        </option>
                                     </select>
+                                    <!-- <select name="icon" class="form-control edit-icon-select"
+                                                                data-selected="{{ $facility->icon }}">
+                                                            </select> -->
 
                                     <div class="mt-2">
                                         <i class="{{ $facility->icon }} edit-icon-preview" style="font-size:30px;"></i>
@@ -396,22 +401,22 @@
                     if (!item.icon) return item.text;
 
                     return $(`
-                                                                                                    <span>
-                                                                                                        <i class="${item.icon} me-2"></i>
-                                                                                                        ${item.text}
-                                                                                                    </span>
-                                                                                                `);
+                                                                                                                <span>
+                                                                                                                    <i class="${item.icon} me-2"></i>
+                                                                                                                    ${item.text}
+                                                                                                                </span>
+                                                                                                            `);
                 },
 
                 templateSelection: function (item) {
                     if (!item.icon) return item.text;
 
                     return $(`
-                                                                                                    <span>
-                                                                                                        <i class="${item.icon} me-2"></i>
-                                                                                                        ${item.text}
-                                                                                                    </span>
-                                                                                                `);
+                                                                                                                <span>
+                                                                                                                    <i class="${item.icon} me-2"></i>
+                                                                                                                    ${item.text}
+                                                                                                                </span>
+                                                                                                            `);
                 }
             });
 
@@ -423,7 +428,7 @@
                 );
 
             });
-            
+
 
             $('.edit-icon-select').each(function () {
 
@@ -437,13 +442,12 @@
                     ajax: {
                         url: "{{ url('/admin/icons/search') }}",
                         dataType: 'json',
-
+                        delay: 250,
                         data: function (params) {
                             return {
                                 q: params.term
                             };
                         },
-
                         processResults: function (data) {
                             return {
                                 results: data.map(function (item) {
@@ -457,30 +461,33 @@
                         }
                     },
 
-                    templateResult: function (item) {
-                        if (!item.icon) return item.text;
+                    templateResult: formatIcon,
+                    templateSelection: formatIcon
+                });
 
-                        return $(`
-                                                        <span>
-                                                            <i class="${item.icon} me-2"></i>
-                                                            ${item.text}
-                                                        </span>
-                                                    `);
-                    },
-
-                    templateSelection: function (item) {
-                        if (!item.icon) return item.text;
-
-                        return $(`
-                                                        <span>
-                                                            <i class="${item.icon} me-2"></i>
-                                                            ${item.text}
-                                                        </span>
-                                                    `);
-                    }
+                select.on('select2:select', function (e) {
+                    select.closest('.col-lg-6')
+                        .find('.edit-icon-preview')
+                        .attr('class', e.params.data.icon + ' edit-icon-preview');
                 });
 
             });
+
+            function formatIcon(item) {
+
+                if (!item.id) {
+                    return item.text;
+                }
+
+                return $(`
+            <span>
+                <i class="${item.icon || item.id} me-2"></i>
+                ${item.text}
+            </span>
+        `);
+            }
+
+
         });
 
         $(document).ready(function () {
@@ -488,14 +495,14 @@
             $(document).on('click', '.add-facility', function () {
 
                 $('#facility-list-wrapper').append(`
-                                                                                                                                                <div class="input-group mb-2">
-                                                                                                                                                    <input type="text" name="list[]" class="form-control"
-                                                                                                                                                        placeholder="Enter Facility">
-                                                                                                                                                    <button type="button" class="btn btn-danger remove-facility">
-                                                                                                                                                        -
-                                                                                                                                                    </button>
-                                                                                                                                                </div>
-                                                                                                                                            `);
+                                                                                                                                                            <div class="input-group mb-2">
+                                                                                                                                                                <input type="text" name="list[]" class="form-control"
+                                                                                                                                                                    placeholder="Enter Facility">
+                                                                                                                                                                <button type="button" class="btn btn-danger remove-facility">
+                                                                                                                                                                    -
+                                                                                                                                                                </button>
+                                                                                                                                                            </div>
+                                                                                                                                                        `);
 
             });
 
@@ -505,15 +512,15 @@
             $(document).on('click', '.add-edit-facility', function () {
 
                 $(this).siblings('.edit-facility-wrapper').append(`
-                                                                            <div class="input-group mb-2">
-                                                                                <input type="text" name="list[]" class="form-control">
+                                                                                        <div class="input-group mb-2">
+                                                                                            <input type="text" name="list[]" class="form-control">
 
-                                                                                <button type="button"
-                                                                                    class="btn btn-danger remove-facility">
-                                                                                    -
-                                                                                </button>
-                                                                            </div>
-                                                                        `);
+                                                                                            <button type="button"
+                                                                                                class="btn btn-danger remove-facility">
+                                                                                                -
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    `);
 
             });
 

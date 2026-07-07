@@ -13,7 +13,7 @@ class RoomFacilityController extends Controller
         return view('backend.pages.admin-room-facilities', compact('facilities'));
     }
 
-   
+
 
     public function store(Request $request)
     {
@@ -34,7 +34,7 @@ class RoomFacilityController extends Controller
             ->with('success', 'Facility created successfully.');
     }
 
-    
+
 
     public function update(Request $request, RoomFacility $facility)
     {
@@ -44,6 +44,7 @@ class RoomFacilityController extends Controller
             'list' => 'required|array',
             'list.*' => 'required|string|max:255',
         ]);
+       
 
         $facility->update([
             'title' => $request->title,
