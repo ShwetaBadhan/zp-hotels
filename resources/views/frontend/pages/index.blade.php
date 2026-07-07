@@ -4,8 +4,9 @@
 
     @include('frontend.components.home.hero')
     @include('frontend.components.home.about')
-    @include('frontend.components.home.services')
+    
     @include('frontend.components.home.rooms')
+    @include('frontend.components.home.services')
     @include('frontend.components.home.faq')
     <section class="zp-social-wall ">
         <div class="container">
