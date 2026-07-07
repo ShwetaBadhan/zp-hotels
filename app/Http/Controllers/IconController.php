@@ -11,8 +11,9 @@ class IconController extends Controller
 
     public function search(Request $request)
     {
-        
+
         $icons = Icon::where('name', 'like', '%' . $request->q . '%')
+            ->orWhere('class', 'like', "%{$request->q}%")
             ->limit(50)
             ->get();
 
