@@ -7298,20 +7298,20 @@ figure {
 }
 
 .amenity-icon{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     transition: all .3s ease;
 }
 
 .amenity-icon i{
-    font-size: 32px;
+    font-size: 24px;
     color: #b57e0b; /* Theme color */
 }
 
@@ -7321,7 +7321,7 @@ figure {
     color: #222;
     text-transform: uppercase;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1;
 }
 
 .amenity-card:hover .amenity-icon{
