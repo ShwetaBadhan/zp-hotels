@@ -42,10 +42,10 @@
                                     <a class="nav-link" href="{{ route('facilities') }}">Facilities</a>
 
                                 </li>
-                                <li class="nav-item rx-dropdown">
+                                <!-- <li class="nav-item rx-dropdown">
                                     <a class="nav-link" href="{{ route('nearby-attraction') }}">Nearby attraction</a>
 
-                                </li>
+                                </li> -->
                                 <!-- <li class="nav-item rx-dropdown">
                                     <a class="nav-link rx-dropdown-item" href="javascript:void(0)">Pages</a>
                                     <ul class="rx-dropdown-menu">

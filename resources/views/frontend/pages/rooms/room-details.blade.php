@@ -64,19 +64,35 @@
                     <!-- Thumbnail -->
                     <div class="hbk-room-main-thumb">
 
-                        <div class="hbk-room-main-thumb">
+                        @if($category->thumbnail)
+                            <img src="{{ asset('storage/' . $category->thumbnail) }}" alt="{{ $category->name }}">
+                        @elseif(!empty($images) && count($images))
+                            <img src="{{ asset('storage/' . $images[0]) }}" alt="{{ $category->name }}">
+                        @else
+                            <img src="{{ asset('frontend/assets/images/no-image.jpg') }}" alt="No Image">
+                        @endif
 
-                            @if($category->thumbnail)
-                                <img src="{{ asset('storage/' . $category->thumbnail) }}" alt="{{ $category->name }}">
-                            @elseif(!empty($images) && count($images))
-                                <img src="{{ asset('storage/' . $images[0]) }}" alt="{{ $category->name }}">
-                            @else
-                                <img src="{{ asset('frontend/assets/images/no-image.jpg') }}" alt="No Image">
-                            @endif
-
-                        </div>
                     </div>
+                    @php
+                        $roomServices = App\Models\RoomFacility::where('status', 'active')->latest()->get();
+                    @endphp
 
+                    <div class="hbk-room-content-box">
+
+                        <div class="box-facility">
+                            @forelse($roomServices as $item)
+                                <div class="amenity-card">
+                                    <div class="amenity-icon">
+                                        <i class="{{ $item->icon }}"></i>
+                                    </div>
+                                    <h6>{{ $item->title }}</h6>
+                                </div>
+                            @empty
+                                <p>No amenities available.</p>
+                            @endforelse
+                        </div>
+
+                    </div>
                     <!-- Content -->
                     <div class="hbk-room-content-box">
 

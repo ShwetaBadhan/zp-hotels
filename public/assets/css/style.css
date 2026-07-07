@@ -7283,3 +7283,64 @@ figure {
     }
 
 }
+.hbk-room-content-box .box-facility{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    /* text-align: center; */
+}
+
+.amenity-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.amenity-icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin-bottom: 15px;
+    transition: all .3s ease;
+}
+
+.amenity-icon i{
+    font-size: 32px;
+    color: #b57e0b; /* Theme color */
+}
+
+.amenity-card h6{
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.amenity-card:hover .amenity-icon{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+}
+
+@media(max-width:768px){
+    .hbk-room-content-box{
+        grid-template-columns: repeat(2,1fr);
+        gap:20px;
+    }
+
+    .amenity-icon{
+        width:70px;
+        height:70px;
+    }
+
+    .amenity-icon i{
+        font-size:28px;
+    }
+}
