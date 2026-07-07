@@ -7322,6 +7322,7 @@ figure {
     text-transform: uppercase;
     margin: 0;
     line-height: 1;
+    text-align: center;
 }
 
 .amenity-card:hover .amenity-icon{
