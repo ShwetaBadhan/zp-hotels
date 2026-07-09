@@ -37,7 +37,7 @@
 
                             <ul>
                                 @forelse($services as $service)
-                                    <li> {{ $service }}</li>
+                                    <li>- {{ $service }}</li>
                                 @empty
                                     <li>No facilities available.</li>
                                 @endforelse
