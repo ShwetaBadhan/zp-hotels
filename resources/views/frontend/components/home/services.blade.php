@@ -22,7 +22,7 @@
                         : json_decode(str_replace("'", '"', $item->list), true) ?? [];
                 @endphp
 
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 mb-24 rx-575-50" data-aos="flip-left"
+                <div class="col-xl-2 col-lg-3 col-sm-6 col-12 mb-24 rx-575-50" data-aos="flip-left"
                     data-aos-duration="1000">
 
                     <div class="rx-services">
