@@ -73,17 +73,40 @@
                             @endphp
 
                             <ul>
-                                @forelse($attractions as $attraction)
-                                    <li>
-                                        <a href="{{ route('nearby-attraction') }}">
-                                            {{ $attraction->title }}
-                                        </a>
-                                    </li>
-                                @empty
-                                    <li>
-                                        <a href="javascript:void(0)">No Attractions Found</a>
-                                    </li>
-                                @endforelse
+
+                                <li>
+                                    <a href="https://maps.app.goo.gl/TcDrX9ctPNG4YA7K8?g_st=aw" target="_blank">
+                                        Aqua Village Water Park <br>And Resort
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/a4Dkrk44o2fXoRF67?g_st=aw" target="_blank">
+                                        Bhilai Steel Plant
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/88ug1bmkZiScLqzm9?g_st=aw" target="_blank">
+                                        Dongargarh Mata Mandir
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/xaif83QQXRVt8Ymz7?g_st=aw" target="_blank">
+                                        Hajra Fall
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://maps.app.goo.gl/eUQLuJGwkdXQj9E39?g_st=aw" target="_blank">
+                                        Shri Siyadevi Temple
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="https://maps.app.goo.gl/5VhyQafAuupVrPm69?g_st=aw" target="_blank">
+                                        Tandula Lake
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
