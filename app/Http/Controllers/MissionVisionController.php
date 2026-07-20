@@ -43,7 +43,7 @@ class MissionVisionController extends Controller
             'vision_sub_title' => 'required|string|max:200',
             'vision_main_title' => 'required|string|max:200',
             'vision' => 'nullable|string',
-            'mision_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'mission_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'vision_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_active' => 'boolean'
         ]);
@@ -68,7 +68,7 @@ class MissionVisionController extends Controller
                 Storage::disk('public')->delete($missionVisionSection->mission_image);
             }
 
-            $imagePath = $request->file('image')->store('mission-sections', 'public');
+           $imagePath = $request->file('mission_image')->store('mission-sections', 'public');
             $data['mission_image'] = $imagePath;
 
             // Log for debugging
