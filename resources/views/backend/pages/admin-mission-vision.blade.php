@@ -54,13 +54,13 @@
                                                         <div class="mb-4">
                                                             <label class="form-label fw-bold">Mission Image</label>
 
-                                                            @if($missionVisionSection->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($missionVisionSection->mission_image))
+                                                            @if($missionVisionSection->mission_image && Storage::disk('public')->exists($missionVisionSection->mission_image))
                                                                 <div class="position-relative mb-3">
                                                                     <img src="{{ asset('storage/' . $missionVisionSection->mission_image) }}"
                                                                         class="img-fluid rounded shadow-sm"
                                                                         style="max-height: 300px; width: 100%; object-fit: cover;"
                                                                         alt="Main Image"
-                                                                        onerror="this.style.display='none'; console.log('Image failed to load: {{ $missionVisionSection->missionimage }}')">
+                                                                        onerror="this.style.display='none'; console.log('Image failed to load: {{ $missionVisionSection->mission_image }}')">
                                                                     <small class="text-success d-block mt-1">
                                                                         <i class="fas fa-check-circle"></i> Image loaded
                                                                         successfully
