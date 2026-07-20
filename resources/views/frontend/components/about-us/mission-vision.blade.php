@@ -41,7 +41,7 @@
                 data-aos-delay="200">
                 <div class="rx-rooms-box-2">
                     <div class="rx-rooms-img">
-                        <img src="{{ isset($missionVission->mission_image) ? asset('storage/'.$missionVission->mission_image) : asset('assets/img/about/vision.jpg') }}" alt="room-2">
+                       <img src="{{ !empty($missionVission->vision_image) ? asset('storage/'.$missionVission->vision_image) : asset('assets/img/about/vision.jpg') }}" alt="room-2">
                         <div class="inner-back-side">
                             <div class="sub-title">
                                 <h5>{{ $missionVission->vision_main_title ?? 'Shaping the Future of Hospitality' }}</h5>
