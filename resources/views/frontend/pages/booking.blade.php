@@ -124,12 +124,15 @@
                         <div class="htl-image">
                             <img src="{{ asset('storage/' . $category->thumbnail) }}" alt="{{ $category->name }}">
 
-                            @if($category->offer_price)
-                                @php
-                                    $discount = round((($category->price - $category->offer_price) / $category->price) * 100);
-                                @endphp
-                                <span class="htl-badge">{{ $discount }}% OFF</span>
-                            @endif
+                           @php
+    $discount = ($category->offer_price && $category->price > 0)
+        ? round((($category->price - $category->offer_price) / $category->price) * 100)
+        : 0;
+@endphp
+
+@if($discount > 0)
+    <span class="htl-badge">{{ $discount }}% OFF</span>
+@endif
                         </div>
 
                         <div class="htl-content">
@@ -190,7 +193,7 @@
                         'adults' => $search['adults'],
                         'children' => $search['children'],
                     ]) }}" class="htl-btn">
-                                        Book Now
+                                        Book Now <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 

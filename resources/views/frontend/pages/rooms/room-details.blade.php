@@ -226,7 +226,7 @@
                                 </div>
 
                                 <button class="bk-search-btn w-100">
-                                    Book Now
+                                    Book Now <i class="ri-arrow-right-line"></i>
                                 </button>
 
                             </form>
