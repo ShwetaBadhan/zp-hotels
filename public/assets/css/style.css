@@ -6964,9 +6964,12 @@ figure {
 }
 
 .zp-social-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(2, 1fr); */
     gap: 30px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .zp-social-card {
@@ -6975,6 +6978,7 @@ figure {
     border-radius: 20px;
     overflow: hidden;
     max-height: 500px;
+    min-width: 400px;
     transition: 0.4s;
 }
 

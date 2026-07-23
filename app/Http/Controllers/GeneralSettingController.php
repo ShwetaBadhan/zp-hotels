@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GeneralSetting;
+use App\Models\SocialFeed;
 use App\Models\SocialSettings;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
@@ -33,8 +34,16 @@ class GeneralSettingController extends Controller
                 'is_active' => true,
             ]
         );
+        $socialFeed = SocialFeed::firstOrCreate(
+            [],
+            [
+                'facebook_page' => 'https://www.facebook.com/',
+                'instagram_url' => 'instagram_embed',
+                'is_active' => true,
+            ]
+        );
 
-        return view('backend.pages.admin-general-settings', compact('generalSetting','socialSetting'));
+        return view('backend.pages.admin-general-settings', compact('generalSetting','socialSetting','socialFeed'));
     }
 
     public function update(Request $request)

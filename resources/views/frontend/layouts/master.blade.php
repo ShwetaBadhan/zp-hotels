@@ -56,6 +56,19 @@
 
     <!-- main-js -->
     <script src="{{ url('assets/js/main.js')}}"></script>
+
+     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v23.0">
+    </script>
+
+    <script async src="//www.instagram.com/embed.js"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+        });
+    </script>
     @stack('scripts')
 </body>
 

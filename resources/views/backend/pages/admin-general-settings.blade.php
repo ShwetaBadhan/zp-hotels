@@ -352,6 +352,111 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="lh-card-content">
+
+                    <div class=" content container-fluid">
+
+
+                        @if(session('success'))
+                        <script>
+                            Swal.fire('Success!', '{{ session("success") }}', 'success');
+                        </script>
+                        @endif
+
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <div class="row g-5">
+                            <div class="col-lg-12">
+                                <div class="card border shadow-sm h-100">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0"><i class="fas fa-info-circle"></i> Social Feed</h5>
+
+                                    </div>
+                                    <div class="card-body">
+
+
+                                       <form action="{{ route('admin-social-feed.update') }}" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="row">
+
+                                    <!-- Facebook Page URL -->
+                                    <div class="col-md-12 mb-4">
+                                        <label class="form-label fw-semibold">
+                                            Facebook Page URL
+                                        </label>
+
+                                        <input type="url" name="facebook_page" class="form-control"
+                                            placeholder="https://www.facebook.com/yourpage"
+                                            value="{{ $socialFeed->facebook_page }}">
+
+                                        <small class="text-muted">
+                                            Enter only the Facebook Page URL.
+                                        </small>
+                                    </div>
+
+                                    <!-- Instagram Embed -->
+                                    <div class="col-md-12 mb-4">
+                                        <label class="form-label fw-semibold">
+                                            Instagram Embed Code
+                                        </label>
+
+                                        <textarea name="instagram_embed" class="form-control" rows="8"
+                                            placeholder="Paste Instagram Embed Code Here...">{{ $socialFeed->instagram_embed }}</textarea>
+
+                                        <small class="text-muted">
+                                            Paste the complete Instagram embed code.
+                                        </small>
+                                    </div>
+
+                                  
+
+                                    <!-- Status -->
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label fw-semibold">
+                                            Status
+                                        </label>
+
+                                        <select name="is_active" class="form-select">
+                                            <option value="1" {{ $socialFeed->is_active ? 'selected' : '' }}>
+                                                Active
+                                            </option>
+
+                                            <option value="0" {{ !$socialFeed->is_active ? 'selected' : '' }}>
+                                                Inactive
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Button -->
+                                    <div class="col-12 text-end">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="ti ti-device-floppy me-1"></i>
+                                            Save Changes
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

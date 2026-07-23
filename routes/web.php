@@ -26,6 +26,7 @@ use App\Http\Controllers\EventAboutSectionController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\SocialSettingController;
+use App\Http\Controllers\SocialFeedController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\TermsConditionsController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -299,4 +300,5 @@ Route::middleware('auth')->group(function () {
 
 
     Route::put('/admin-social-settings', [SocialSettingController::class, 'update'])->name('admin-social-settings.update');
+    Route::put('/admin-social-feed', [SocialFeedController::class, 'update'])->name('admin-social-feed.update');
 });
